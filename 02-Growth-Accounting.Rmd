@@ -1,0 +1,88 @@
+# Growth accounting {#GA}
+
+-------------------------------------------------------------------------------------
+
+In this chapter, we will:
+
+- Present the *growth accounting* technique to decompose GDP growth into different components.
+
+We will use data from the <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank">*Penn World Table*</a> [@PWT], which allow us to compare *real* economic outcomes over time and across countries. All macroeconomic outcomes described, such as GDP, and capital stock, are real outcomes although this may not be explicitly mentioned for simplicity in the text.
+
+-------------------------------------------------------------------------------------
+
+## Labour productivity and population growth
+
+**TBA**
+
+## Capital accumulation and total factor productivity growth
+
+**TBA**
+
+## Exercises
+
+**TBA**
+
+## Practice questions
+
+**TBA**
+
+## Appendix 1: Growth accounting derivation {-}
+
+*In this appendix, we go into more detail into the derivation of the growth accounting equation to highlight the role of key assumptions.*
+
+In order to structure our investigation of the relative contributions of the factor inputs to the growth of output, we need to use a theoretical framework to organise our thoughts. Whether the results of a growth accounting provides a good picture of the growth experience of a country over a given period depends on how good an approximation of the context of a country in a given period of time these assumptions are.
+
+<br>
+**Assumption 1**: Production in the economy is well represented by the following aggregate production function: 
+$$Y_t=z_tF(K_t,N_t)$$
+<br>
+
+where $Y_t$ is Real GDP, $K_t$ is the capital stock (structures, transport and communication equipment, computers, software, machinery, ...), $N_t$ is the quantity of labour input (measured in number of workers, number of hours worked, hours worked adjusted for labour quality, ...) and $z_t$ is the stock of technology (may capture technological progress, the allocation of resources in the economy, the organisation of labour and management practices, ...). Note that all variables are a function of time (they have a time subscript $t$).
+
+To find an expression for the growth rate of output as a function of the growth rate of capital, labour and technology, we first take the logarithm of the production function:
+$$\log{Y_t}=\log{\left[z_tF(K_t,N_t)\right]}$$
+
+Next, differentiate with respect to time:
+$$\frac{d\log{Y_t}}{dt}=\frac{d\log{\left[z_tF(K_t,N_t)\right]}}{dt}$$
+Using the fact that $\frac{d\log{X_t}}{dt}=\frac{1}{X}\frac{dX_t}{dt}$ and $\dot{X}=\frac{dX_t}{dt}$ and ignoring the time subscripts:
+
+$$\frac{\dot{Y}}{Y}=\frac{1}{Y}\left[\frac{\partial Y}{\partial z}\dot{z}+\frac{\partial Y}{\partial K}\dot{K}+\frac{\partial Y}{\partial N}\dot{N}\right]$$
+
+$$\frac{\dot{Y}}{Y}=\frac{\partial Y}{\partial z}\frac{z}{Y}\frac{\dot{z}}{z}+\frac{\partial Y}{\partial K}\frac{K}{Y}\frac{\dot{K}}{K}+\frac{\partial Y}{\partial N}\frac{N}{Y}\frac{\dot{N}}{N}$$
+which simplifies to:
+$$\frac{\dot{Y}}{Y}=\frac{\dot{z}}{z}+MPK\times \frac{K}{Y}\frac{\dot{K}}{K}+MPN\times \frac{N}{Y}\frac{\dot{N}}{N}$$
+
+Finally, using the fact the growth rate of any variable $X$ is given by $g_X=\frac{\dot{X}}{X}$, we derive the **growth accounting equation**:
+$$g_Y=g+w_Kg_K+w_Ng_N$$
+where $g_Y$ is the growth rate of $Y$, $g_K$ is the growth rate of $K$ and $g_N$ is the growth rate of $N$, $w_K=\frac{K}{Y}MPK$ and $w_N=\frac{L}{N}MPN$. 
+
+This expression states that the growth rate of $Y$ can be decomposed into the the sum of the contribution of capital accumulation $w_Kg_K$, the contribution of the growth of the labour force $w_Ng_N$ and the contribution of TFP growth $g$.
+
+**Estimation**
+<br>
+
+**Assumption 2**: the production function $F$ exhibits constant returns to scale (CRS).This ensures the following property: $MPK \times K+MPN \times N=Y$ or $w_N+w_K=1$.
+
+<br>
+**Assumption 3**: factor (capital and labour) markets are perfectly competitive. This means that the remuneration of each input is equal to their marginal product. 
+<br>
+
+Let $R$ be the rental rate of capital and $w$ be the wage received in exchange for labour. The assumption of perfect competition implies that: 
+$$R=MPK$$
+
+$$w=MPN$$
+
+
+Substituting these expressions into the expressions for $w_K$ and $w_N$:
+$$w_K=\frac{K}{Y}MPK=\frac{RK}{Y}$$ 
+
+
+$$w_N=\frac{N}{Y}MPN=\frac{wN}{Y}$$
+
+where $\frac{RK}{Y}$ is the **share of capital income** and $\frac{wN}{Y}$ is the **share of labour income** in the total income.
+
+**Remark**
+
+If the assumption of perfect competition does not hold (for example because of the presence of externalities, distortions in the factor markets,...), we would not be able to interpret $g$ as a measure of productivity growth and this methodology would be invalid. Other methods can be used to estimate $w_K$ and $w_N$.
+
+

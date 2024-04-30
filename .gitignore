@@ -1,0 +1,5 @@
+#R and R studio specific files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata

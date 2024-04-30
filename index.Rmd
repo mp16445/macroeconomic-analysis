@@ -1,0 +1,77 @@
+--- 
+title: "Macroeconomic Analysis"
+author: "Marion Prat"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is a draft of the notes produced for Macroeconomic Analysis in 2023-24.
+  The HTML output format for this example is bookdown::gitbook,
+  set in the _output.yml file.
+link-citations: yes
+#github-repo: rstudio/bookdown-demo
+---
+
+```{r eval=TRUE, include=FALSE}
+library(bookdown)
+library(tidyverse)
+library(readxl)
+library(patchwork)
+library(kableExtra)
+#library(equatiomatic)
+library(flextable)
+library(servr)
+#library(tinytex)
+library(dygraphs)
+#library(maddison)
+library(pwt10)
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown','tidyverse', 'readxl', 'kablextra', 'pwt10'
+), 'packages.bib')
+```
+
+# Preface {-}
+
+*Please be aware that these notes may contain typos.*
+
+This book comes out of notes prepared to support the teaching of my core second-year Macroeconomic Analysis course for joint-honours undergraduate programmes at the University of Bristol. It is a draft and very preliminary. Any feedback and suggestions are welcome. 
+
+One motivation for writing these notes is that data applications are an important component of the course. For example, in the context of the long-run growth topic, I ask students to describe the growth experience of a country of their choice using data from the Penn World Table, perform a growth accounting decomposition of labour productivity growth in Excel, and analyse it in light of growth theories. The treatment of empirical methods is not often developed in standard Intermediate Macroeconomics textbooks at the level that would enable students to produce empirical facts independently and interpret them correctly.
+
+
+```{r introdraft, eval=FALSE, include=FALSE}
+I believe this focus on data applications has several advantages:
+
+1) Knowing how the data is constructed and how it came about as a result of historical compromises allows students to acquire some agency in its use and interpretation. Because they get a sense of its imperfections and limitations, they are able to consider how it could be done differently.
+1) Learning how macroeconomic data is constructed and how it relates to the real world facilitates the acquisition of essential vocabulary and concepts. For example, this ensures that we are not throwing at students concepts such as GDP, inflation, investment, money, ... that only exist at an abstract level. As a second example, the difference between the long-run and the short-run in Macroeconomics is often confusing students. Calculating annual growth rates and annual trend growth rates provides an intuitive representation of the difference between the two.
+1) Learning how to construct and describe empirical facts teaches students that the lenses through which they make us see the world is not immune to the use of strong assumptions. Empirical facts are not a-theoretical. 
+1) Being confronted to the task of producing empirical facts teaches students the value of being precise.
+1) It facilitates the learning of the purely theoretical parts of the course. 
+1) Strengthening data analysis skills (Excel, ...). 
+1) Acquiring general knowledge on some important economic facts and possibly common sense. 
+1) Confronting messy and ambiguous real world data to the abstract logic of theories. Confronting the diversity of world economies and their trajectories. 
+
+The skills required to perform these tasks are not developed in Intermediate Macroeconomic textbooks at the detail level which would allow students to independently produce useful statistics and graphs, interpret them and understand their limitations. This treatment is usually relegated to introductory chapters and there is usually little attempt to link possible data applications to the core content. Some textbooks do include practical data exercises at the end of some chapters but they often seem to be added as an afterthought with little guidance, probably reflecting the belief that data skills must have been acquired in introductory quantitative units and do not pose specific difficulties. Most importantly, there does not seem to be a unified way of defining some concepts such as for example the per-period, trend, average and compound growth rates which need to be understood when faced with the problem of extracting relevant information from the data.
+
+My experience tells me that: 
+
+1) Some light quantitative skills  (Excel, growth rates and logarithms, compounding effects, trend and average growth rates, ...) are far from obvious, even to the best students. 
+1) Students are not able to connect what they learn in introductory mathematics and statistics units to specific data applications without guidance.
+1) Students do not learn by just being shown how to produce a graph, how to calculate a statistics, how to solve mathematically for the equilibrium of a model ... True learning requires them to engage with definitions and models at a deeper level. Only then will they be able to confront and solve different types of questions. 
+1) Students need to be provided with examples of good practices to get started. 
+1) I constantly underestimate and/or overestimate students' ability to learn and acquire skills. This means that most of the points listed in the previous list will end up being continually revised. 
+
+```
+
+This focus on data applications reflects the belief that economic education in the future is likely to give a more prominent place to coding as the use of software and editing tools such as R (and R markdown), Python ... become more accessible to students with the development of AI tools.  The code used to produce the book will be made available. It may be possible to include exercises and applications in R Markdown in the future. 
+
+You can write to me at: marion.prat@bristol.ac.uk.
+

@@ -10,7 +10,7 @@ In this chapter, we will:
 - Describe the main trends in GDP (and population) growth over time and across countries.
 - Perform basic operations, construct plots and tables in Excel.
 
-We will assume that you know what GDP represents, how it is constructed and its limitations. We will use data from the <a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023" target="_blank">*Maddison Project Database 2023*</a> [@INZBF2_2024] and the <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank">*Penn World Table*</a> [@PWT], which allow us to compare *real* economic outcomes over time and across countries. GDP in this chapter will always refer to real GDP although this may not be explicitly mentioned for simplicity in the text.
+We will assume that you know what GDP represents, how it is constructed and its limitations. We will use data from the <a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023" target="_blank">*Maddison Project Database 2023*</a> [@BJZL_2024] and the <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank">*Penn World Table*</a> [@PWT], which allow us to compare *real* economic outcomes over time and across countries. GDP in this chapter will always refer to real GDP although this may not be explicitly mentioned for simplicity in the text.
 
 Although this chapter has been conceived to be read in one go, some sections can be used as a reference point to check more technical details at later stages. Indeed some of the concepts may make more sense after having worked with the data.
 

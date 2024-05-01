@@ -9,7 +9,7 @@ fig:logplot3
 fig:mpdplot5
 fig:mpdplot2
 fig:mpdplot6
-tab:mpd2020Tab
+tab:mpd2023Tab
 fig:mpdplot8c
 LRG
 introduction
@@ -27,6 +27,6 @@ labour-productivity-and-population-growth
 capital-accumulation-and-total-factor-productivity-growth
 exercises-1
 practice-questions
-capital-accumulation-and-investment
-total-factor-productivity
+the-solow-model
+endogenous-growth
 applications

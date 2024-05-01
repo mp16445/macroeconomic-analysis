@@ -10,7 +10,7 @@ In this chapter, we will:
 - Describe the main trends in GDP (and population) growth over time and across countries.
 - Perform basic operations, construct plots and tables in Excel.
 
-We will assume that you know what GDP represents, how it is constructed and its limitations. We will use data from the <a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2020?lang=en" target="_blank">*Maddison Project Database*</a> [@mad1] and the <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank">*Penn World Table*</a> [@PWT], which allow us to compare *real* economic outcomes over time and across countries. GDP in this chapter will always refer to real GDP although this may not be explicitly mentioned for simplicity in the text.
+We will assume that you know what GDP represents, how it is constructed and its limitations. We will use data from the <a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023" target="_blank">*Maddison Project Database 2023*</a> [@INZBF2_2024] and the <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank">*Penn World Table*</a> [@PWT], which allow us to compare *real* economic outcomes over time and across countries. GDP in this chapter will always refer to real GDP although this may not be explicitly mentioned for simplicity in the text.
 
 Although this chapter has been conceived to be read in one go, some sections can be used as a reference point to check more technical details at later stages. Indeed some of the concepts may make more sense after having worked with the data.
 
@@ -18,14 +18,13 @@ Although this chapter has been conceived to be read in one go, some sections can
 
 ## Introduction
 
-```{r mpdplot1, echo=FALSE, fig.align='center', fig.cap= "Long-run trends in GDP per capita: 1700-2018", warning=FALSE}
+```{r mpdplot1, echo=FALSE, fig.align='center', fig.cap= "Long-run trends in GDP per capita: 1700-2022", warning=FALSE}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% filter(country == "United Kingdom" | country == "United States" | country == "China" | country == "Nigeria" | country == "Japan" | country == "Brazil" | country == "South Africa" | country == "Indonesia" | country == "India" | country == "France" | country == "Germany" | country == "Russian Federation" | country == "Turkey" | country == "Italy" | country == "Mexico", year >= 1700) 
-dates <- seq(from = 1700, to = 2018, by = 30)
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% filter(country == "United Kingdom" | country == "United States" | country == "China" | country == "Nigeria" | country == "Japan" | country == "Brazil" | country == "South Africa" | country == "Indonesia" | country == "India" | country == "France" | country == "Germany" | country == "Russian Federation" | country == "Turkey" | country == "Italy" | country == "Mexico", year >= 1700) 
+dates <- seq(from = 1700, to = 2022, by = 30)
 
-mpd2020 %>% ggplot(aes(x = year, y = gdppc, colour = country)) + geom_line()+ labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2020") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,60000), breaks = c(0,10000,20000,30000,40000,50000,60000)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
-#,label = c(0,2,4,8,16,32,64,128)
+mpd2023 %>% ggplot(aes(x = year, y = gdppc, colour = country)) + geom_line()+ labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2023") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,60000), breaks = c(0,10000,20000,30000,40000,50000,60000)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
 ```
 
 Figure \@ref(fig:mpdplot1) represents real GDP per capita over more than three centuries for fifteen of today's most important economies. Viewed through the lenses of GDP per capita, this data tells us a story of growing global wealth (or standards of living) and inequality:
@@ -56,31 +55,15 @@ Most economic variables are observed at *discrete* time intervals. For example, 
 ```{r DiscreteTab, echo=FALSE, warning=FALSE}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% 
-  filter(country =="United States", year >= 2000 & year < 2019) %>% 
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% 
+  filter(country =="United States", year >= 2000 & year < 2023) %>% 
   mutate(gdpgr = (gdppc / lag(gdppc) - 1)*100) %>% 
   select(year, gdppc, gdpgr)
 
-kbl(mpd2020, align = "ccc",col.names = c('Year (t)','GDP per capita (in $2011)', 'Growth rate (%)'), caption="US GDP per capita and growth rate (2000-2018)", digits = 2) %>%
+kbl(mpd2023, align = "ccc",col.names = c('Year (t)','GDP per capita (in $2011)', 'Growth rate (%)'), caption="US GDP per capita and growth rate (2000-2022)", digits = 2) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed"), position = "center") %>%
-  kableExtra::footnote(general = "Source: Maddison Project Database 2020.", general_title = "")
+  kableExtra::footnote(general = "Source: Maddison Project Database 2023.", general_title = "")
 
-```
-
-```{r DiscreteTab_b, eval=FALSE, echo=FALSE, warning=FALSE}
-
-rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% 
-  filter(country =="United States", year >= 2000 & year < 2005) %>%
-  select(year, gdppc)
-
-table1 <- flextable(mpd2020) %>% colformat_double(j = 2, digits = 2) %>%
-  add_footer_lines("Source: Maddison Project Database (MPD) 2020") %>%
-  set_caption("Table 1") %>%
-  set_header_labels(values = list(year = "Year(t)", gdppc = "US real GDP per capita (in $2011)")) %>%
-  fontsize(size = 7, part = "footer") %>% 
-  align(align = "center", part = "all")
-table1
 ```
 
 The **per-period growth rate** of GDP in period $t$ is the *percentage change* in GDP between period $t-1$ and period $t$. Formally, the growth rate $g$ of variable $y$ in period $t$ (where the period may be a year, a quarter, a month, a day, ...) is calculated as: 
@@ -104,20 +87,16 @@ We have seen in the previous section how to calculate per-period growth rates or
 
 How can we calculate the annual trend growth rate? Figure \@ref(fig:mpdplot3) represents actual GDP per capita in the United States between 1870 and 2018 (black solid line) and the trend in GDP per capita over the same period (dashed red line). We want to obtain an estimate of the annual growth rate of GDP per capita along this trend growth path. There are several methods to do so but there is at least one very incorrect one. 
 
-```{r mpdplot3, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in the United States: 1870-2018", warning=TRUE}
+```{r mpdplot3, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in the United States: 1870-2023", warning=FALSE}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% filter(country == "United States", year >= 1870) %>% 
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% filter(country == "United States", year >= 1870) %>% 
   mutate(gdpgr = (gdppc / lag(gdppc) - 1)*100)
-dates <- seq(from = 1870, to = 2018, by = 20)
+dates <- seq(from = 1870, to = 2022, by = 20)
 
-#average <- mean(mpd2020c$gdpgr, na.rm = TRUE)
+#average <- mean(mpd2023c$gdpgr, na.rm = TRUE)
 
-mpd2020 %>% ggplot(aes(x = year, y = gdppc)) + geom_line(colour = "black", linewidth = 1) + stat_smooth(method=nls, method.args = list(start = c(a=4803, b=0.015)),formula = y ~ a*(1 + b)^(x-1870), colour = 'red', linewidth = 0.75, linetype = 2, se = FALSE) + labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2020") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,60000), breaks = c(0,10000,20000,30000,40000,50000,60000)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
-
-#stat_smooth(method=nls, method.args = list(start = c(a=4803, b=0.015)),formula = y ~ a*exp(b*(x-1870)), colour = 'red', size = 0.75, linetype = 2, se = FALSE)
-
-#The trend growth rate is not the **average growth rate**, the average of the annual growth rates calculated for each year, which is equal to 1.77% in this example. The average growth rate also takes into account compounding effects but uses more information and therefore is computationally more intensive, being calculated using 149 observations instead of 2. In addition, it is affected by short-term fluctuations such as the large swings in GDP per capita observed around the Great Depression and the second-world war, which we want to ignore when describing long-run trends. 
+mpd2023 %>% ggplot(aes(x = year, y = gdppc)) + geom_line(colour = "black", linewidth = 1) + stat_smooth(method=nls, method.args = list(start = c(a=4803, b=0.015)),formula = y ~ a*(1 + b)^(x-1870), colour = 'red', linewidth = 0.75, linetype = 2, se = FALSE) + labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2023") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,60000), breaks = c(0,10000,20000,30000,40000,50000,60000)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
 
 ```
 
@@ -215,25 +194,25 @@ plot1 + plot2
 Figure \@ref(fig:logplot1b) plots $y$ and its logarithm for three different value of the constant growth rate $g$. The exponential gap in the path of the three series illustrates the compounding effect of growth. A small difference in growth rates can generate large inequalities in the long-run.
 
 
-**Example: GDP per capita in the United States (1870-2018)**
+**Example: GDP per capita in the United States (1870-2023)**
 
 Going back to US real GDP per capita, we already noticed the exponential pattern of GDP per capita over the last two centuries. Focusing on the period 1870-2018, we can now check graphically whether the US economy grew at a relatively constant rate over this period. If the growth rate is constant over time we would expect the plot of its logarithm to be well approximated by a straight line.
 
-```{r mpdplot4, echo=FALSE, fig.align='center', fig.cap= "(Level and logarithm of) GDP per capita in the United States: 1870-2018", warning=FALSE, message=FALSE, fig.width=10, fig.height=3}
+```{r mpdplot4, echo=FALSE, fig.align='center', fig.cap= "(Level and logarithm of) GDP per capita in the United States: 1870-2023", warning=FALSE, message=FALSE, fig.width=10, fig.height=3}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% 
   filter(country == "United States", year >= 1870) %>% 
   mutate(lny = log(gdppc)) %>% 
   select(year, gdppc, lny) %>% 
   rename(t = "year") 
-dates <- seq(from = 1870, to = 2018, by = 40)
+dates <- seq(from = 1880, to = 2023, by = 40)
 
-plot1 <- mpd2020 %>% ggplot(aes(x = t, y = gdppc)) + geom_line(colour = "red")+ labs(x = "", y = "GDP per capita (in 2011$)") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5))
+plot1 <- mpd2023 %>% ggplot(aes(x = t, y = gdppc)) + geom_line(colour = "red")+ labs(x = "", y = "GDP per capita (in 2011$)") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5))
 
-plot2 <- mpd2020 %>% ggplot(aes(x = t, y = lny)) + geom_line(colour = "red") + labs(x = "", y = "(ln) GDP per capita") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5))
+plot2 <- mpd2023 %>% ggplot(aes(x = t, y = lny)) + geom_line(colour = "red") + labs(x = "", y = "(ln) GDP per capita") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5))
 
-plot3 <- mpd2020 %>% ggplot(aes(x = t, y = lny)) + geom_line(colour = "red") + geom_smooth(method=lm,se=FALSE) + labs(x = "", y = "(ln) GDP per capita", caption = "Source: Maddison Project Database (MPD) 2020") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5))
+plot3 <- mpd2023 %>% ggplot(aes(x = t, y = lny)) + geom_line(colour = "red") + geom_smooth(method=lm,se=FALSE) + labs(x = "", y = "(ln) GDP per capita", caption = "Source: Maddison Project Database (MPD) 2023") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5))
 
 plot1 + plot2 + plot3
 
@@ -243,8 +222,8 @@ The middle panel in Figure \@ref(fig:mpdplot4) represents the natural logarithm 
 
 ```{r draft, eval=FALSE, include=FALSE}
 
-lmtrend <- lm(lny ~ t,mpd2020c)
-equatiomatic::extract_eq(lmtrend, use_coefs = TRUE, coef_digits = 4)
+lmtrend <- lm(lny ~ t,mpd2023)
+lmtrend
 ```
 
 ### Logarithmic (ratio) scales
@@ -288,20 +267,20 @@ We can see that it takes slightly less than fifteen periods for $y$, which is gr
 
 Assuming a variable $y$ grows at a constant annual growth rate $g$, how many years $t$ does it take for it to double in value? We just saw how plotting a variable using a log scale allows us to see immediately how long it would take for a variable to double (or triple, quadruple, etc...). It is also possible to address this question numerically. A useful result called the *rule of 70* states that if a variable $y$ grows at the rate of $\%g$ per period, then it takes approximately $t \approx \frac{70}{\%g}$ periods for the value of $y$ to double. So when $y$ grows at rate $g=0.05$ in each period as in our example, the formula predicts that it would take approximately 14 periods for it to double, in line with what we observed in Figure \@ref(fig:logplot3). 
 
-**Example: GDP per capita in the United States (1870-2018)**
+**Example: GDP per capita in the United States (1870-2022)**
 
 ```{r mpdplot5, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in the United States (in 2011$): normal and logarithmic scale", warning=FALSE, message=FALSE, fig.width=8, fig.height=3}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% 
   filter(country == "United States", year >= 1870) %>%
   rename(t = "year") %>%
   select(t, gdppc) 
  
-dates <- seq(from = 1870, to = 2018, by = 35)
+dates <- seq(from = 1870, to = 2023, by = 35)
 
-plot1 <- mpd2020 %>% ggplot(aes(x = t, y = gdppc)) + geom_line(colour = "red")+ labs(x = "", y = "Normal scale") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5)) + scale_y_continuous(limits = c(0,64000), breaks = c(0,16000,32000,48000,64000))
-plot2 <- mpd2020 %>% ggplot(aes(x = t, y = gdppc)) + geom_line(colour = "red") + labs(x = "", y = "Log scale (base 2)", caption = "Source: Maddison Project Database (MPD) 2020") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_line(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5)) + scale_y_continuous(trans='log2',limits = c(4000,64000), breaks = c(4000,8000,16000,32000,64000))
+plot1 <- mpd2023 %>% ggplot(aes(x = t, y = gdppc)) + geom_line(colour = "red")+ labs(x = "", y = "Normal scale") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5)) + scale_y_continuous(limits = c(0,64000), breaks = c(0,16000,32000,48000,64000))
+plot2 <- mpd2023 %>% ggplot(aes(x = t, y = gdppc)) + geom_line(colour = "red") + labs(x = "", y = "Log scale (base 2)", caption = "Source: Maddison Project Database (MPD) 2023") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_line(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5)) + scale_y_continuous(trans='log2',limits = c(4000,64000), breaks = c(4000,8000,16000,32000,64000))
 plot1 + plot2
 
 ```
@@ -310,55 +289,32 @@ Figure \@ref(fig:mpdplot5) illustrates how this tool can be used to analyse the 
 
 ## United Kingdom *versus* United States
 
-```{r mpdplot2, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in the United States and United Kingdom: 1800-2018", warning=FALSE,fig.width=8, fig.height=4}
+```{r mpdplot2, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in the United States and United Kingdom: 1800-2022", warning=FALSE,fig.width=8, fig.height=4}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% filter(country == "United Kingdom" | country == "United States", year >= 1800) 
-dates <- seq(from = 1800, to = 2018, by = 100)
+mpd2023 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% filter(country == "United Kingdom" | country == "United States", year >= 1800) 
+dates <- seq(from = 1800, to = 2023, by = 100)
 
-mpd2020 %>% ggplot(aes(x = year, y = gdppc, colour = country)) + geom_line()+ labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2020") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,60000), breaks = c(0,10000,20000,30000,40000,50000,60000)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
+mpd2023 %>% ggplot(aes(x = year, y = gdppc, colour = country)) + geom_line()+ labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2023") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,60000), breaks = c(0,10000,20000,30000,40000,50000,60000)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
 
-#Figure \@ref(fig:mpdplot2) represents the same data for the United States and the United Kingdom since 1500. By going back five centuries for the United Kingdom, it serves to highlight how unprecedented the modern growth experience has been over the very long-run.  
 ```
 
 Figure \@ref(fig:mpdplot2) shows that on average GDP per capita in the United States grew faster than in the United Kingdom over the last 200 years since it starts at a lower level and ends at a higher level. However, some questions are less easily answered just by looking at this plot. **First**, was the *growth rate* of GDP per capita in the United States and the United Kingdom constant over time or were there periods of faster (slower) growth? **Second**, was GDP per capita in the United States always growing at a faster rate than in the United Kingdom over these two centuries or only during specific periods?
 
-We can address these questions using the techniques developed in the previous sections. Figure \@ref(fig:mpdplot6) plots the logarithm of GDP per capita for both countries and can be used to identify subperiods. Table \@ref(tab:mpd2020Tab) presents estimates of the trend growth rates of GDP per capita for both the United States and the United Kingdom for the full sample period and four subperiods.
+We can address these questions using the techniques developed in the previous sections. Figure \@ref(fig:mpdplot6) plots the logarithm of GDP per capita for both countries and can be used to identify subperiods. Table \@ref(tab:mpd2023Tab) presents estimates of the trend growth rates of GDP per capita for both the United States and the United Kingdom for the full sample period and four subperiods.
 
-```{r mpdplot6b, echo=FALSE, fig.align='center',fig.cap= "GDP per capita: United States vs United Kingdom (1800-2018)",fig.width=10, fig.height=3, eval=FALSE, message=FALSE}
 
-rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv") %>% 
-  select(country, year, gdppc) %>% 
-  filter(country == "United Kingdom" | country == "United States", year >= 1800) %>% 
-  mutate(lny = log(gdppc))
-dates <- seq(from = 1800, to = 2018, by = 40)
-
-plot1 <- mpd2020 %>% ggplot(aes(x = year, y = lny, colour = country)) + geom_line()+ labs(x = "", y = "", caption = "Source: Maddison Project Database (MPD) 2020") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_blank(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) + labs(title = "(ln) GDP per capita")
-
-mpd2020 <- mpd2020 %>% select(country, year, gdppc) %>% 
-  pivot_wider(names_from = country, values_from = gdppc) %>% 
-  rename(US = "United States", UK = "United Kingdom") %>% 
-  mutate("United States" = US/UK, "United Kingdom" = UK/UK) %>% 
-  select(year,`United States`,`United Kingdom`) %>% 
-  pivot_longer(cols = c("United States","United Kingdom"), names_to = "country", values_to = "ratio")
-  
-plot2 <- mpd2020 %>% ggplot(aes(x = year, y = ratio, colour = country)) + geom_line()+ labs(x = "", y = "", caption = "Source: Maddison Project Database (MPD) 2020") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) + labs(title = "GDP per capita relative to UK (UK=1)")
-
-plot1 + plot2
-```
-
-```{r mpdplot6, echo=FALSE, fig.align='center',fig.cap= "United States vs United Kingdom: GDP per capita (1800-2018)",fig.width=6, fig.height=3.5, eval=TRUE, message=TRUE}
+```{r mpdplot6, echo=FALSE, fig.align='center',fig.cap= "United States vs United Kingdom: GDP per capita (1800-2022)",fig.width=6, fig.height=3.5, eval=TRUE, message=TRUE}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% 
   select(country, year, gdppc) %>% 
   filter(country == "United Kingdom" | country == "United States", year >= 1800) %>% 
   mutate(lny = log(gdppc))%>% 
   select(country, year, lny) %>% 
   pivot_wider(names_from = country, values_from = lny) 
 
-dygraph(mpd2020)  %>%
+dygraph(mpd2023)  %>%
   dySeries("United Kingdom", label = "UK") %>%
   dySeries("United States", label = "US") %>%
   dyLegend(show = "follow", width =350 )%>%
@@ -369,132 +325,54 @@ dygraph(mpd2020)  %>%
             drawGrid = FALSE,
             colors = c("#FA8072","#00CED1"))
 
-#dates <- seq(from = 1800, to = 2018, by = 30)
-
-#mpd2020 %>% ggplot(aes(x = year, y = lny, colour = country)) + geom_line()+ labs(x = "", y = "", caption = "Source: Maddison Project Database (MPD) 2020") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_blank(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) + labs(title = "Natural logarithm of GDP per capita")
-
 ```
 
 <br>
 **Did the two economies grow at a constant rate over the last two centuries or were there periods of faster or slower growth?**
 
-In the <span style="color: #FA8072;">**United Kingdom**</span>, we identify two important points of inflection in the slope of the logarithm plot, in 1830 and 1920, allowing us to distinguish three subperiods. In <span style="color: #FA8072;">1800-1830</span>, the slope of the log plot is relatively flat, suggesting that the trend growth rate was close to zero before 1830. In <span style="color: #FA8072;">1830-1918</span>, the slope of the log plot becomes steeper, suggesting that the trend growth rate established itself clearly in the positive range during this period. In <span style="color: #FA8072;">1920-2018</span>, the slope of the log plot rises again, suggesting that the trend growth rate further rose in the 20^th^ century. 
+In the <span style="color: #FA8072;">**United Kingdom**</span>, we identify two important points of inflection in the slope of the logarithm plot, in 1830 and 1920, allowing us to distinguish three subperiods. In <span style="color: #FA8072;">1800-1830</span>, the slope of the log plot is relatively flat, suggesting that the trend growth rate was close to zero before 1830. In <span style="color: #FA8072;">1830-1918</span>, the slope of the log plot becomes steeper, suggesting that the trend growth rate established itself clearly in the positive range during this period. In <span style="color: #FA8072;">1920-2022</span>, the slope of the log plot rises again, suggesting that the trend growth rate further rose in the 20^th^ century. 
 
-In the <span style="color: #00CED1;">**United States**</span>, the path of GDP per capita exhibits a similar pattern, but with an point of inflection occurring in the 1940s. In <span style="color: #00CED1;">1800-1830</span>, the slope of the log plot is flatter, suggesting that the trend growth rate is positive but moderate before 1830. In <span style="color: #00CED1;">1830-1946</span>, the slope of the log plot becomes steeper, suggesting that the trend growth accelerated during this period. In <span style="color: #00CED1;">1946-2018</span>, the slope of the log plot becomes only slightly steeper, suggesting a relatively constant trend growth rate in the United States over the 20^th^ century as previously noted. 
+In the <span style="color: #00CED1;">**United States**</span>, the path of GDP per capita exhibits a similar pattern, but with an point of inflection occurring in the 1940s. In <span style="color: #00CED1;">1800-1830</span>, the slope of the log plot is flatter, suggesting that the trend growth rate is positive but moderate before 1830. In <span style="color: #00CED1;">1830-1946</span>, the slope of the log plot becomes steeper, suggesting that the trend growth accelerated during this period. In <span style="color: #00CED1;">1946-2022</span>, the slope of the log plot becomes only slightly steeper, suggesting a relatively constant trend growth rate in the United States over the 20^th^ century as previously noted. 
 
 **Can we identify periods when GDP per capita in the United States grew at a substantially faster rate than that of the United Kingdom?**
 
-Over the period *1946-2018*, the trends in GDP per capita are parallel in the two countries, suggesting that GDP per capita grew at relatively similar rates. However, between *1800* and *1946*, GDP per capita grew at a substantially higher trend growth rate in the United States, which is the period when US GDP per capita overtook UK GDP per capita. 
+Over the period *1946-2022*, the trends in GDP per capita are parallel in the two countries, suggesting that GDP per capita grew at relatively similar rates. However, between *1800* and *1946*, GDP per capita grew at a substantially higher trend growth rate in the United States, which is the period when US GDP per capita overtook UK GDP per capita. 
 
-```{r mpd2020Tab, echo=FALSE, warning=FALSE, eval=TRUE, message=TRUE}
+```{r mpd2023Tab, echo=FALSE, warning=FALSE, eval=TRUE, message=TRUE}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% 
   select(country, year, gdppc) %>% 
   filter(country == "United Kingdom" | country == "United States", year >= 1800) %>% 
   pivot_wider(names_from = country, values_from = gdppc) %>% 
   rename(US = "United States", UK = "United Kingdom")
   
-break_dates <- c(1800,1830,1946,2018)
+break_dates <- c(1800,1830,1946,2022)
 break_nb <- length(break_dates)
-date_nb <- length(mpd2020$year)
-gy_US <- ((mpd2020$US[date_nb]/mpd2020$US[1])^(1/(break_dates[break_nb]-break_dates[1]))-1)*100
-gy_UK <- ((mpd2020$UK[date_nb]/mpd2020$UK[1])^(1/(break_dates[break_nb]-break_dates[1]))-1)*100
+date_nb <- length(mpd2023$year)
+gy_US <- ((mpd2023$US[date_nb]/mpd2023$US[1])^(1/(break_dates[break_nb]-break_dates[1]))-1)*100
+gy_UK <- ((mpd2023$UK[date_nb]/mpd2023$UK[1])^(1/(break_dates[break_nb]-break_dates[1]))-1)*100
 table <- as_tibble_row(c("US" = gy_US, "UK" = gy_UK))
 index <- c()
 for (date in break_dates){
-  row_nb <- which(grepl(date,mpd2020$year))
+  row_nb <- which(grepl(date,mpd2023$year))
   index <- c(index,row_nb)
 }
 for (i in seq(1:(break_nb-1))){
-  gy_US <- ((mpd2020$US[index[i+1]]/mpd2020$US[index[i]])^(1/(break_dates[i+1]-break_dates[i]))-1)*100
-  gy_UK <- ((mpd2020$UK[index[i+1]]/mpd2020$UK[index[i]])^(1/(break_dates[i+1]-break_dates[i]))-1)*100
+  gy_US <- ((mpd2023$US[index[i+1]]/mpd2023$US[index[i]])^(1/(break_dates[i+1]-break_dates[i]))-1)*100
+  gy_UK <- ((mpd2023$UK[index[i+1]]/mpd2023$UK[index[i]])^(1/(break_dates[i+1]-break_dates[i]))-1)*100
   table <- add_row(table,US = gy_US, UK = gy_UK)
 }
-subperiods <- as_tibble_col(c("1800-2018","1800-1830","1830-1946","1946-2018"))
+subperiods <- as_tibble_col(c("1800-2022","1800-1830","1830-1946","1946-2022"))
 table <- add_column(subperiods,table)
 
 kbl(table, align = "ccc",col.names = c("Period","United states", "United Kingdom"), caption="UK and US: Trend growth rates over different subperiods", digits = 2) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed"), position = "center") %>%
-  kableExtra::footnote(general = "Source: Maddison Project Database 2020. Compound annual growth rates (%).", general_title = "")
+  kableExtra::footnote(general = "Source: Maddison Project Database 2023. Compound annual growth rates (%).", general_title = "")
 
 ```
 
-
-```{r mpd2020Tab_b, echo=FALSE, warning=FALSE, eval=FALSE, message=TRUE}
-
-rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
-  select(country, year, gdppc) %>% 
-  filter(country == "United Kingdom" | country == "United States", year >= 1800) %>% 
-  pivot_wider(names_from = country, values_from = gdppc) %>% 
-  rename(US = "United States", UK = "United Kingdom")
-  
-break_dates <- c(1800,1830,1878,1946,2018)
-break_nb <- length(break_dates)
-date_nb <- length(mpd2020$year)
-gy_US <- ((mpd2020$US[date_nb]/mpd2020$US[1])^(1/(break_dates[break_nb]-break_dates[1]))-1)*100
-gy_UK <- ((mpd2020$UK[date_nb]/mpd2020$UK[1])^(1/(break_dates[break_nb]-break_dates[1]))-1)*100
-table <- as_tibble_row(c("US" = gy_US, "UK" = gy_UK))
-index <- c()
-for (date in break_dates){
-  row_nb <- which(grepl(date,mpd2020$year))
-  index <- c(index,row_nb)
-}
-for (i in seq(1:(break_nb-1))){
-  gy_US <- ((mpd2020$US[index[i+1]]/mpd2020$US[index[i]])^(1/(break_dates[i+1]-break_dates[i]))-1)*100
-  gy_UK <- ((mpd2020$UK[index[i+1]]/mpd2020$UK[index[i]])^(1/(break_dates[i+1]-break_dates[i]))-1)*100
-  table <- add_row(table,US = gy_US, UK = gy_UK)
-}
-subperiods <- as_tibble_col(c("1800-2018","1800-1830","1830-1878","1878-1946","1946-2018"))
-table <- add_column(subperiods,table)
-
-kbl(table, align = "ccc",col.names = c("Period","United states", "United Kingdom"), caption="UK and US: Trend growth rates over different subperiods", digits = 2) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), position = "center") %>%
-  kableExtra::footnote(general = "Source: Maddison Project Database 2020. Compound annual growth rates (%).", general_title = "")
-
-```
-
-```{r mpd2020Tab_c, echo=FALSE, warning=FALSE, eval=FALSE}
-
-rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
-  select(country, year, gdppc) %>% 
-  filter(country == "United Kingdom" | country == "United States", year >= 1800) %>% 
-  pivot_wider(names_from = country, values_from = gdppc) %>% 
-  rename(US = "United States", UK = "United Kingdom")
-  
-break_dates <- c(1800,1830,1870,1945,2018)
-break_nb <- length(break_dates)
-date_nb <- length(mpd2020$year)
-gy_US <- ((mpd2020$US[date_nb]/mpd2020$US[1])^(1/(break_dates[break_nb]-break_dates[1]))-1)*100
-gy_UK <- ((mpd2020$UK[date_nb]/mpd2020$UK[1])^(1/(break_dates[break_nb]-break_dates[1]))-1)*100
-table <- as_tibble_row(c("US" = gy_US, "UK" = gy_UK))
-index <- c()
-for (date in break_dates){
-  row_nb <- which(grepl(date,mpd2020$year))
-  index <- c(index,row_nb)
-}
-for (i in seq(1:(break_nb-1))){
-  gy_US <- ((mpd2020$US[index[i+1]]/mpd2020$US[index[i]])^(1/(break_dates[i+1]-break_dates[i]))-1)*100
-  gy_UK <- ((mpd2020$UK[index[i+1]]/mpd2020$UK[index[i]])^(1/(break_dates[i+1]-break_dates[i]))-1)*100
-  table <- add_row(table,US = gy_US, UK = gy_UK)
-}
-subperiods <- as_tibble_col(c("1800-2018","1800-1830","1830-1870","1870-1945","1945-2018"))
-table <- add_column(subperiods,table)
-
-table3 <- flextable(table) %>% colformat_double(j = 2:3, digits = 2) %>% 
-  add_footer_lines("Source: Maddison Project Database (MPD) 2020") %>%
-  set_caption("Table 3: Average annual growth rates (%)") %>%
-  set_header_labels(values = list(value = "Period", US = "United states", UK = "United Kingdom")) %>%
-  fontsize(size = 7, part = "footer") %>% 
-  align(align = "center", part = "all")
-table3
-rm(list=ls())
-
-```
-
-The figures in Table \@ref(tab:mpd2020Tab) confirm the key points observed above, including the fairly constant trend growth rate of US GDP per capita since the 1830s and the increase in the growth of GDP per capita in both countries in the second half of the 20^th^ century. This also allows us to make an additional remark. The estimated trend growth rate of GDP per capita in the United States is 0.4 percentage point higher than that of the United Kingdom between 1830 and 1946. This relatively small difference on an annual basis explains why by the end of this period, US GDP per capita was almost 50% higher than that of the UK, having started at a lower level (*See* Figure \@ref(fig:mpdplot2)).
+The figures in Table \@ref(tab:mpd2023Tab) confirm the key points observed above, including the fairly constant trend growth rate of US GDP per capita since the 1830s and the increase in the growth of GDP per capita in both countries in the second half of the 20^th^ century. This also allows us to make an additional remark. The estimated trend growth rate of GDP per capita in the United States is 0.4 percentage point higher than that of the United Kingdom between 1830 and 1946. This relatively small difference on an annual basis explains why by the end of this period, US GDP per capita was almost 50% higher than that of the UK, having started at a lower level (*See* Figure \@ref(fig:mpdplot2)).
 
 **Remark**: we only emphasise here the interpretation of the figures and the broad trends emerging from the data. *First*, it is difficult to establish what happened to the trend growth rates during the interwar period (from 1919 to 1939). *Second*, different measures of real GDP may give widely different results for the date at which US GDP per capita overtook UK GDP per capita and also possibly the estimates of trend growth rates. *Third*, the trend growth rate has clearly declined over the last fifteen years in both countries; however, it may be too early to draw conclusion regarding the significance of this recent development.
 
@@ -664,13 +542,13 @@ The table above presents GDP per worker in China (*Source*: PWT). What is the gr
 ```{r mpdplot8a, echo=FALSE, fig.align='center',fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% 
   filter(country == "Indonesia", year >= 1950) %>%
   select(year, gdppc) %>% 
   rename(t = "year") 
-#dates <- seq(from = 1950, to = 2018, by = 10)
+#dates <- seq(from = 1950, to = 2023, by = 10)
 
-dygraph(mpd2020, main = "GDP per capita in Indonesia: 1950-2018") %>% 
+dygraph(mpd2023, main = "GDP per capita in Indonesia: 1950-2022") %>% 
   dySeries("gdppc", label = "GDP per capita") %>%
   dyLegend(show = "follow")%>%
   dyAxis("x", drawGrid = FALSE) %>%
@@ -682,7 +560,7 @@ dygraph(mpd2020, main = "GDP per capita in Indonesia: 1950-2018") %>%
 ```
  
 <br>
-Based on the plot above (*Source*: Maddison Project Database) the annual trend growth rate in GDP per capita in Indonesia between 1950 and 2018 was:
+Based on the plot above (*Source*: Maddison Project Database 2023) the annual trend growth rate in GDP per capita in Indonesia between 1950 and 2018 was:
  
  a. 12%
  a. 3.32%
@@ -694,13 +572,13 @@ Based on the plot above (*Source*: Maddison Project Database) the annual trend g
 ```{r mpdplot8b, echo=FALSE, fig.align='center',fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% 
   filter(country == "Indonesia", year >= 1950) %>% 
   mutate(lny = log(gdppc)) %>% 
   select(year, lny) %>% 
   rename(t = "year") 
 
-dygraph(mpd2020, main = "(Logarithm) GDP per capita in Indonesia: 1950-2018") %>% 
+dygraph(mpd2023, main = "(Logarithm) GDP per capita in Indonesia: 1950-2022") %>% 
   dySeries("lny", label = " Log(GDP per capita)") %>%
   dyLegend(show = "follow")%>%
   dyAxis("x", drawGrid = FALSE) %>%
@@ -712,33 +590,33 @@ dygraph(mpd2020, main = "(Logarithm) GDP per capita in Indonesia: 1950-2018") %>
 ```
 
 <br>
-The figure above represents the logarithm of GDP per capita in Indonesia (*Source*: Maddison Project Database). Discuss the advantages and disadvantages associated with each of these subsamplings i) if the goal were to analyse long-run growth trends in GDP growth in Indonesia and ii) if you goal were to systematically compare GDP growth in different countries over time:
+The figure above represents the logarithm of GDP per capita in Indonesia (*Source*: Maddison Project Database 2023). Discuss the advantages and disadvantages associated with each of these subsamplings i) if the goal were to analyse long-run growth trends in GDP growth in Indonesia and ii) if you goal were to systematically compare GDP growth in different countries over time:
 
-a. 1950-1970, 1970-1990, 1990-2010, 2010-2018
-a. 1950-1967, 1967-1997, 1997-2018
-a. 1950-1967, 1967-1974, 1974-1989, 1989-1997, 1990-2018
-a. 1950-1967, 1967-2018
+a. 1950-1970, 1970-1990, 1990-2010, 2010-2022
+a. 1950-1967, 1967-1997, 1997-2022
+a. 1950-1967, 1967-1974, 1974-1989, 1989-1997, 1990-2022
+a. 1950-1967, 1967-2022
 
 
 **Exercise 6**
 
-```{r mpdplot8c, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in Indonesia (ratio scale): 1950-2018",fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
+```{r mpdplot8c, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in Indonesia (ratio scale): 1950-2022",fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
 
 rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% 
   filter(country == "Indonesia", year >= 1950) %>% 
   select(year, gdppc) %>% 
   rename(t = "year") 
 
-dates <- seq(from = 1950, to = 2018, by = 10)
+dates <- seq(from = 1950, to = 2022, by = 10)
 
-plot3 <- mpd2020 %>% ggplot(aes(x = t, y = gdppc)) + geom_line(colour = "blue")+ labs(x = "", y = "GDP per capita (in 2011$)")+ scale_x_continuous(breaks = dates) + scale_y_continuous(trans = 'log2', limits = c(1000,16000), breaks = c(1000,2000,4000,8000,16000)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5))
+plot3 <- mpd2023 %>% ggplot(aes(x = t, y = gdppc)) + geom_line(colour = "blue")+ labs(x = "", y = "GDP per capita (in 2011$)")+ scale_x_continuous(breaks = dates) + scale_y_continuous(trans = 'log2', limits = c(1000,16000), breaks = c(1000,2000,4000,8000,16000)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5))
 
 plot3
 
 ```
 
-The figure above represents GDP per capita in Indonesia on a ratio scale (*Source*: Maddison Project Database). 
+The figure above represents GDP per capita in Indonesia on a ratio scale (*Source*: Maddison Project Database 2023). 
 
 a. Based on this figure, how many years did it take approximately for GDP per capita to double in Indonesia over this period?
 b. Using your answer in a., provide an approximation for the trend growth rate. 

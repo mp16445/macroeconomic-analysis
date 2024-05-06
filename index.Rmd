@@ -20,6 +20,7 @@ library(flextable)
 library(servr)
 library(dygraphs)
 library(pwt10)
+library(latex2exp)
 ```
 
 

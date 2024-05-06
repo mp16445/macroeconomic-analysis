@@ -1,18 +1,17 @@
-# Long-run growth trends in GDP {#LRG}
+# Long-run growth trends {#LRG}
 
 -------------------------------------------------------------------------------------
 
 In this chapter, we will:
 
 - Define *growth rates* and show how to calculate them.
+- Explain the relationship between *growth rates* and *levels* of GDP.
 - Explain the importance of *compounding* effects in modern growth trends.
 - Show the power of *logarithm* plots and *logarithm (ratio) scales*.
-- Describe the main trends in GDP (and population) growth over time and across countries.
+- Describe the main trends in GDP and population growth over time and across countries.
 - Perform basic operations, construct plots and tables in Excel.
 
 We will assume that you know what GDP represents, how it is constructed and its limitations. We will use data from the <a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023" target="_blank">*Maddison Project Database 2023*</a> [@BJZL_2024] and the <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank">*Penn World Table*</a> [@PWT], which allow us to compare *real* economic outcomes over time and across countries. GDP in this chapter will always refer to real GDP although this may not be explicitly mentioned for simplicity in the text.
-
-Although this chapter has been conceived to be read in one go, some sections can be used as a reference point to check more technical details at later stages. Indeed some of the concepts may make more sense after having worked with the data.
 
 -------------------------------------------------------------------------------------
 
@@ -24,7 +23,7 @@ rm(list=ls())
 mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% filter(country == "United Kingdom" | country == "United States" | country == "China" | country == "Nigeria" | country == "Japan" | country == "Brazil" | country == "South Africa" | country == "Indonesia" | country == "India" | country == "France" | country == "Germany" | country == "Russian Federation" | country == "Turkey" | country == "Italy" | country == "Mexico", year >= 1700) 
 dates <- seq(from = 1700, to = 2022, by = 30)
 
-mpd2023 %>% ggplot(aes(x = year, y = gdppc, colour = country)) + geom_line()+ labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2023") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,60000), breaks = c(0,10000,20000,30000,40000,50000,60000)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
+mpd2023 %>% ggplot(aes(x = year, y = gdppc, colour = country)) + geom_line()+ labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2023") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,60000), breaks = c(0,10000,20000,30000,40000,50000,60000), labels = c(0,"10,000","20,000","30,000","40,000","50,000","60,000")) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
 ```
 
 Figure \@ref(fig:mpdplot1) represents real GDP per capita over more than three centuries for fifteen of today's most important economies. Viewed through the lenses of GDP per capita, this data tells us a story of growing global wealth (or standards of living) and inequality:
@@ -33,11 +32,17 @@ Figure \@ref(fig:mpdplot1) represents real GDP per capita over more than three c
 - **The great divergence**: This exponential growth pattern started at different times for different countries and there is nothing to suggest that the countries lagging behind will eventually catch up to the most advanced economies. In 1800, the United Kingdom was 4 to 5 times wealthier than Indonesia; whereas in 2019, the United States was 10 to 11 times wealthier than Nigeria. In other words, the difference between the richest and the poorest countries in this sample has grown from a factor of 4 to 5 in 1800 to a factor of 10 to 11 in 2018.
 - **A variety of experiences**: Looking at the plot more closely, the path has not been entirely smooth in most countries, with some countries such as the Russian Federation, Japan or South Africa experiencing decades of stagnation or decline in the last 50 years. Some of the poorest countries (not represented here) have seen little to no growth as well as periods of prolonged decline over the same period (growth disasters).
 
-This figure shows that the processes followed by GDP per capita are multiplicative rather than additive. We do not say "GDP per capita in the United Kingdom increased by \$34,010 between 1800 and 2018", but "GDP per capita is about 11 times larger in the United Kingdom in 2018 compared to what it was in 1800". Similarly, we do not say "GDP per capita in the United States is about \$50,097 higher than that of Nigeria in 2018", but "GDP per capita in the United States is about 10 times larger than that of Nigeria in 2018".
+This figure allows us to make some comparison between **levels** of GDP per capita over time and across countries. However, the evolution of these levels and of these gaps between countries over the long term are the results of growth processes that are cumulative over time. We usually express **growth rates** (as well as interest rates) in annual terms. What is the relationship between *levels* and *annual growth rates* of GDP and how can they help us understand long-run trends? Two comparisons shed some light on the relationship between the two concepts.
 
-In this chapter, we will see how we can take into account these insights to calculate trend growth rates (using compound growth rates) and represent these growth experiences graphically (using logarithm plots). We will then use these techniques to extract some relevant facts about growth in countries across the world.
+Between 1885 and 2022, GDP per capita in the UK increased from \$6,132 to \$38,407 (both expressed in 2011 prices). Standards of living have been multiplied by more than 6 in the UK over this period. In contrast, US GDP per capita over the same period has increased from \$6,424 to \$58,487 (in 2011 prices) so that standards of living have been multiplied by 9. Starting at a similar level as the UK, US GDP per capita has therefore grown at a faster rate and is now about 50% higher. Americans on average have now bigger salaries, bigger fridges, bigger cars than the average Briton. How much higher must have been the annual growth rate of GDP per capita in the US relative to the UK's to arrive at this outcome?
+
+Let us now compare the UK experience with that of Nigeria, where GDP per capita between 1885 and 2022 has increased from \$810 to \$5,070 (in 2011 prices). In both countries, standards of living have been multiplied by slightly more than 6 over this period. In other words, they have grown at the same average annual growth rate over this period. However, in 1885 the UK was four times as rich as Nigeria and it is now seven times richer. The average British household in 1885 could afford four times as many meals as Nigeria; in 2022, it can afford seven times as many meals. Even when two countries grow at the same annual growth rate, their GDP per capita will diverge if they start at different levels. If GDP per capita in Nigeria were to catch up to that in the UK, how much higher should be its annual growth rate?
+
+The answer to both questions is probably less than you would expect due to the power of compounding effects. In this chapter, we will see how we can take into account these insights to calculate trend growth rates (using compound growth rates) and represent these growth experiences graphically (using logarithm plots). We will then use these techniques to extract some relevant facts about growth in countries across the world.
 
 ```{r Notes, eval=FALSE, include=FALSE}
+
+Although this chapter has been conceived to be read in one go, some sections can be used as a reference point to check more technical details at later stages. Indeed some of the concepts may make more sense after having worked with the data.
 
 A few notes of caution before we delve into this data in more detail: 
 
@@ -96,7 +101,7 @@ dates <- seq(from = 1870, to = 2022, by = 20)
 
 #average <- mean(mpd2023c$gdpgr, na.rm = TRUE)
 
-mpd2023 %>% ggplot(aes(x = year, y = gdppc)) + geom_line(colour = "black", linewidth = 1) + stat_smooth(method=nls, method.args = list(start = c(a=4803, b=0.015)),formula = y ~ a*(1 + b)^(x-1870), colour = 'red', linewidth = 0.75, linetype = 2, se = FALSE) + labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2023") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,60000), breaks = c(0,10000,20000,30000,40000,50000,60000)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
+mpd2023 %>% ggplot(aes(x = year, y = gdppc)) + geom_line(colour = "black", linewidth = 1) + stat_smooth(method=nls, method.args = list(start = c(a=4803, b=0.015)),formula = y ~ a*(1 + b)^(x-1870), colour = 'red', linewidth = 0.75, linetype = 2, se = FALSE) + labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2023") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,60000), breaks = c(0,10000,20000,30000,40000,50000,60000),labels = c(0,"10,000","20,000","30,000","40,000","50,000","60,000")) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
 
 ```
 
@@ -239,7 +244,7 @@ rm(list=ls())
 z <- as_tibble(seq(1:103)) %>% mutate(y = (1+0.05)^{value}, lny = log(y))
 plot1 <- ggplot(z, aes(x = value, y = y)) + geom_line() + labs(x = "time", y = "y") + scale_x_continuous(breaks = waiver(), n.breaks = 6)+ scale_y_continuous(limits = c(0,160), breaks = c(0,50,100,150)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line()) + labs(title = "y")
 plot2 <- ggplot(z, aes(x = value, y = lny)) + geom_line() + labs(x = "time", y = "lny") + theme_bw() + theme_minimal() +scale_x_continuous(breaks = waiver(), n.breaks = 6)+ scale_y_continuous(limits = c(0,5.05), breaks = c(0,1,2,3,4,5))  + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),panel.grid.major.x = element_line()) + labs(title = "(natural) logarithm of y")
-plot3 <- ggplot(z, aes(x = value, y = lny)) + geom_line() + labs(x = "time", y = "y") + theme_bw() + theme_minimal() +scale_x_continuous(breaks = waiver(), n.breaks = 6)+ scale_y_continuous(limits = c(0,5.05), breaks = c(0,1,2,3,4,5), label = c(0,2.7,7.4,20.1,54.6,148.4))  + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),panel.grid.major.x = element_line()) + labs(title = "y (log scale)")
+plot3 <- ggplot(z, aes(x = value, y = lny)) + geom_line() + labs(x = "time", y = "y") + theme_bw() + theme_minimal() +scale_x_continuous(breaks = waiver(), n.breaks = 6)+ scale_y_continuous(limits = c(0,5.05), breaks = c(0,1,2,3,4,5), label = TeX(c(0,r"($e^1=2.7\ \ $)",r"($e^2=7.4\ \ $)",r"($e^3=20.1\ $)",r"($e^4=54.6\ $)",r"($e^5=148.4$)")))  + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),panel.grid.major.x = element_line()) + labs(title = "y (log scale)")
 plot1 + plot2 + plot3
 
 ```
@@ -253,13 +258,14 @@ Changing the base number of the logarithm allows us to set more intuitive multip
 rm(list=ls())
 z <- as_tibble(seq(1:103)) %>% mutate(y = (1+0.05)^{value}, lny = log2(y))
 
-plot1 <- ggplot(z, aes(x = value, y = y)) + geom_line() + labs(x = "time", y = "y") + scale_x_continuous(breaks = waiver(), n.breaks = 6)+ scale_y_continuous(limits = c(0,160), breaks = c(0,50,100,150)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line()) + labs(title = "y")
-plot2 <- ggplot(z, aes(x = value, y = lny)) + geom_line() + labs(x = "time", y = "y") + theme_bw() + theme_minimal() +scale_x_continuous(limits = c(0,105), breaks = c(0,15,30,45,60,75,90,105))+ scale_y_continuous(limits = c(0,8), breaks = c(0,1,2,3,4,5,6,7,8), label = c(0,2,4,8,16,32,64,128,256))  + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),panel.grid.major.x = element_line()) + labs(title = "y (log scale base 2)")
+plot1 <- ggplot(z, aes(x = value, y = y)) + geom_line() + labs(x = "time", y = "y") + scale_x_continuous(limits = c(0,105), breaks = c(0,15,30,45,60,75,90,105))+ scale_y_continuous(limits = c(0,160), breaks = c(0,50,100,150)) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line()) + labs(title = "y")
+plot2 <- ggplot(z, aes(x = value, y = lny)) + geom_line() + labs(x = "time", y = "") + theme_bw() + theme_minimal() +scale_x_continuous(limits = c(0,105), breaks = c(0,15,30,45,60,75,90,105))+ scale_y_continuous(limits = c(0,7.7), breaks = c(0,1,2,3,4,5,6,7), label = TeX(c(0,r"($2^1=2\ \ $)",r"($2^2=4\ \ $)",r"($2^3=8\ \ $)",r"($2^4=16\ $)",r"($2^5=32\ $)",r"($2^6=64\ $)",r"($2^7=128$)")))  + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),panel.grid.major.x = element_line()) + labs(title = "y (log scale base 2)")
 plot1 + plot2 
+#+ scale_x_continuous(breaks = waiver(), n.breaks = 6)
 
 ```
 
-We can see that it takes slightly less than fifteen periods for $y$, which is growing at the rate of 5% per period, to double. So fifteen years is the number of years it takes for the GDP per capita of an economy that is growing at the rate of 5% per year to double. This may seem surprising but is a direct consequence of the compounding effects discussed before. 
+We can see that it takes slightly less than fifteen periods for $y$, which is growing at the rate of 5% per period, to double. So it would take slightly less than fifteen years for the GDP per capita of an economy that is growing at the rate of 5% per year to double. This may seem surprising but is a direct consequence of the compounding effects discussed before. 
 
 *Note*: if the variable grows at a constant rate, the slope of the plot of of the logarithm base 2 is constant, but it is not equal to the growth (although it is proportional to it).
 
@@ -677,7 +683,7 @@ Table with GDP level and trend growth rate of GDP since the 2007-2008 financial 
 
 In order to perform these practice questions, you need to work on a laptop or a desktop computer (if possible using a mouse), **not** a tablet. You also need to have installed Excel on your device (you may not be able to perform all the operations using the web version).
 
-Before attempting the questions below, go through the Excel tutorial (include link) which shows how to perform basic operations using the *Penn World Table* dataset in Excel and make sure you are able to replicate the results.
+Before attempting the questions below, go through the [Excel tutorial](https://mp16445.github.io/EXCEL_PWT/) which shows how to perform basic operations using the *Penn World Table* dataset in Excel and make sure you are able to replicate the results.
 
 **Question 1**
 

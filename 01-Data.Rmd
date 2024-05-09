@@ -36,7 +36,7 @@ This figure allows us to make some comparison between **levels** of GDP per capi
 
 Between 1885 and 2022, GDP per capita in the UK increased from \$6,132 to \$38,407 (both expressed in 2011 prices). Standards of living have been multiplied by more than 6 in the UK over this period. In contrast, US GDP per capita over the same period has increased from \$6,424 to \$58,487 (in 2011 prices) so that standards of living have been multiplied by 9. Starting at a similar level as the UK, US GDP per capita has therefore grown at a faster rate and is now about 50% higher. Americans on average have now bigger salaries, bigger fridges, bigger cars than the average Briton. How much higher must have been the annual growth rate of GDP per capita in the US relative to the UK's to arrive at this outcome?
 
-Let us now compare the UK experience with that of Nigeria, where GDP per capita between 1885 and 2022 has increased from \$810 to \$5,070 (in 2011 prices). In both countries, standards of living have been multiplied by slightly more than 6 over this period. As we will see, this means that they have grown at the same average annual growth rate over this period. As a result, the two countries have not diverged further over this period but they have not converged either; the UK was slightly more than 7.5 times richer than Nigeria in 1885 and it is still a bit more than 7.5 times richer than Nigeria in 2022. In other words, both at the beginning and at the end of the period, the average British household could afford seven times as many meals as Nigeria. If two countries grow at the same annual growth rate, their GDP per capita will not converge if they start at different levels. If GDP per capita in Nigeria were to catch up to that in the UK, how much higher should be its annual growth rate?
+Let us now compare the UK experience with that of Nigeria, where GDP per capita between 1885 and 2022 has increased from \$810 to \$5,070 (in 2011 prices). In both countries, standards of living have been multiplied by slightly more than 6 over this period. As we will see, this means that they have grown at the same average annual growth rate over this period. As a result, the two countries have not diverged further over this period but they have not converged either; the UK was slightly more than 7.5 times richer than Nigeria in 1885 and it is still a bit more than 7.5 times richer than Nigeria in 2022. In other words, both at the beginning and at the end of the period, the average British household could afford seven times as many goods as Nigeria. If two countries grow at the same annual growth rate, their GDP per capita will not converge if they start at different levels. If GDP per capita in Nigeria were to catch up to that in the UK, how much higher should be its annual growth rate?
 
 The answer to both questions is probably less than you would expect due to the power of compounding effects. In this chapter, we will see how we can take into account these insights to calculate trend growth rates (using compound growth rates) and represent these growth experiences graphically (using logarithm plots). We will then use these techniques to extract some relevant facts about growth in countries across the world.
 
@@ -88,7 +88,7 @@ Add plot of annual growth rate and level of GDP per capita (with two scales).
 
 We have seen in the previous section how to calculate per-period growth rates or the growth rate between two consecutive periods, for example the growth rate of GDP from one year to the next. In this section, we turn our attention to the estimation of trend growth rates of GDP over one or several decades, ie the growth rates around which annual growth rates tend to fluctuate. A trend growth rate provides a clearer summary of long-run trends than a series of estimated annual growth rates as in Table \@ref(tab:DiscreteTab), as it abstracts from short-run annual fluctuations. It also provides a useful point of comparison for the growth rate of GDP in any particular year.
 
-### The compound growth rate formula
+### The compound growth rate
 
 How can we calculate the annual trend growth rate? Figure \@ref(fig:mpdplot3) represents actual GDP per capita in the United States between 1870 and 2018 (black solid line) and the trend in GDP per capita over the same period (dashed red line). We want to obtain an estimate of the annual growth rate of GDP per capita along this trend growth path. There are several methods to do so but there is at least one very incorrect one. 
 
@@ -109,12 +109,45 @@ GDP per capita in the United States increased from \$4,803 in 1870 to \$55,335 i
 $$\bar{g} = \left(\frac{55,335}{4,803}-1 \right)\frac{1}{148}\times 100 = 7.11\%$$
 However, that would be wrong. Starting at \$4,803 and assuming GDP per capita grows at an annual growth rate of 7.11% would lead to a level of GDP per capita in 2018 equal to \$124,840,484, more than 2000 times the actual value of GDP per capita in 2018! This cannot be a good estimate of the trend growth rate.
 
-The **compound annual growth rate** provides an estimate of the trend growth rate which avoids falling into the same trap while also only requiring the first and last value of GDP per capita to be calculated. Intuitively, it is the constant growth rate such that if GDP per capita had grown at this same rate every year, then starting at the level of GDP per capita in 1870, GDP per capita 148 years later would be exactly equal to its actual value in 2018. 
+The *compound annual growth rate* provides an estimate of the trend growth rate which avoids falling into the same trap while also only requiring the first and last value of GDP per capita to be calculated. Intuitively, it is the constant growth rate such that if GDP per capita had grown at this same rate every year, then starting at the level of GDP per capita in 1870, GDP per capita 148 years later would be exactly equal to its actual value in 2018. 
 
-To see how this works, let's do the following exercise. Assume that GDP per capita grows at the same rate $\bar{g}$ every year. Then using the definition of the growth rate from the previous section, the following must be true:
-$$ \frac{GDP_{1871}}{GDP_{1870}}-1 = \bar{g} \quad  \rightarrow \quad =\frac{GDP_{1871}}{GDP_{1870}} = 1+\bar{g} $$
+**Compound growth rate formula**
 
-Rearranging, the value of GDP per capita in 1871 is equal to:
+Assume we observe a trending variable $y$ (GDP, population, ...) following an exponential pattern between time $0$ and time $t$. Its initial value is $y_0$ and it grows at the trend growth rate $\bar{g}$ per period over this interval of time. After $t$ periods its value is equal to:
+$$ y_t = (1+\bar{g})^{t} y_0 $$ 
+We can recover $\bar{g}$ using the observed value of $y_0$ and $y_t$ and the *compound growth rate formula*:
+$$ \bar{g} = \left(\frac{y_t}{y_0}\right)^{\frac{1}{t}} - 1 $$
+
+*Note*: the compound annual growth rate is not the average growth rate.
+
+----------------------------------------------------------------------------------------------------
+
+_**Derivation**_:
+
+If between time $0$ and time $1$, $y$ grows at rate $\bar{g}$, then using the definition of the growth rate from the previous section:
+$$ \bar{g} = \frac{y_1}{y_0}-1$$
+the value of $y_1$ can be rewritten as a function of $y_0$ and the growth rate $\bar{g}$ as follows:
+$$\frac{y_1}{y_0} = 1 + \bar{g}$$
+$$y_1 = (1 + \bar{g})y_0$$
+Similarly, at time $2$: 
+$$y_2 = (1+\bar{g})y_1$$
+
+Substituting for $y_1$: 
+$$y_2 = (1+\bar{g})(1+\bar{g})y_0=(1+\bar{g})^2y_0$$
+
+Similarly at time $3$: 
+$$y_3 = (1+\bar{g})y_2=(1+\bar{g})(1+\bar{g})^2y_0=(1+\bar{g})^3y_0$$
+
+Then, by repeated substitution, at time $t$: 
+$$y_t = (1+\bar{g})^ty_0$$
+To solve for the constant trend growth rate $\bar{g}$:
+$$(1+\bar{g})^t = \frac{y_t}{y_0}  $$
+$$(1+\bar{g}) = \left(\frac{y_t}{y_0}\right)^{\frac{1}{t}}  $$
+$$\bar{g} = \left(\frac{y_t}{y_0}\right)^{\frac{1}{t}} -1  $$
+
+----------------------------------------------------------------------------------------------------
+
+To see the intuition behind this result, let's do the following exercise. Assume that GDP per capita grows at the same rate $\bar{g}$ every year. Then the value of GDP per capita in 1871 can be written as:
 $$GDP_{1871}=(1+\bar{g})GDP_{1870}$$
 and the value of GDP per capita in 1872 is equal to:
 $$GDP_{1872}=(1+\bar{g})GDP_{1871}$$
@@ -131,22 +164,9 @@ Solving for $\bar{g}$:
 $$\bar{g}=\left(\frac{GDP_{2018}}{GDP_{1870}} \right)^{\frac{1}{148}}-1 =\left(\frac{55,335}{4,803} \right)^{\frac{1}{148}}-1=0.01665 $$
 or $\bar{g} = 1.67\%$. 
 
----------------------------------------------------------------------------------------------------
+### When should we use the compound annual growth rate to estimate the trend growth rate?
 
-**Estimating the trend growth rate using the compound growth rate formula**
-
-Assume we observe a trending variable $y$ (GDP, population, ...) which follows an exponential pattern between $t=0$ and $t$ and it grows at the trend growth rate $\bar{g}$ per period over this interval of time. After $t$ periods its value is equal to:
-$$ y_t = (1+\bar{g})^{t} y_0 $$ 
-We can recover $\bar{g}$ using the observed value of $y_0$ and $y_t$ and the *compound growth rate formula*:
-$$ \bar{g} = \left(\frac{y_t}{y_0}\right)^{\frac{1}{t}} - 1 $$
-
-----------------------------------------------------------------------------------------------------
-
-*Note*: the compound annual growth rate is not the average growth rate.
-
-### Is the compound annual growth rate a good measure of the trend growth rate?
-
-It is easy to compute the trend growth rate over any given interval of time by just plugging in values into the compound growth rate formula. But the compound growth rate may be misleading or uninformative as a summary statistic of long-run trends when the trend growth rate fluctuates widely over time. There may be decades where the trend growth rate is small (and even negative), followed or preceded by decades where the trend growth rate is high. It is important to do a preliminary inspection of the data to check that you are fitting the appropriate model to your data. 
+It is easy to compute the trend growth rate over any given interval of time by just plugging in values into the compound growth rate formula. But the compound growth rate may be misleading or uninformative as a summary statistic of long-run trends when the growth rate fluctuates widely over time. There may be decades where the growth rate is small (and even negative), followed or preceded by decades where the growth rate is high. It is important to do a preliminary inspection of the data to check that you are fitting the appropriate model to your data. 
 
 More generally, there is no reason to assume that the trend growth rate should be constant over time. Techniques have been developed to estimate variable trend growth rates. These are more computationally intensive and exploit more information. This is particularly important if we are interested in estimating the short-run deviations of GDP from its trend. For the purpose of evaluating long-run growth trends, we are mainly interested in broad changes in the magnitude of the trend growth rate and it will be useful to complement the analysis by calculating trend growth rates over carefully selected subperiods. We will see how this can be done using logarithm plots in the next section.
 
@@ -165,7 +185,7 @@ from which we derive the following approximation for $g_t$:
 $$\Delta\ln{y_t}\approx g_t$$
 where $\Delta\ln{y_t}$ is the change in the natural logarithm of $y$ in period $t$ and the approximation $\ln{(1+g_t)} \approx g_t$ holds for small values of $g_t$. The equality would hold exactly if $y$ were a continuous variable (*see* Appendix). What this result tells us is that the per-period growth rate of variable $y$ in any period can be approximated by the change in the natural logarithm of $y$.
 
-### Representing growth rates using logarithm plots
+### Logarithm plots
 
 This result suggests that growth rates can be read off the plot of the (natural) logarithm of variable $y$ against time, where the slope at any point in time is the change in the logarithm of $y$ ($\Delta\ln{y_t}$), and approximately equal to its growth rate.  
 
@@ -269,9 +289,25 @@ We can see that it takes slightly less than fifteen periods for $y$, which is gr
 
 *Note*: if the variable grows at a constant rate, the slope of the plot of of the logarithm base 2 is constant, but it is not equal to the growth (although it is proportional to it).
 
-### Rule of 70 {-}
+### Rule of 70
 
-Assuming a variable $y$ grows at a constant annual growth rate $g$, how many years $t$ does it take for it to double in value? We just saw how plotting a variable using a log scale allows us to see immediately how long it would take for a variable to double (or triple, quadruple, etc...). It is also possible to address this question numerically. A useful result called the *rule of 70* states that if a variable $y$ grows at the rate of $\%g$ per period, then it takes approximately $t \approx \frac{70}{\%g}$ periods for the value of $y$ to double. So when $y$ grows at rate $g=0.05$ in each period as in our example, the formula predicts that it would take approximately 14 periods for it to double, in line with what we observed in Figure \@ref(fig:logplot3). 
+Assuming a variable $y$ grows at a constant annual growth rate $g$, how many years $t$ does it take for it to double in value? We just saw how plotting a variable using a log scale allows us to see immediately how long it would take for a variable to double (or triple, quadruple, etc...). It is also possible to address this question numerically using a useful result known as the *rule of 70*.
+
+**_Rule of 70_: if a variable $y$ grows at the rate of $\%g$ per period, then it takes approximately $t \approx \frac{70}{\%g}$ periods for the value of $y$ to double.** 
+
+---------------------------------------------------------------------------------------------
+
+_**Proof**_: let $y_t$ be such that it is twice the initial income per capita level $y_0$ and $t$ be the number of periods it takes for income per capita to double.
+Using $y_t = (1+g)^{t} y_0$:
+$$y_t = 2 \times y_0 = (1+g)^ty_0 \quad \rightarrow  2 = (1+g)^t  $$
+Taking logs on both sides:
+$$ \ln{2} = t \times \ln{(1+g)}$$
+Using the fact that $\ln{2} \approx 0.7$ and $\ln{(1+g)} \approx g$ (for small values of g): 
+$$t = \frac{\ln{2}}{\ln{(1+g)}} \approx \frac{0.7}{g} = \frac{70}{\%g}$$
+
+---------------------------------------------------------------------------------------------
+
+So when $y$ grows at rate $g=0.05$ in each period as in our example, the formula predicts that it would take approximately $\frac{70}{5}=14$ periods for it to double, in line with what we observed in Figure \@ref(fig:logplot3). 
 
 **Example: GDP per capita in the United States (1870-2022)**
 
@@ -629,8 +665,11 @@ b. Using your answer in a., provide an approximation for the trend growth rate.
 
 **Exercise 7**
 
-(harder) Assume that variable $y$ grows ar rate $g\%$ every year and is compounded at the end of each year. Show that $t \approx \frac{70}{g\%}$. 
-  *Hint*: use the following approximation $\ln{(1+g)} \approx g$ (for small values of g).
+The *rule of 70* gives the number of years it would take for a variable to double given their annual growth rate. 
+
+a. Derive an expression for the number of years it would take for a variable to be multiplied by 6 given an annual growth rate $\%g$. *Hint*: use the following approximation $\ln{(1+g)} \approx g$ (for small g).
+
+a. In the introduction we saw that GDP per capita in the UK and Nigeria have been multiplied by about 6 between 1885 and 2022. Using the expression derived in the previous question, find an estimate of the trend annual growth rate in the two countries over this period. 
 
 
 ```{r ex-draft, eval=FALSE, echo=FALSE}

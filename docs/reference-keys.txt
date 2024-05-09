@@ -15,12 +15,13 @@ LRG
 introduction
 per-period-growth-rate-definition-and-calculation
 trend-growth-rates-and-compounding
-the-compound-growth-rate-formula
-is-the-compound-annual-growth-rate-a-good-measure-of-the-trend-growth-rate
+the-compound-growth-rate
+when-should-we-use-the-compound-annual-growth-rate-to-estimate-the-trend-growth-rate
 logarithm-plots-and-ratio-scales
 growth-rates-and-logarithms
-representing-growth-rates-using-logarithm-plots
+logarithm-plots
 logarithmic-ratio-scales
+rule-of-70
 united-kingdom-versus-united-states
 GA
 labour-productivity-and-population-growth

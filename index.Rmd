@@ -37,7 +37,7 @@ knitr::write_bib(c(
 
 This book comes out of notes prepared to support the teaching of my core second-year Macroeconomic Analysis course for joint-honours undergraduate programmes at the University of Bristol. It is a draft and very preliminary. Any feedback and suggestions are welcome. 
 
-One motivation for writing these notes is that data applications are an important component of the course. For example, in the context of the long-run growth topic, I ask students to describe the growth experience of a country of their choice using data from the Penn World Table, perform a growth accounting decomposition of labour productivity growth in Excel, and analyse it in light of growth theories. The treatment of empirical methods is not often developed in standard Intermediate Macroeconomics textbooks at the level that would enable students to produce empirical facts independently and interpret them correctly.
+One motivation for writing these notes is that data applications are an important component of the course. For example, in the context of the long-run growth topic, I ask students to describe the growth experience of a country of their choice using data from the Penn World Table, perform a growth accounting decomposition of labour productivity growth in Excel, and analyse it in light of growth theories. The treatment of empirical methods is not often developed in standard Intermediate Macroeconomics textbooks at the level that would enable students to produce empirical facts independently and interpret them correctly. The emphasis is therefore placed on the derivation and explanations of the underlying mathematical concepts, which are developed in more detail.
 
 
 ```{r introdraft, eval=FALSE, include=FALSE}

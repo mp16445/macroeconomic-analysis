@@ -8,7 +8,7 @@ In this chapter, we will:
 - Explain the relationship between *growth rates* and *levels* of GDP.
 - Explain the importance of *compounding* effects in modern growth trends.
 - Show the power of *logarithm* plots and *logarithm (ratio) scales*.
-- Describe the main trends in GDP and population growth over time and across countries.
+- Describe and investigate long-run growth trends in GDP, population, capital, consumption, ... over time and across countries.
 - Perform basic operations, construct plots and tables in Excel.
 
 We will assume that you know what GDP represents, how it is constructed and its limitations. We will use data from the <a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023" target="_blank">*Maddison Project Database 2023*</a> [@BJZL_2024] and the <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank">*Penn World Table*</a> [@PWT], which allow us to compare *real* economic outcomes over time and across countries. GDP in this chapter will always refer to real GDP although this may not be explicitly mentioned for simplicity in the text.
@@ -156,7 +156,7 @@ $$GDP_{1872}=(1+\bar{g})(1+\bar{g})GDP_{1870}=(1+\bar{g})^{2}GDP_{1870}$$
 Similarly, GDP per capita in 1873 can be expressed as:
 $$GDP_{1873}=(1+\bar{g})(1+\bar{g})(1+\bar{g})GDP_{1870}=(1+\bar{g})^{3}GDP_{1870}$$
 
-This result illustrates the *compounding* effect at work in such a growth process where the base value relative to which GDP per capita is calculated each year is continually updated at the end of the previous year. This effect explains how an economy that is growing at a relatively small annual rate of 1.5\% may nevertheless experience the exponential increase observed in Figures \@ref(fig:mpdplot1) and \@ref(fig:mpdplot3). The reason why the incorrect method discussed above overestimated the trend growth rate is because it ignores the presence of these compounding effects.
+This result illustrates the **compounding effect** at work in such a growth process where the base value relative to which GDP per capita is calculated each year is continually updated at the end of the previous year. This effect explains how an economy that is growing at a relatively small annual rate of 1.5\% may nevertheless experience the exponential increase observed in Figures \@ref(fig:mpdplot1) and \@ref(fig:mpdplot3). The reason why the incorrect method discussed above overestimated the trend growth rate is because it ignores the presence of these compounding effects.
 
 By repeated substitution, we obtain the following expression for GDP per capita in 2018 as a function of GDP per capita in 1870 and the constant growth rate $\bar{g}$:
 $$GDP_{2018}=(1+\bar{g})^{148}GDP_{1870}$$
@@ -530,19 +530,25 @@ Data sources:
 
 ## Summary {-}
 
-In this chapter, we have seen that:
-
 - The per-period growth rate is calculated as: $$\%g_t=\frac{y_t-y_{t-1}}{y_{t-1}} \times 100 $$
 - The compound growth rate provides a useful measure of the trend growth when we want to analyse long-run growth trends of series that follow an exponential growth pattern. It is calculated as:
 $$ \bar{g} = \left(\frac{y_t}{y_0}\right)^{\frac{1}{t}} - 1 $$
 where $\bar{g}$ is the trend growth rate and $y_0$ is the initial value of $y$.
-- We have learnt how to "see" growth rate trends using logarithm plots. The slope of the plot of the logarithm of a series over time provides a good approximation of the growth rate of this series at any point in time, provided the growth rate is small enough.
-- A log plot represents how many times a variable is multiplied by a given factor over a certain interval of time. It is particularly well suited to 
-- Describing and comparing trends in GDP growth across the world and over time
+- The slope of the plot of the logarithm of a series over time provides a good approximation of the growth rate of this series at any point in time, provided the growth rate is small enough.
+- A log plot represents how many times a variable is multiplied by a given factor over a certain interval of time. It is particularly well suited to analyse growth trends.
+- Small differences in annual growth rates between countries may lead to large differences in the level of macroeconomic variables in the long-run.
+- Describing and comparing trends in GDP growth across the world and over time:
 
 1. Growth of GDP per capita is a relatively recent phenomenon.
 1. GDP per capita has grown at a relatively constant rate in the US (about 1.67\% per year) and the UK between 1870 and 2019. 
 
+## Key terms {-}
+
+- **Growth rates**: per period growth rate, trend growth rate, compound growth rate.
+- **Exponential growth**
+- **Logarithm**: natural logarithm, logarithm base 2, logarithm base 10, ...
+- **Logarithmic (or *log* or *ratio*) scale**
+- **Rule of 70**
 
 
 ## Exercises {-}
@@ -567,12 +573,14 @@ The growth rate of GDP per capita in 2019 in Haiti was -0.02165 (*Source*: PWT).
 
 **Exercise 3**
 
+The table above presents GDP per worker in China (*Source*: PWT).
+
 | Year | GDP per worker (in 2017$)|
 |:----:|:------------------------:|
 |2018  | 24823.13                 |
 |2019  | 25754.14                 |
 
-The table above presents GDP per worker in China (*Source*: PWT). What is the growth rate of GDP per Worker in China in 2019?
+What is the growth rate of GDP per Worker in China in 2019?
  
  a. 0.04%
  a. 1.04%
@@ -580,6 +588,26 @@ The table above presents GDP per worker in China (*Source*: PWT). What is the gr
  a. 1.04
  
 **Exercise 4**
+
+Assume GDP per capita in Atlantis grows by 10% every year and that it starts at an initial level of \$1000. By which percentage will GDP per capita have increased after 10 years?
+
+ a. 10%
+ a. 100%
+ a. 159%
+ a. 171%
+
+**Exercise 5**
+
+Assume population grows at the rate of 5% every year in Gilead and that it starts with a total population of 100,000. By how many people total population will increase at the end of the first, second and third year respectively?
+
+a. 500, 2500, 12500
+a. 5000, 5000, 5000
+a. 5000, 5250, 5512
+a. 500, 500, 500
+a. 5000, 4750, 4488
+
+ 
+**Exercise 6**
 
 ```{r mpdplot8a, echo=FALSE, fig.align='center',fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
 
@@ -609,7 +637,7 @@ Based on the plot above (*Source*: Maddison Project Database 2023) the annual tr
  a. 3.27%
  a. 8.26%
 
-**Exercise 5**
+**Exercise 7**
 
 ```{r mpdplot8b, echo=FALSE, fig.align='center',fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
 
@@ -640,7 +668,7 @@ a. 1950-1967, 1967-1974, 1974-1989, 1989-1997, 1990-2022
 a. 1950-1967, 1967-2022
 
 
-**Exercise 6**
+**Exercise 8**
 
 ```{r mpdplot8c, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in Indonesia (ratio scale): 1950-2022",fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
 
@@ -663,13 +691,13 @@ The figure above represents GDP per capita in Indonesia on a ratio scale (*Sourc
 a. Based on this figure, how many years did it take approximately for GDP per capita to double in Indonesia over this period?
 b. Using your answer in a., provide an approximation for the trend growth rate. 
 
-**Exercise 7**
+**Exercise 9**
 
-The *rule of 70* gives the number of years it would take for a variable to double given their annual growth rate. 
+*The rule of 70 gives the number of years it would take for a variable to double given their annual growth rate. But we could derive similar formulas to calculate the number of years it would take for a variable to triple, quadruple, ..., given their trend annual growth rate.*
 
 a. Derive an expression for the number of years it would take for a variable to be multiplied by 6 given an annual growth rate $\%g$. *Hint*: use the following approximation $\ln{(1+g)} \approx g$ (for small g).
 
-a. In the introduction we saw that GDP per capita in the UK and Nigeria have been multiplied by about 6 between 1885 and 2022. Using the expression derived in the previous question, find an estimate of the trend annual growth rate in the two countries over this period. 
+a. In the introduction we saw that GDP per capita in the UK and Nigeria have been multiplied by about 6 between 1885 and 2022. Using the expression derived in a., find an estimate of the trend annual growth rate in the two countries over this period. 
 
 
 ```{r ex-draft, eval=FALSE, echo=FALSE}
@@ -717,18 +745,30 @@ Discuss the best strategy to estimate the trend growth rate in both cases.
 Table with GDP level and trend growth rate of GDP since the 2007-2008 financial crisis in the UK, France, Germany and Italy. Discuss the economic significance of the low trend rates of GDP growth in the UK over the last decade in the long-run.
 ```
 
+**Exercise 10**
+
+*In this chapter, we have discussed the implications of the compounding effects of growth rates on inequality in GDP per capita across countries in the long-run. Another area of economics where compounding effects play an important role is when interest rates differ across assets.*
+
+Assume two countries A and country B where households start with initial wealth equal to \$1000. Households in country A can only invest in an asset yielding an (annual) rate of interest rate equal to $r_A=5\%$. Households in country B can only invest in an asset yielding an (annual) rate of interest rate equal to $r_B=10\%$. Assume that the interest on each asset is compounded at the end of each year (*check that you know what this means*)
+
+a. Calculate the wealth of households in both countries after 5 years, 10 years, 20 years and 30 years.
+b. Compare household wealth in the two countries at the end of each period. What do you observe?
+
 
 ## Practice questions in Excel {-}
 
 In order to perform these practice questions, you need to work on a laptop or a desktop computer (if possible using a mouse), **not** a tablet. You also need to have installed Excel on your device (you may not be able to perform all the operations using the web version).
 
-Before attempting the questions below, go through the [Excel tutorial](https://mp16445.github.io/EXCEL_PWT/) which shows how to perform basic operations using the *Penn World Table* dataset in Excel and make sure you are able to replicate the results.
-
 **Question 1**
 
-To address this question, you may find it useful to check *Table 1* (p3154) *in* Feenstra, Robert C., Robert Inklaar and Marcel P. Timmer (2015), "The Next Generation of the Penn World Table", *American Economic Review*, 105(10), 3150-3182, which can be accessed at <a href="https://www.rug.nl/ggdc/productivity/pwt/related-research" target="_blank">*www.ggdc.net/pwt*</a>
+Before attempting the questions below, go through this **tutorial** which shows how to perform basic operations using the *Penn World Table* dataset in Excel and make sure you are able to replicate the results:
+<div align="center">[<span style="color: blue;">**Excel tutorial**</span>](https://mp16445.github.io/EXCEL_PWT/) </div>
 
-![*Source*: PWT (Legend)](images/PWT_GDP.png)
+**Question 2**
+
+To address this question, you may find it useful to check *Table 1* (p 3154) *in* Feenstra et al. (<a href="https://www.rug.nl/ggdc/docs/the_next_generation_of_the_penn_world_table.pdf" target="_blank"><span style="color: blue;">link</span></a>).
+
+![*Source*: PWT10.01 (Legend)](images/PWT_GDP.png)
 
 <br>
 Which of these three GDP variables, which can be found in the PWT dataset, would be appropriate to use in each of these contexts?
@@ -738,27 +778,27 @@ Which of these three GDP variables, which can be found in the PWT dataset, would
 1. To compare the evolution of GDP in two or several countries over time.
 
 
-**Question 2**
+**Question 3**
 
 1. Before looking at the data, write down a list of up to 20 countries you think are among the richest countries in the world. 
 1. Using the data in the PWT, construct a list of the largest economies in terms of output side real GDP in 2019.
 1. Using the data in the PWT, construct a list of the largest economies in terms of output side real GDP *per capita* in 2019.
 1. How do the ranks of Nigeria, China and Norway differ in the two lists? How do you explain the differences?
 
-**Question 3**
+**Question 4**
 
 Consider four GDP measures than can be derived from the PWT data: GDP, GDP per capita, GDP per worker and GDP per hour worked.
 
 1. Explain how you would calculate each of these measures given the data in the PWT.
 1. Which of these variables can be used to measure welfare, labour productivity and economic dynamism. What are their limitations?
 
-**Question 4**
+**Question 5**
 
 Short task / short answer
 
 Compare GDP per capita for a given country using the Maddison database and the PWT. Are there any differences? How can you explain them? What do you get out of this exercise? 
 
-**Question 5**
+**Question 6**
 
 *Use the National Accounts-based measure of real GDP in the PWT to answer this question*.
 
@@ -766,16 +806,16 @@ Compare GDP per capita for a given country using the Maddison database and the P
 1. Calculate the trend growth rate of UK real GDP per worker between 2009 and 2019.
 1. In which years was the annual growth rate of GDP per worker above trend over this decade?
 
-**Question 6**
+**Question 7**
 
 Construct plots to compare the growth experience of countries in different region relative a reference country (eg the US). You may look at countries belonging to similar regional areas or sharing similar characteristics (eg resource-rich countries, commonwealth countries, ....)
 
-**Question 7**
+**Question 8**
 
 Plot UK real GDP using data from the Maddison Project Database since 1252 on a normal scale and a log scale. Based on the comparison of the two plots, why is it useful to represent this series on a log scale?
 
 
-**Question 8**
+**Question 9**
 
 <span style="color: blue;">*Coursework*</span>
 

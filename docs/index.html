@@ -23,7 +23,7 @@
 <meta name="author" content="Marion Prat" />
 
 
-<meta name="date" content="2024-06-04" />
+<meta name="date" content="2024-12-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -111,12 +111,16 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="LRG.html"><a href="LRG.html"><i class="fa fa-check"></i><b>1</b> Long-run growth trends</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="LRG.html"><a href="LRG.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.1" data-path="LRG.html"><a href="LRG.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="LRG.html"><a href="LRG.html#growth-rates-and-the-power-of-compunding-effects"><i class="fa fa-check"></i>Growth rates and the power of compunding effects</a></li>
+</ul></li>
 <li class="chapter" data-level="1.2" data-path="LRG.html"><a href="LRG.html#per-period-growth-rate-definition-and-calculation"><i class="fa fa-check"></i><b>1.2</b> Per-period growth rate: definition and calculation</a></li>
 <li class="chapter" data-level="1.3" data-path="LRG.html"><a href="LRG.html#trend-growth-rates-and-compounding"><i class="fa fa-check"></i><b>1.3</b> Trend growth rates and compounding</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="LRG.html"><a href="LRG.html#the-compound-growth-rate"><i class="fa fa-check"></i><b>1.3.1</b> The compound growth rate</a></li>
-<li class="chapter" data-level="1.3.2" data-path="LRG.html"><a href="LRG.html#when-should-we-use-the-compound-annual-growth-rate-to-estimate-the-trend-growth-rate"><i class="fa fa-check"></i><b>1.3.2</b> When should we use the compound annual growth rate to estimate the trend growth rate?</a></li>
+<li class="chapter" data-level="1.3.1" data-path="LRG.html"><a href="LRG.html#example-and-intuition"><i class="fa fa-check"></i><b>1.3.1</b> Example and intuition</a></li>
+<li class="chapter" data-level="1.3.2" data-path="LRG.html"><a href="LRG.html#the-compound-growth-rate-formula"><i class="fa fa-check"></i><b>1.3.2</b> The compound growth rate formula</a></li>
+<li class="chapter" data-level="1.3.3" data-path="LRG.html"><a href="LRG.html#limitations-of-the-compound-annual-growth-rate"><i class="fa fa-check"></i><b>1.3.3</b> Limitations of the compound annual growth rate</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="LRG.html"><a href="LRG.html#logarithm-plots-and-ratio-scales"><i class="fa fa-check"></i><b>1.4</b> Logarithm plots and ratio scales</a>
 <ul>
@@ -125,10 +129,11 @@ div.csl-indent {
 <li class="chapter" data-level="1.4.3" data-path="LRG.html"><a href="LRG.html#logarithmic-ratio-scales"><i class="fa fa-check"></i><b>1.4.3</b> Logarithmic (ratio) scales</a></li>
 <li class="chapter" data-level="1.4.4" data-path="LRG.html"><a href="LRG.html#rule-of-70"><i class="fa fa-check"></i><b>1.4.4</b> Rule of 70</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="LRG.html"><a href="LRG.html#united-kingdom-versus-united-states"><i class="fa fa-check"></i><b>1.5</b> United Kingdom <em>versus</em> United States</a></li>
+<li class="chapter" data-level="1.5" data-path="LRG.html"><a href="LRG.html#two-hundered-years-of-growth-in-the-united-kingdom-and-the-united-states"><i class="fa fa-check"></i><b>1.5</b> Two hundered years of growth in the United Kingdom and the United States</a></li>
 <li class="chapter" data-level="" data-path="LRG.html"><a href="LRG.html#summary"><i class="fa fa-check"></i>Summary</a></li>
 <li class="chapter" data-level="" data-path="LRG.html"><a href="LRG.html#key-terms"><i class="fa fa-check"></i>Key terms</a></li>
 <li class="chapter" data-level="" data-path="LRG.html"><a href="LRG.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="LRG.html"><a href="LRG.html#taking-stock-using-large-language-models-llms"><i class="fa fa-check"></i>Taking stock using Large Language Models (LLMs)</a></li>
 <li class="chapter" data-level="" data-path="LRG.html"><a href="LRG.html#practice-questions-in-excel"><i class="fa fa-check"></i>Practice questions in Excel</a></li>
 <li class="chapter" data-level="" data-path="LRG.html"><a href="LRG.html#appendix-continuous-time-notation"><i class="fa fa-check"></i>Appendix: Continuous time notation</a></li>
 </ul></li>
@@ -167,14 +172,20 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Macroeconomic Analysis</h1>
 <p class="author"><em>Marion Prat</em></p>
-<p class="date"><em>2024-06-04</em></p>
+<p class="date"><em>2024-12-03</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered hasAnchor">
 <h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Please be aware that these notes may contain typos.</em></p>
 <p>This book comes out of notes prepared to support the teaching of my core second-year Macroeconomic Analysis course for joint-honours undergraduate programmes at the University of Bristol. It is a draft and very preliminary. Any feedback and suggestions are welcome.</p>
-<p>One motivation for writing these notes is that data applications are an important component of the course. For example, in the context of the long-run growth topic, I ask students to describe the growth experience of a country of their choice using data from the Penn World Table, perform a growth accounting decomposition of labour productivity growth in Excel, and analyse it in light of growth theories. The treatment of empirical methods is not often developed in standard Intermediate Macroeconomics textbooks at the level that would enable students to produce empirical facts independently and interpret them correctly. The emphasis is therefore placed on the derivation and explanations of the underlying mathematical concepts, which are developed in more detail.</p>
-<p>This focus on data applications reflects the belief that economic education in the future is likely to give a more prominent place to coding as the use of software and editing tools such as R (and R markdown), Python … become more accessible to students with the development of AI tools. The code used to produce the book will be made available. It may be possible to include exercises and applications in R Markdown in the future.</p>
+<p>Data applications are an important part of the course. The conceptual tools needed to produce and interpret the empirical facts underlying macroeconomic theories (plots of long-run trends, growth accounting, …) is not often developed in standard Intermediate Macroeconomic textbooks in the same level of detail as the theory. However, giving a more central stage to the knowledge and skills required to describe the economy at a given point in time (National Accounts) and its dynamics over time has several important benefits:</p>
+<ol style="list-style-type: decimal">
+<li>Knowing how the data is constructed and how it came about as a result of historical compromises allows students to acquire some agency in its use and interpretation. Getting a sense of its imperfections and limitations allows us to consider how it could be done differently.</li>
+<li>Learning how macroeconomic data is constructed and how it relates to the real world facilitates the acquisition of essential vocabulary and concepts. It also makes it easier to relate what is taught to actual events and policies.</li>
+<li>Being confronted to the task of producing empirical facts teaches students the value of being precise and helps strengthen data analysis skills (Excel, …).</li>
+<li>These skills are not as obvious as it may appear to instructors with far more year of experience using them. Yet these have the potential to be highly transferrable skills.</li>
+</ol>
+<p>The code used to produce the book is available on Github. As AI tools make coding in Python or R more accessible, it may be possible to include exercises and applications in R Markdown in the future.</p>
 <p>You can write to me at: <a href="mailto:marion.prat@bristol.ac.uk" class="email">marion.prat@bristol.ac.uk</a>.</p>
 
 </div>

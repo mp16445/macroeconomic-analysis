@@ -4,9 +4,10 @@ author: "Marion Prat"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
-url: https://mp16445.github.io/macroeconomic-analysis/
-# cover-image: path to the social sharing image like images/cover.jpg
+bibliography:
+- book.bib
+- packages.bib
+url: "https://mp16445.github.io/macroeconomic-analysis/"
 link-citations: yes
 ---
 
@@ -37,10 +38,17 @@ knitr::write_bib(c(
 
 This book comes out of notes prepared to support the teaching of my core second-year Macroeconomic Analysis course for joint-honours undergraduate programmes at the University of Bristol. It is a draft and very preliminary. Any feedback and suggestions are welcome. 
 
-One motivation for writing these notes is that data applications are an important component of the course. For example, in the context of the long-run growth topic, I ask students to describe the growth experience of a country of their choice using data from the Penn World Table, perform a growth accounting decomposition of labour productivity growth in Excel, and analyse it in light of growth theories. The treatment of empirical methods is not often developed in standard Intermediate Macroeconomics textbooks at the level that would enable students to produce empirical facts independently and interpret them correctly. The emphasis is therefore placed on the derivation and explanations of the underlying mathematical concepts, which are developed in more detail.
+Data applications are an important part of the course. The conceptual tools needed to produce and interpret the empirical facts underlying macroeconomic theories (plots of long-run trends, growth accounting, ...) is not often developed in standard Intermediate Macroeconomic textbooks in the same level of detail as the theory. However, giving a more central stage to the knowledge and skills required to describe the economy at a given point in time (National Accounts) and its dynamics over time has several important benefits:
 
+1) Knowing how the data is constructed and how it came about as a result of historical compromises allows students to acquire some agency in its use and interpretation. Getting a sense of its imperfections and limitations allows us to consider how it could be done differently.
+1) Learning how macroeconomic data is constructed and how it relates to the real world facilitates the acquisition of essential vocabulary and concepts. It also makes it easier to relate what is taught to actual events and policies.
+1) Being confronted to the task of producing empirical facts teaches students the value of being precise and helps strengthen data analysis skills (Excel, ...).
+1) These skills are not as obvious as it may appear to instructors with far more year of experience using them. Yet these have the potential to be highly transferrable skills.
 
 ```{r introdraft, eval=FALSE, include=FALSE}
+
+One motivation for writing these notes is that data applications are an important component of the course. For example, in the context of the long-run growth topic, I ask students to describe the growth experience of a country of their choice using data from the Penn World Table, perform a growth accounting decomposition of labour productivity growth in Excel, and analyse it in light of growth theories. The treatment of empirical methods is not often developed in standard Intermediate Macroeconomics textbooks at the level that would enable students to produce empirical facts independently and interpret them correctly. The emphasis is therefore placed on the derivation and explanations of the underlying mathematical concepts, which are developed in more detail.
+
 I believe this focus on data applications has several advantages:
 
 1) Knowing how the data is constructed and how it came about as a result of historical compromises allows students to acquire some agency in its use and interpretation. Because they get a sense of its imperfections and limitations, they are able to consider how it could be done differently.
@@ -62,9 +70,11 @@ My experience tells me that:
 1) Students need to be provided with examples of good practices to get started. 
 1) I constantly underestimate and/or overestimate students' ability to learn and acquire skills. This means that most of the points listed in the previous list will end up being continually revised. 
 
+This focus on data applications reflects the belief that economic education in the future is likely to give a more prominent place to coding as the use of software and editing tools such as R (and R markdown), Python ... become more accessible to students with the development of AI tools.  
+
 ```
 
-This focus on data applications reflects the belief that economic education in the future is likely to give a more prominent place to coding as the use of software and editing tools such as R (and R markdown), Python ... become more accessible to students with the development of AI tools.  The code used to produce the book will be made available. It may be possible to include exercises and applications in R Markdown in the future. 
+The code used to produce the book is available on Github. As AI tools make coding in Python or R more accessible, it may be possible to include exercises and applications in R Markdown in the future. 
 
 You can write to me at: marion.prat@bristol.ac.uk.
 

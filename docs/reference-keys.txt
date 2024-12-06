@@ -13,11 +13,11 @@ tab:mpd2023Tab
 fig:mpdplot8c
 LRG
 introduction
-per-period-growth-rate-definition-and-calculation
-trend-growth-rates-and-compounding
-example-and-intuition
-the-compound-growth-rate-formula
-limitations-of-the-compound-annual-growth-rate
+growth-rates
+trend-growth-rates-and-compounding-effects
+the-trend-growth-path
+the-compound-growth-rate
+limitations
 logarithm-plots-and-ratio-scales
 growth-rates-and-logarithms
 logarithm-plots

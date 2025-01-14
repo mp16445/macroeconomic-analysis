@@ -1,11 +1,5 @@
-# Long-run growth trends {#LRG}
+# Describing long-run growth trends {#LRG}
 
-```{r quote, eval=FALSE, include=FALSE}
-
-Include Lucas quote regarding growth facts?
-+ Levi-Strauss quote?
-
-```
 
 -------------------------------------------------------------------------------------
 
@@ -16,12 +10,17 @@ By the end of this chapter, you should be able to:
 - Calculate *growth rates*.
 - Understand the role of *compounding effects* in modern growth trends and beyond.
 - Construct and interpret plots of *logarithms* and plots with *logarithm (ratio) scales*.
-- Investigate *convergence facts* using scatter plots.
 - Perform all these operations in *Excel*.
 
 We will use data from the <a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023" target="_blank">*Maddison Project Database 2023*</a> [@BJZL_2024] and the <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank">*Penn World Table*</a> [@PWT], allowing us to compare *real* economic outcomes over time and across countries. Gross Domestic Product (GDP) in this chapter will always refer to real GDP.
 
 -------------------------------------------------------------------------------------
+
+```{r LO-draft, eval=FALSE, include=FALSE}
+
+- Investigate *convergence facts* using scatter plots.
+
+```
 
 ## Introduction
 
@@ -40,7 +39,13 @@ Figure \@ref(fig:mpdplot1) represents the evolution of GDP per capita over more 
 - **The great divergence**: this exponential growth pattern started at different times in different countries. As a result, the difference between the richest and the poorest countries in this sample has grown from a factor of 4 to 5 in 1800 to a factor of 10 to 11 in 2018. There is also nothing to suggest that the countries lagging behind will eventually catch up to the most advanced economies. 
 - **A variety of experiences**: in most countries, the path has not been entirely smooth. The Russian Federation, Japan or South Africa experienced decades of stagnation or decline in the last 50 years. Similarly, some of the poorest countries, not represented here, have seen little to no growth as well as periods of prolonged decline over the same period.
 
+```{r intro-draft, eval=FALSE, include=FALSE}
+
 It should not be concluded from the broad patterns displayed on the graph that the processes underlying long-run growth trends are produced by deterministic forces largely beyond the control of human organisations. Nor do we consider exponential growth to be the ultimate goal of human societies. Rather, the trends we observe reflect the outcomes of historical processes in different societies at different points in time. They are made possible by specific institutional, geographical, cultural characteristics and shaped by relationships of power within and between countries. This chapter seeks to present conceptual tools to describe these trends.
+
+
+```
+
 
 ### Growth rates and the dynamic performance of economies {-}
 
@@ -50,9 +55,9 @@ The dynamics of GDP over the long term observed in Figure \@ref(fig:mpdplot1) ar
 
 Two comparisons shed some light on the relationships between growth rates and changes in the levels of GDP in the long-run. 
 
-**Why have Americans on average much bigger fridges and cars than the average Briton?**
+**Why do Americans have bigger fridges and cars than Britons?**
 
-Between 1885 and 2022, GDP per capita in the United Kingdom increased from \$6,132 to \$38,407. Standards of living have therefore been multiplied by more than 6 in this country over this period. In contrast, GDP per capita in the United States over the same period has increased from \$6,424 to \$58,487, a nine-fold increase in standards of living. Starting from a similar level as that the United Kingdom, GDP per capita in the United States has therefore grown at a faster rate and is now about 50% higher. How much higher must have been the annual growth rate of GDP per capita in the United States relative to the United Kingdom to arrive at this outcome?
+Between 1885 and 2022, GDP per capita in the United Kingdom increased from \$6,132 to \$38,407. Standards of living have therefore been multiplied by more than 6 in this country over this period. In contrast, GDP per capita in the United States over the same period has increased from \$6,424 to \$58,487, a nine-fold increase in standards of living. Starting from a similar level as that of the United Kingdom, GDP per capita in the United States has therefore grown at a faster rate and is now about 50% higher. How much higher than that of the United Kingdom must have been the annual growth rate of GDP per capita in the United States to arrive at this outcome?
 
 **Why has GDP per capita in Nigeria not converge to that of the United Kingdom?**
 
@@ -60,20 +65,20 @@ GDP per capita in Nigeria has increased from \$810 to \$5,070 between 1885 and 2
 
 The answer to both questions is probably less than you would expect. *Compounding effects* explain why small differences in annual growth rates of GDP can have significant impacts on the levels of GDP in the long-run. 
 
-By the end of this chapter, you will be able to reformulate these problems in mathematical terms and solve for the precise answer. You will also be equipped to produce informative graphical representations of growth trajectories (using the power of logarithms) and use these techniques to extract some relevant facts about growth in countries across the world and over time.
+By the end of this chapter, you will be able to reformulate these problems in mathematical terms and solve for the precise answer. You will also be equipped to produce informative graphical representations of growth trajectories (using logarithms) and use these techniques to extract some relevant facts about growth in countries across the world and over time.
 
 
 ## Growth rates
 
 Most economic variables are observed at *discrete* time intervals. For example, to produce the plot in Figure \@ref(fig:mpdplot1), we used annual observations of GDP per capita (*see* Table \@ref(tab:DiscreteTab)). GDP is only observed at separate points in time. Time is discrete in the sense that it only takes on integer values, for example $t=2000, 2001, ..., 2004$. 
 
+### Definition
+
 ----------------------------------------------------------------------------------------------------
 
-**_Definition_: Growth rate**
-
-Percentage change in $y$ between time $t-1$ and time $t$: 
-$$g_t = \frac{\Delta y_t}{y_{t-1}} = \frac{y_t-y_{t-1}}{y_{t-1}} = \frac{y_t}{y_{t-1}}-1$$
-where $\Delta y_t=y_t-y_{t-1}$ is the discrete time change in variable $y$ between $t-1$ and $t$.
+The growth rate of $y$ is the percentage change in $y$ between time $t-1$ and time $t$: 
+$$g_t = \frac{\Delta y}{y} = \frac{y_t-y_{t-1}}{y_{t-1}} = \frac{y_t}{y_{t-1}}-1$$
+where $\Delta y_t=\frac{\Delta y}{y}=y_t-y_{t-1}$ is the change in variable $y$ between $t-1$ and $t$.
 
 In percentage terms:
 $$\%g_t=\frac{y_t-y_{t-1}}{y_{t-1}} \times 100 $$
@@ -82,7 +87,7 @@ $$\%g_t=\frac{y_t-y_{t-1}}{y_{t-1}} \times 100 $$
 ----------------------------------------------------------------------------------------------------
 
 Using the data in Table \@ref(tab:DiscreteTab), the growth rate of GDP per capita in the United States between 2000 and 2001 is equal to: 
-$$\% GDP_{2001}=\left(\frac{GDP_{2001}}{GDP_{2000}}-1\right) \times 100 = \left(\frac{45878}{45886}-1\right) \times 100 = -0.017\%$$
+$$\% GDP_{2001}=\left(\frac{GDP_{2001}}{GDP_{2000}}-1\right) \times 100 = \left(\frac{45878}{45886}-1\right) \times 100 = -0.01743\%$$
 Note that a growth rate can be negative. In this case, it simply means that the average value of goods and services produced per person in the United States declined between 2000 and 2001. Column 3 of Table \@ref(tab:DiscreteTab) shows the annual growth rate of US GDP per capita over the full sample period (rounded to 2 decimal points). 
 
 <br>
@@ -101,15 +106,46 @@ kbl(mpd2023, align = "ccc",col.names = c('Year (t)','GDP per capita (in $2011)',
 ```
 
 
+### Growth rates and logarithms
+
+An alternative formula using logarithms provides a useful approximation to the growth rate. Unless otherwise state, "logarithm" will refer to the "natural logarithm" in the chapter. 
+
+Using the definition of the growth rate of variable $y$, we have:
+$$g_t = \frac{y_t}{y_{t-1}}-1  \quad \leftrightarrow  \quad 1+g_t = \frac{y_t}{y_{t-1}}$$
+Taking the logarithm on both sides and using the following property of logarithms $\ln{\frac{a}{b}}= \ln{a}-\ln{b}$:
+$$\ln{(1+g_t)} = \ln{y_t} - \ln{y_{t-1}} $$
+For small values of $g_t$, the approximation $\ln{(1+g_t)} \approx g_t$ holds, leading to:
+
+----------------------------------------------------------------------------------------------------
+
+The growth rate of variable $y$ is well approximated by the change in the logarithm of $y$ (for small $g$):
+$$ g_t \approx \Delta\ln{y_t}$$
+where $\Delta\ln{y_t}$ is the change in the logarithm of $y$. 
+
+Expressed in percentage terms:
+$$ \%g_t \approx \Delta\ln{y_t} \times 100$$
+*The equality would hold exactly if $y$ were a continuous variable (see Appendix)*. 
+
+----------------------------------------------------------------------------------------------------
+
+Going back to the numerical example in the previous section: 
+$$\% GDP_{2001} = (\ln{GDP_{2001}} - \ln{GDP_{2000}}) \times 100 = (\ln{45878} - \ln{45886}) \times 100 = -0.01744\%$$
+which is very close to the value calculated in the previous section. 
+
+```{r section1-draft, eval=FALSE, include=FALSE}
+
 Add plot of annual growth rate and level of GDP per capita (with two scales).
 
-## Trend growth rates and compounding effects
+```
+
+
+## Average growth rates
 
 The annual growth rates reported in Table \@ref(tab:DiscreteTab) are mostly positive, suggesting that on average the economy grew on a consistent basis over the period observed. Can we summarise this growth experience over the long-run in a single number? 
 
 ### The trend growth path
 
-Figure \@ref(fig:mpdplot3) represents actual GDP per capita in the United States between 1870 and 2018 (black solid line) and an estimate of the *trend* in GDP per capita over the same period (dashed red line). Actual GDP per capita fluctuates around the trend line but both appear to be growing on average at the same rate over time. Similarly, the annual growth rate of GDP per capita fluctuates around the trend growth rate. A trend growth rate provides a clearer summary of long-run trends than the annual growth rates presented in Table \@ref(tab:DiscreteTab). It abstracts from short-run fluctuations, which can be very large as in the case of the Great Depression in the 1930s, but do not appear to affect the trajectory of GDP per capita in the long-run.
+Figure \@ref(fig:mpdplot3) represents actual GDP per capita in the United States between 1870 and 2018 (black solid line) and an estimate of the *trend* in GDP per capita over the same period (dashed red line). Actual GDP per capita fluctuates around the trend line but both appear to be growing on average at the same rate over time. This average growth rate provides a clearer summary of long-run trends than the annual growth rates presented in Table \@ref(tab:DiscreteTab). It abstracts from short-run fluctuations, which can be very large as in the case of the Great Depression in the 1930s, while still capturing the trajectory of GDP per capita in the long-run.
 
 ```{r mpdplot3, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in the United States: 1870-2023", warning=FALSE}
 
@@ -126,13 +162,13 @@ mpd2023 %>% ggplot(aes(x = year, y = gdppc)) + geom_line(colour = "black", linew
 
 How can we obtain an estimate of the annual growth rate of GDP per capita along this trend growth path? There are several valid methods to do so but there is at least one very incorrect one, which we discuss now. 
 
-You might be tempted to calculate the trend annual growth rate as the percentage change in GDP per capita between 1870 (\$4,803) and 2018 (\$55,335) divided by the number of years in between (148):
-$$\bar{g} =\left(\frac{GDP_{2018}-GDP_{1870}}{GDP_{1870}} \right)\frac{1}{148}\times 100= \left(\frac{55,335-4,803}{4,803} \right)\frac{1}{148}\times 100 = 7.11\%$$
+We might be tempted to calculate the average annual growth rate as the percentage change in GDP per capita between 1870 (\$4,803) and 2018 (\$55,335) divided by the number of years in between (148):
+$$\bar{g} =\left(\frac{GDP_{2018}}{GDP_{1870}} -1 \right)\frac{1}{148}\times 100= \left(\frac{55,335}{4,803}-1 \right)\frac{1}{148}\times 100 = 7.11\%$$
 However, that would be wrong. Starting at \$4,803 and assuming GDP per capita grows at an annual growth rate of 7.11% would lead to a level of GDP per capita 148 years later equal to \$124,840,484, more than 2000 times the actual value of GDP per capita in 2018! 
 
 ### The compound growth rate
 
-The *compound annual growth rate* provides an estimate of the trend growth rate which avoids falling into the same trap. Intuitively, it is the constant growth rate such that if GDP per capita had grown at this same rate every year, then starting at \$4,803 in 1870, GDP per capita 148 years later would be exactly equal to \$55,335. 
+The *compound annual growth rate* provides an estimate of the average growth rate which avoids falling into the same trap. Intuitively, it is the constant growth rate such that if GDP per capita had grown at this same rate every year, then starting at \$4,803 in 1870, GDP per capita 148 years later would be exactly equal to \$55,335. 
 
 - Assume that GDP per capita grows at the same rate $\bar{g}$ every year. 
 
@@ -161,10 +197,12 @@ Growth derived from growth achieved in previous periods.
 
 
 - Solving for $\bar{g}$: 
+
+$$(1+\bar{g})^{148}=\frac{GDP_{2018}}{GDP_{1870}} \quad \rightarrow \quad 1+\bar{g} = \left(\frac{GDP_{2018}}{GDP_{1870}} \right)^{\frac{1}{148}}$$
 $$\bar{g}=\left(\frac{GDP_{2018}}{GDP_{1870}} \right)^{\frac{1}{148}}-1 =\left(\frac{55,335}{4,803} \right)^{\frac{1}{148}}-1=0.01665 $$
 or $\bar{g} = 1.67\%$. 
 
-The reason why the incorrect method discussed above led to an incorrect estimate of the trend growth rate is because it ignored the presence of these compounding effects, leading it to overestimate the trend annual growth rate.
+The reason why the incorrect method discussed above led to an incorrect estimate of the average growth rate is because it ignored the presence of these compounding effects, leading it to overestimate the trend annual growth rate.
 
 ----------------------------------------------------------------------------------------------------
 
@@ -173,44 +211,69 @@ The reason why the incorrect method discussed above led to an incorrect estimate
 Let $y$ be any trending variable (GDP, population, ...) following an exponential pattern over time, its initial value at time $0$ be $y_0$ and its trend growth rate be $\bar{g}$.
 
 $$ y_t = (1+\bar{g})^{t} y_0 $$ 
-**Compound growth rate formula**:
+**Compound annual growth rate formula**:
 $$ \bar{g} = \left(\frac{y_t}{y_0}\right)^{\frac{1}{t}} - 1 $$
-
-*Note*: the compound annual growth rate is not the average growth rate.
 
 ----------------------------------------------------------------------------------------------------
 
 *See Appendix 2 for derivation of results in this section.*
 
+### The logarithm approximation
 
-#### Limitations
+As for the growth rate, there exists an approximation of this formula, which makes use of logarithms:
 
-It is easy to compute the trend growth rate over any given interval of time by just plugging in values into the compound growth rate formula. But the compound growth rate may be misleading or uninformative as a summary statistic of long-run trends when the growth rate fluctuates widely over time. There may be decades where the growth rate is small (and even negative), followed or preceded by decades where the growth rate is high. It is important to do a preliminary inspection of the data to check that you are fitting the appropriate model to your data. 
+- Taking the logarithm on both sides and using the following properties of logarithms $\ln{\frac{a}{b}}= \ln{a}-\ln{b}$ and $\ln{a^b} = b\ln{a}$:
+$$\ln{(1+\bar{g})} = \frac{1}{t}(\ln{y_t} - \ln{y_{0}}) $$
+- For small values of $g_t$, the approximation $\ln{(1+\bar{g})} \approx \bar{g}$ holds, leading to:
 
-Add plot of GDP series exhibiting no clear positive trend over time.
+----------------------------------------------------------------------------------------------------
+
+$$ \bar{g} \approx \frac{1}{t}(\ln{y_t} - \ln{y_{0}})$$
+
+----------------------------------------------------------------------------------------------------
+
+
+Applying this formula to the previous example: 
+$$ \bar{g} \approx \frac{1}{148}(\ln{GDP_{2018}} - \ln{GDP_{1870}}) = \frac{1}{148}(\ln{55,335} - \ln{4,803}) = 0.01651 $$
+or $\bar{g} = 1.65\%$, which close to the average growth rate calculated in the previous section, but not quite. 
+
+
+
+### A note of caution
+
+It is easy to compute the average growth rate over any given interval of time by just plugging in values into the compound annual growth rate formula. But the compound growth rate may be misleading or uninformative as a summary statistic of long-run trends when the growth rate fluctuates widely over time. There may be decades where the growth rate is small (and even negative), followed or preceded by decades where the growth rate is high. It is important to do a preliminary inspection of the data to check that you are fitting the appropriate model to your data. 
+
+For example, GDP per capita in Haiti has experienced wide swings between 1945 and 2023 as illustrated in Figure \@ref(fig:mpdplot3b), with decades of growth (1965-1980, 1995-2015) followed by decades of decline (1955-1965, 1980-1995). The full sample period average growth rate would be relatively uninformative about this economy's growth dynamics. 
+
+```{r mpdplot3b, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in Haiti: 1945-2023", warning=FALSE}
+
+rm(list=ls())
+mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% select(country, year, gdppc) %>% filter(country == "Haiti", year >= 1945) %>% 
+  mutate(gdpgr = (gdppc / lag(gdppc) - 1)*100)
+dates <- seq(from = 1945, to = 2022, by = 10)
+
+
+mpd2023 %>% ggplot(aes(x = year, y = gdppc)) + geom_line(colour = "black", linewidth = 1) + stat_smooth(method=nls, method.args = list(start = c(a=1780, b=0.015)),formula = y ~ a*(1 + b)^(x-1945), colour = 'red', linewidth = 0.75, linetype = 2, se = FALSE) + labs(x = "", y = "GDP per capita (in 2011$)", caption = "Source: Maddison Project Database (MPD) 2023") + scale_x_continuous(breaks = dates)+ scale_y_continuous(limits = c(0,2500), breaks = c(0,500,1000,1500,2000,2500),labels = c(0,"500","1,000","1,500","2,000","2,500")) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) 
+
+```
+
+
+```{r section2-draft, eval=FALSE, include=FALSE}
 
 More generally, there is no reason to assume that the trend growth rate of GDP should be constant over time. In fact, no one would take seriously the claim that GDP is growing at a constant (deterministic) growth rate over the long-run. However, making this assumption for long enough periods of time can provide some useful approximations to address certain questions. Techniques have been developed to estimate variable trend growth rates. These are more computationally intensive and exploit more information. For the purpose of evaluating long-run growth trends, we are mainly interested in broad changes in the magnitude of the trend growth rate and it will be useful to complement the analysis by calculating trend growth rates over carefully selected subperiods.
 
+
+```
 
 ## Logarithm plots and ratio scales
 
 Plots of GDP on a logarithmic or ratio scale feature frequently in the economic press. A few examples can be found [here](https://www.ft.com/content/e577411e-3bf2-4fb4-872a-8b7d5e9139d3) and [here](https://www.theguardian.com/uk-news/2024/mar/02/conservatives-economic-record-budget-deficit-gdp-tax-tory-budget). In this section, we explain why these plots are useful representations of GDP trends and how to interpret them.
 
-### Growth rates and logarithms
-
-A good approximation to the per-period growth rate can be derived from the properties of logarithms. 
-
-The per-period growth rate $g_t$ of variable $y$ is the growth rate in period $t$ such that $y_t = (1+g_t) y_{t-1}$. By taking the natural  logarithm on both sides of this expression and subtracting $\ln{y_{t-1}}$, we obtain:
-$$\ln{y_t} - \ln{y_{t-1}} = \ln{(1+g_t)}$$
-from which we derive the following approximation for $g_t$: 
-$$\Delta\ln{y_t}\approx g_t$$
-where $\Delta\ln{y_t}$ is the change in the natural logarithm of $y$ in period $t$ and the approximation $\ln{(1+g_t)} \approx g_t$ holds for small values of $g_t$. The equality would hold exactly if $y$ were a continuous variable (*see* Appendix). What this result tells us is that the per-period growth rate of variable $y$ in any period can be approximated by the change in the natural logarithm of $y$.
-
 ### Logarithm plots
 
-This result suggests that growth rates can be read off the plot of the (natural) logarithm of variable $y$ against time, where the slope at any point in time is the change in the logarithm of $y$ ($\Delta\ln{y_t}$), and approximately equal to its growth rate.  
+We saw that the change in the logarithm of a variable provides a good approximation to the growth rate of this variable provided it is small enough. This suggests that growth rates can be read off the plot of the logarithm of a variable $y$ against time, where the slope at any point in time is the change in the logarithm of $y$ ($\Delta\ln{y_t}$).  
 
-The left panel of Figure \@ref(fig:logplot1) plots a variable $y$ which grows over time at a compounded constant growth rate $g$ according to the following function: $y_t = (1+g)^t y_0$. We set $y_0=1$ and $g=0.05$, so $y$ grows at the rate of 5% in each period starting at an initial value of 1. 
+The left panel of Figure \@ref(fig:logplot1) plots a variable $y$ which grows over time at a constant growth rate $g$ according to the following function: $y_t = (1+g)^t y_0$. We set $y_0=1$ and $g=0.05$, so $y$ grows at the rate of 5% in each period starting at an initial value of 1. 
 
 ```{r logplot1, fig.cap= "Plots of a variable growing at a constant rate", fig.width=8, fig.height=3, echo=FALSE}
 
@@ -223,8 +286,10 @@ plot1 + plot2
 ```
 
 The right panel of Figure \@ref(fig:logplot1) plots the natural logarithm of $y$ allowing us to see immediately that $y$ grows at a constant rate (the straight line has constant slope). This follows from the fact that the logarithm of $y$ is a linear function of time:
-$$y_t = (1+g)^t y_0 \quad \rightarrow \quad \ln{y_t}=\ln{(1+g)}\times t+\ln{y_0} \approx g\times t+\ln{y_0}$$
-It is easy to verify that the slope of the logarithm plot ($\Delta\ln{y}/\Delta t$) is equal to 0.05, the growth rate of $y$.
+$$y_t = (1+g)^t y_0 \quad \rightarrow \quad \ln{y_t}=\ln{(1+g)}\times t+\ln{y_0} \quad \rightarrow \quad \ln{y_t} \approx g\times t+\ln{y_0}$$
+using $\ln{(1+g)} \approx g$.
+
+It is easy to verify that the slope of the logarithm plot ($\Delta\ln{y}/\Delta t = \Delta\ln{y}/1$) is equal to 0.05, the growth rate of $y$.
 
 
 ```{r logplot1b, eval=TRUE, fig.cap= "Plots of three variables growing at a constant rate", fig.width=8, fig.height=3, echo=FALSE}
@@ -242,7 +307,7 @@ Figure \@ref(fig:logplot1b) plots $y$ and its logarithm for three different valu
 
 **Example: GDP per capita in the United States (1870-2023)**
 
-Going back to US real GDP per capita, we already noticed the exponential pattern of GDP per capita over the last two centuries. Focusing on the period 1870-2018, we can now check graphically whether the US economy grew at a relatively constant rate over this period. If the growth rate is constant over time we would expect the plot of its logarithm to be well approximated by a straight line.
+Going back to US real GDP per capita, we already noticed the exponential pattern of GDP per capita over the last two centuries. Focusing on the period 1870-2018, we can now check graphically whether the US economy grew at a relatively constant average growth rate over this period. If the growth rate is constant over time we would expect the plot of its logarithm to be well approximated by a straight line.
 
 ```{r mpdplot4, echo=FALSE, fig.align='center', fig.cap= "(Level and logarithm of) GDP per capita in the United States: 1870-2023", warning=FALSE, message=FALSE, fig.width=10, fig.height=3}
 
@@ -264,7 +329,7 @@ plot1 + plot2 + plot3
 
 ```
 
-The middle panel in Figure \@ref(fig:mpdplot4) represents the natural logarithm of US real GDP per capita. Although not perfect, the plot does appear to be approximately linear, suggesting a relatively constant growth rate over the long-run. This hypothesis can be further evaluated by fitting a line of best fit (in blue) to the plot of the logarithm (right panel) and checking how well the line fits the data. The estimate of the slope of the line of best fit is 0.0167, which corresponds to a growth rate of 1.67% per year and is similar to the compound growth rate calculated in the previous section.
+The middle panel in Figure \@ref(fig:mpdplot4) represents the logarithm of US real GDP per capita. Although not perfect, the plot does appear to be approximately linear, suggesting a relatively constant growth rate over the long-run. This hypothesis can be further evaluated by fitting a line of best fit (in blue) to the plot of the logarithm (right panel) and checking how well the line fits the data. The estimate of the slope of the line of best fit is 0.0167, which corresponds to a growth rate of 1.67% per year and is similar to the compound growth rate calculated in the previous section.
 
 ```{r draft, eval=FALSE, include=FALSE}
 
@@ -277,7 +342,7 @@ lmtrend
 We have seen how the slope of the plot of the logarithm of the trending variable $y$ allows us to evaluate quickly the growth rate of $y$. We now turn to what it means to plot the logarithm of a variable, ie to represent a variable on a logarithmic (or ratio) scale. 
 
 
-The left and middle panels of Figure \@ref(fig:logplot2) represent the same variable $y$ growing at a rate of 5% per period and its natural logarithm $\ln{y}$ once again. The natural logarithm of $y$, is the number of times Euler's number $e=2.72...$ needs to be multiplied by itself in order to obtain $y$. The plots shows that when $y$ is equal to 150, its natural logarithm is approximately equal to 5. So 5 is the natural logarithm of 150, or the number of times $e$ needs to be multiplied by itself to obtain the number 150 (to be more exact, 5 is the natural logarithm of $e^5=148.4132$). 
+The left and middle panels of Figure \@ref(fig:logplot2) represent the same variable $y$ growing at a rate of 5% per period and its natural logarithm $\ln{y}$ once again. The natural logarithm of $y$, is the number of times Euler's number $e=2.72...$ needs to be multiplied by itself in order to obtain $y$. The plots shows that when $y$ is equal to 150, its natural logarithm is approximately equal to 5. So 5 is the natural logarithm of 150, or the number of times $e$ needs to be multiplied by itself to obtain the number 150 (to be exact, 5 is the natural logarithm of $e^5=148.4132$). 
 
 ```{r logplot2, fig.cap= "Representing variables on a logarithmic scale", fig.width=8, fig.height=3, echo=FALSE}
 
@@ -292,7 +357,7 @@ plot1 + plot2 + plot3
 
 This gives us an alternative interpretation of the logarithm plot: every tick mark on the vertical axis, y is multiplied by $e$. So when at time $t=40$ we read off the plot that $lny=2$, this means that $y$ is approximately equal to $e^2=7.389$. Similarly, $lny=3$ at time $t=60$ means that $y$ is approximately equal to $e^3=20.086$. This is the intuition behind the **logarithmic scale** (also called *log scale* or *ratio scale*) represented on the right panel, which is constructed by relabeling the value of the natural logarithm of $lny$ on the vertical axis with the corresponding value of $y$.
 
-Changing the base number of the logarithm allows us to set more intuitive multiplying factors. For example, the logarithm base 2 of $y$, represents the number of times the number 2 needs to be multiplied by itself to obtain $y$. So on a plot of the logarithm base 2 of $y$ (right panel of Figure \@ref(fig:logplot3)), every tick mark on the vertical axis, y is multiplied by 2. It can be used to read graphically on the horizontal axis how long it takes for variable $y$ to double. 
+Changing the base number of the logarithm allows us to set more intuitive multiplying factors. For example, the logarithm base 2 of $y$, represents the number of times the number 2 needs to be multiplied by itself to obtain $y$. So on a plot of the logarithm base 2 of $y$ (right panel of Figure \@ref(fig:logplot3)), every tick mark on the vertical axis, y is multiplied by 2. This plot can be used to read graphically on the horizontal axis how long it takes for variable $y$ to double. 
 
 ```{r logplot3, fig.cap= "Representing variables on a logarithmic scale (base 2)", fig.width=8, fig.height=3, echo=FALSE}
 
@@ -308,25 +373,25 @@ plot1 + plot2
 
 We can see that it takes slightly less than fifteen periods for $y$, which is still growing at the rate of 5% per period, to double. So it would take slightly less than fifteen years for the GDP per capita of an economy that is growing at the rate of 5% per year to double. This may seem surprising but is a direct consequence of the compounding effects discussed before. 
 
-*Note*: if the variable grows at a constant rate, the slope of the plot of of the logarithm base 2 is constant, but it is not equal to the growth.
+*Note: if the variable grows at a constant rate, the slope of the plot of of the logarithm base 2 (different from the natural logarithm) is constant, but it is not equal to the growth.*
 
 ### Rule of 70
 
-Assuming a variable $y$ grows at a constant annual growth rate $g$, how many years $t$ does it take for it to double in value? We just saw how plotting a variable using a log scale allows us to see immediately how long it would take for a variable to double (or triple, quadruple, etc...). It is also possible to address this question numerically using a useful result known as the *rule of 70*.
+Assuming a variable $y$ grows at a comppund average growth rate $g$, how many years $t$ does it take for it to double in value? We just saw how plotting a variable using a log scale allows us to see immediately how long it would take for a variable to double (or triple, quadruple, etc...). It is also possible to address this question numerically using a useful result known as the *rule of 70*.
 
-**_Rule of 70_: if a variable $y$ grows at the rate of $\%g$ per period, then it takes approximately $t \approx \frac{70}{\%g}$ periods for the value of $y$ to double.** 
+---------------------------------------------------------------------------------------------
+
+**_Rule of 70_**: if a variable $y$ grows at the rate of $\%g$ per period, then it takes approximately $t \approx \frac{70}{\%g}$ periods for the value of $y$ to double.
 
 ---------------------------------------------------------------------------------------------
 
 _**Proof**_: let $y_t$ be such that it is twice the initial income per capita level $y_0$ and $t$ be the number of periods it takes for income per capita to double.
 Using $y_t = (1+g)^{t} y_0$:
-$$y_t = 2 \times y_0 = (1+g)^ty_0 \quad \rightarrow  2 = (1+g)^t  $$
+$$y_t = (1+g)^ty_0 = 2 \times y_0 \quad \rightarrow  2 = (1+g)^t  $$
 Taking logs on both sides:
 $$ \ln{2} = t \times \ln{(1+g)}$$
 Using the fact that $\ln{2} \approx 0.7$ and $\ln{(1+g)} \approx g$ (for small values of g): 
 $$t = \frac{\ln{2}}{\ln{(1+g)}} \approx \frac{0.7}{g} = \frac{70}{\%g}$$
-
----------------------------------------------------------------------------------------------
 
 So when $y$ grows at rate $g=0.05$ in each period as in our example, the formula predicts that it would take approximately $\frac{70}{5}=14$ periods for it to double, in line with what we observed in Figure \@ref(fig:logplot3). 
 
@@ -350,7 +415,7 @@ plot1 + plot2
 
 Figure \@ref(fig:mpdplot5) illustrates how this tool can be used to analyse the behaviour of GDP per capita over time. The right panel shows that it took slightly more than 35 years for GDP per capita to double in the United States, consistent with the prediction of the rule of 70 that when GDP per capita is growing at the trend rate of 1.67%, it will take about 42 years to double.
 
-## Two hundered years of growth in the United Kingdom and the United States
+## Growth in the United Kingdom and the United States
 
 ```{r mpdplot2, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in the United States and United Kingdom: 1800-2022", warning=FALSE,fig.width=8, fig.height=4}
 
@@ -362,7 +427,7 @@ mpd2023 %>% ggplot(aes(x = year, y = gdppc, colour = country)) + geom_line()+ la
 
 ```
 
-Figure \@ref(fig:mpdplot2) shows that on average GDP per capita in the United States grew faster than in the United Kingdom over the last 200 years since it starts at a lower level and ends at a higher level. However, some questions are less easily answered just by looking at this plot. **First**, was the *growth rate* of GDP per capita in the United States and the United Kingdom constant over time or were there periods of faster (slower) growth? **Second**, was GDP per capita in the United States always growing at a faster rate than in the United Kingdom over these two centuries or only during specific periods?
+Figure \@ref(fig:mpdplot2) suggests that on average GDP per capita in the United States grew faster than in the United Kingdom over the last 200 years. However, some questions are less easily answered just by looking at this plot. **First**, was the *growth rate* of GDP per capita in the United States and the United Kingdom constant over time or were there periods of faster (slower) growth? **Second**, was GDP per capita in the United States always growing at a faster rate than in the United Kingdom over these two centuries or only during specific periods?
 
 We can address these questions using the techniques developed in the previous sections. Figure \@ref(fig:mpdplot6) plots the logarithm of GDP per capita for both countries and can be used to identify subperiods. Table \@ref(tab:mpd2023Tab) presents estimates of the trend growth rates of GDP per capita for both the United States and the United Kingdom for the full sample period and four subperiods.
 
@@ -391,15 +456,6 @@ dygraph(mpd2023)  %>%
 ```
 
 <br>
-**Did the two economies grow at a constant rate over the last two centuries or were there periods of faster or slower growth?**
-
-In the <span style="color: #FA8072;">**United Kingdom**</span>, we identify two important points of inflection in the slope of the logarithm plot, in 1830 and 1920, allowing us to distinguish three subperiods. In <span style="color: #FA8072;">1800-1830</span>, the slope of the log plot is relatively flat, suggesting that the trend growth rate was close to zero before 1830. In <span style="color: #FA8072;">1830-1918</span>, the slope of the log plot becomes steeper, suggesting that the trend growth rate established itself clearly in the positive range during this period. In <span style="color: #FA8072;">1920-2022</span>, the slope of the log plot rises again, suggesting that the trend growth rate further rose in the 20^th^ century. 
-
-In the <span style="color: #00CED1;">**United States**</span>, the path of GDP per capita exhibits a similar pattern, but with an point of inflection occurring in the 1940s. In <span style="color: #00CED1;">1800-1830</span>, the slope of the log plot is flatter, suggesting that the trend growth rate is positive but moderate before 1830. In <span style="color: #00CED1;">1830-1946</span>, the slope of the log plot becomes steeper, suggesting that the trend growth accelerated during this period. In <span style="color: #00CED1;">1946-2022</span>, the slope of the log plot becomes only slightly steeper, suggesting a relatively constant trend growth rate in the United States over the 20^th^ century as previously noted. 
-
-**Can we identify periods when GDP per capita in the United States grew at a substantially faster rate than that of the United Kingdom?**
-
-Over the period *1946-2022*, the trends in GDP per capita are parallel in the two countries, suggesting that GDP per capita grew at relatively similar rates. However, between *1800* and *1946*, GDP per capita grew at a substantially higher trend growth rate in the United States, which is the period when US GDP per capita overtook UK GDP per capita. 
 
 ```{r mpd2023Tab, echo=FALSE, warning=FALSE, eval=TRUE, message=TRUE}
 
@@ -429,123 +485,31 @@ for (i in seq(1:(break_nb-1))){
 subperiods <- as_tibble_col(c("1800-2022","1800-1830","1830-1946","1946-2022"))
 table <- add_column(subperiods,table)
 
-kbl(table, align = "ccc",col.names = c("Period","United states", "United Kingdom"), caption="UK and US: Trend growth rates over different subperiods", digits = 2) %>%
+kbl(table, align = "ccc",col.names = c("Period","United states", "United Kingdom"), caption="UK and US: Average growth rates over different subperiods", digits = 2) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed"), position = "center") %>%
-  kableExtra::footnote(general = "Source: Maddison Project Database 2023. Compound annual growth rates (%).", general_title = "")
+  kableExtra::footnote(general = "Source: Maddison Project Database 2023. Compound average annual growth rates (%).", general_title = "")
 
 ```
 
-The figures in Table \@ref(tab:mpd2023Tab) confirm the key points observed above, including the fairly constant trend growth rate of US GDP per capita since the 1830s and the increase in the growth of GDP per capita in both countries in the second half of the 20^th^ century. This also allows us to make an additional remark. The estimated trend growth rate of GDP per capita in the United States is 0.4 percentage point higher than that of the United Kingdom between 1830 and 1946. This relatively small difference on an annual basis explains why by the end of this period, US GDP per capita was almost 50% higher than that of the UK, having started at a lower level (*See* Figure \@ref(fig:mpdplot2)).
+<br>
+**Did the two economies grow at a constant rate over the last two centuries or were there periods of faster or slower growth?**
+
+Growth accelerated in both countries after 1830. Although the United States grew at a relatively constant rate between 1830 and 2022 (between 1.4% and 1.8%), the growth experience of the United Kingdom is relatively more uneven. Its GDP per capita grew significantly faster on average in the second part of the 20th century (1.7%) compared to the previous period (1%). 
+
+**Can we identify periods when GDP per capita in the United States grew at a substantially faster rate than that of the United Kingdom?**
+
+GDP per capita grew at relatively similar rates in the two countries between 1946 and 2022, which can be seen both in the log plot and the estimated average gowth rates. However, between *1830* and *1946*, GDP per capita grew at a substantially higher average growth rate in the United States, which is the period when US GDP per capita overtook UK GDP per capita. In this period, the average growth rate of GDP per capita in the United States is 0.4 percentage point higher than that of the United Kingdom between 1830 and 1946. This relatively small difference on an annual basis explains why, by the end of this period, US GDP per capita was almost 50% higher than that of the UK, having started at a lower level (*See* Figure \@ref(fig:mpdplot2)).
+
+```{r section4-draft, eval=FALSE, include=FALSE}
+
+In the <span style="color: #FA8072;">**United Kingdom**</span>, we identify two important points of inflection in the slope of the logarithm plot, in 1830 and 1920, allowing us to distinguish three subperiods. In <span style="color: #FA8072;">1800-1830</span>, the slope of the log plot is relatively flat, suggesting that the trend growth rate was close to zero before 1830. In <span style="color: #FA8072;">1830-1918</span>, the slope of the log plot becomes steeper, suggesting that the trend growth rate established itself clearly in the positive range during this period. In <span style="color: #FA8072;">1920-2022</span>, the slope of the log plot rises again, suggesting that the trend growth rate further rose in the 20^th^ century. 
+
+In the <span style="color: #00CED1;">**United States**</span>, the path of GDP per capita exhibits a similar pattern, but with an point of inflection occurring in the 1940s. In <span style="color: #00CED1;">1800-1830</span>, the slope of the log plot is flatter, suggesting that the trend growth rate is positive but moderate before 1830. In <span style="color: #00CED1;">1830-1946</span>, the slope of the log plot becomes steeper, suggesting that the trend growth accelerated during this period. In <span style="color: #00CED1;">1946-2022</span>, the slope of the log plot becomes only slightly steeper, suggesting a relatively constant trend growth rate in the United States over the 20^th^ century as previously noted. 
+
+The figures in Table \@ref(tab:mpd2023Tab) confirm the key points observed above, including the fairly constant trend growth rate of US GDP per capita since the 1830s and the increase in the growth of GDP per capita in both countries in the second half of the 20^th^ century. 
+
 
 **Remark**: we only emphasise here the interpretation of the figures and the broad trends emerging from the data. *First*, it is difficult to establish what happened to the trend growth rates during the interwar period (from 1919 to 1939). *Second*, different measures of real GDP may give widely different results for the date at which US GDP per capita overtook UK GDP per capita and also possibly the estimates of trend growth rates. *Third*, the trend growth rate has clearly declined over the last fifteen years in both countries; however, it may be too early to draw any conclusion regarding the significance of this recent development.
-
-
-```{r mpdplot7a, echo=FALSE, fig.align='center',fig.cap= "United States vs United Kingdom: relative GDP per capita (1800-2018)",fig.width=8, fig.height=4, eval=FALSE, message=TRUE}
-
-rm(list=ls())
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
-  select(country, year, gdppc) %>% 
-  filter(country == "United Kingdom" | country == "United States", year >= 1800) %>% 
-  pivot_wider(names_from = country, values_from = gdppc) %>% 
-  rename(US = "United States", UK = "United Kingdom") %>% 
-  mutate("United States" = US/UK, "United Kingdom" = UK/UK) %>% 
-  select(year,"United States","United Kingdom") %>% 
-  pivot_longer(cols = c("United States","United Kingdom"), names_to = "country", values_to = "ratio")
-
-dates <- seq(from = 1800, to = 2018, by = 30)
-  
-mpd2020 %>% ggplot(aes(x = year, y = ratio, colour = country)) + geom_line()+ labs(x = "", y = "", caption = "Note: the series represented is the ratio of US GDP and UK GDP. \n Source: Maddison Project Database (MPD), 2020") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) + labs(title = "GDP per capita relative to UK (UK=1)")+ scale_colour_discrete(labels=c("United Kingdom", "United States"))
-
-#This can also be observed in Figure \@ref(fig:mpdplot7), which plots the ratio of GDP per capita in the United States and in the United Kingdom (so it is equal to 1 when US and UK GDP per capita are equal). Until the 1870s, US GDP per capita was about 15% lower than that of UK GDP per capita; by the 1950s, it was 40% higher than UK GDP per capita. 
-
-```
-
-
-
-```{r mpdplot7b, echo=FALSE, fig.align='center', fig.cap= "GDP per capita relative to the US: 1870-2018", warning=FALSE, eval=FALSE}
-
-## Convergence facts
-
-PWT: scatter plots growth of GDP per capita versus GDP per capita in 1970 (1990):
-
-- all countries 
-- subset countries
-
-Plot of convergence towards US GDP per capita
-
-rm(list=ls())
-
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
-  select(country, year, gdppc) %>% 
-  filter(year >= 1950) %>% 
-  pivot_wider(names_from = country, values_from = gdppc) %>%
-  arrange(year) %>%
-  rename(US = "United States") %>%
-  mutate(across(2:170, ~.x/US)) %>% 
-  pivot_longer(!year, names_to = "country", values_to = "gdppc_ratio") %>% 
-  arrange(country,year) 
-
-dates <- seq(from = 1950, to = 2018, by = 10)
-
-mpd2020 %>% ggplot(aes(x = year, y = gdppc_ratio, colour = country)) + geom_line(show.legend = FALSE)+ labs(x = "", y = "", caption = "Note: the series represented are the ratios of each country's GDP and US GDP. \n Source: Maddison Project Database (MPD), 2020") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = element_line(),plot.title = element_text(hjust = 0.5), legend.title=element_blank()) + labs(title = "GDP per capita relative to US (US=1)")
-
-#mpd2020 <- mpd2020 %>% filter(gdppc_ratio>1.8)
-
-#mpd2020 <- mpd2020 %>% filter(country != "Kuwait" & country != "Qatar" & country != "United Arab Emirates")
-
-```
-
-```{r mpdplot7c, echo=FALSE, fig.align='center', fig.cap= "GDP per capita relative to the US: 1870-2018", warning=FALSE,eval=FALSE}
-
-rm(list=ls())
-
-mpd2020 <- read_csv("Data/mpd2020.csv",show_col_types = FALSE) %>% 
-  select(country, year, gdppc) %>% 
-  filter(year >= 1950) %>% 
-  pivot_wider(names_from = country, values_from = gdppc) %>%
-  arrange(year) %>%
-  rename(US = "United States") %>%
-  mutate(across(2:170, ~.x/US)) 
-
-dygraph(mpd2020) %>% dyLegend(show = "follow")
-
-```
-
-```{r draft_sections, eval=FALSE, include=FALSE}
-
-## GDP growth around the world
-
-How was the data constructed and by who? How reliable is the data? How much does it rely on estimation / imputation?
-
-Create graphs encompassing all countries in the dataset by continent (Europe, America, Africa, Middle East, Central Asia, Asia, Australasia) showing:
-
-- Series relative to US (or other country?)
-- Scatter initial GDP per capita vs GDP growth over the last 30 years
-- Plot of GDP per capita for selected countries (one per geographical area?)
-
-Possible countries: Ethiopia, Singapore and Hong Kong, Russian Federation and Ukraine, Haiti and Dominican Republique, Palestine, Ecuador
-
-Can we observe the Hockey stick pattern in all countries? In which countries do we fail to observe it?
-
-## Population growth and GDP per capita growth
-
-Maddison / PWT data:
-
-- Plot and bars chart of GDP growth, GDP per capita growth and population growth in UK, US over the subperiods used in previous section.
-- Bar chart of GDP growth, GDP per capita growth and population growth for a selection of other countries (China, India, Senegal, Chile, Mexico, Phillipines or Thailand, Madagascar)
-
-The complex relationship between population growth and GDP per capita growth:
-
-- Malthus
-- M. Kremer
-- [UN Chronicle](https://www.un.org/en/un-chronicle/world-population-surpasses-8-billion-what-are-implications-planetary-health-and)
-- [IMF F\&D](https://www.imf.org/en/Publications/fandd/issues/Series/Analytical-Series/aging-is-the-real-population-bomb-bloom-zucker)
-
-Data sources: 
-
-- [United Nations](https://population.un.org/wpp/)
-- [ourworldindata.org](https://ourworldindata.org/population-growth#introduction)
-- [ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections)
 
 
 ```
@@ -553,28 +517,25 @@ Data sources:
 
 ## Summary {-}
 
-- The per-period growth rate is calculated as: $$\%g_t=\frac{y_t-y_{t-1}}{y_{t-1}} \times 100 $$
-- When a series follows an exponential growth pattern, the compound growth rate provides a useful measure of the trend growth. It is calculated as:
+- The **growth rate** of variable $y$ is defined as the percentage change of $y$ between any two consecutive periods $t-1$ and $t$: $$\%g_t=\frac{y_t-y_{t-1}}{y_{t-1}} \times 100 $$
+- When a variable follows an exponential growth pattern, the **compound annual growth rate** provides a useful measure of the average growth rate over an interval of time. It is calculated as:
 $$ \bar{g} = \left(\frac{y_t}{y_0}\right)^{\frac{1}{t}} - 1 $$
-where $\bar{g}$ is the trend growth rate and $y_0$ is the initial value of $y$.
-- The slope of the plot of the logarithm of a variable over time provides a good approximation of the growth rate of this series at any point in time, provided the growth rate is small enough.
-- Logarithmic scale: A log plot represents how many times a variable is multiplied by a given factor over a certain interval of time. It is particularly well suited to analyse growth trends.
-- The rule of 70
-- Compounding effect of growth: small differences in annual growth rates between countries may lead to large differences in the level of macroeconomic variables in the long-run.
-- Describing and comparing trends in GDP growth across the world and over time:
+where $\bar{g}$ is the average growth rate and $y_0$ is the initial value of $y$.
+- Two **useful approximations** (provided growth rates are small) of these growth rates are based on transformations using logarithms: $g_t \approx \ln{y_t}-\ln{y_{t-1}}$ and $\bar{g} \approx \frac{1}{t}(\ln{y_t}-\ln{y_0})$
+- **Plots of logarithms** are particularly well suited to describe growth trends:
+  - The slope of the plot of the logarithm of a variable provides a good approximation of the growth rate of this series at any point in time.
+  - The plot of the logarithm of a variable represents how many times this variable is multiplied by a given factor ($e$ in the case of the natural logarithm) over a certain interval of time. 
+- The **rule of 70** states states that it takes approximately $70 / \%g$ periods for a variable growing at rate $\%g$ to double.
+- **Compounding effect of growth**: growth in each period derives from growth achieved in the period. This explains why relatively small differences in annual growth rates between countries may lead to large differences in the level of macroeconomic variables in the long-run.
 
-1. Growth of GDP per capita is a relatively recent phenomenon.
-1. GDP per capita has grown at a relatively constant rate in the US (about 1.67\% per year) and the UK between 1870 and 2019. 
 
 ## Key terms {-}
 
-- **Growth rates**
-- **Compounding effects of growth rate**
+- **Growth rate**
+- **Compound annual growth rate**
 - **Exponential growth**
-- **Logarithm**: natural logarithm, logarithm base 2, logarithm base 10, ...
 - **Logarithmic (or *log* or *ratio*) scale**
 - **Rule of 70**
-- **Convergence**
 
 
 ## Exercises {-}

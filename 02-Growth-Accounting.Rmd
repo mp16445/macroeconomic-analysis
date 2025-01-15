@@ -2,7 +2,7 @@
 
 -------------------------------------------------------------------------------------
 
-In this chapter, we will present the *growth accounting* technique to decompose GDP  and labour productivity growth into different components.
+In this chapter, we will present the *growth accounting* technique to decompose labour productivity growth into the contribution of capital accumulation and the contribution of total factor productivity growth.
 
 We will use data from the <a href="https://www.rug.nl/ggdc/productivity/pwt/" target="_blank">*Penn World Table*</a> [@PWT], which allow us to compare *real* economic outcomes over time and across countries. All macroeconomic outcomes described, such as GDP, and capital stock, are real outcomes although this may not be explicitly mentioned for simplicity in the text.
 
@@ -10,13 +10,106 @@ We will use data from the <a href="https://www.rug.nl/ggdc/productivity/pwt/" ta
 
 ## Introduction
 
+The starting point of growth theory is the assumption that there are three main proximate causes of long-term growth in output: technological progress, the accumulation of capital and improvements in the size and skills of the labour force. Growth theories attempt to understand the forces that drive these factors over time as well as their interactions by making assumptions regarding the behaviour of households and firms. In this chapter, we will present the growth accounting methodology, which is a method developed by economists to quantify the relative importance of these factors, and apply it to the case of labour productivity growth in South Korea. 
+
+```{r plot1 ,fig.cap= 'Figure 1: South Korea: 1953-2019', fig.width=9, fig.height=3.5, echo=FALSE,}
+
+# Download data
+rm(list=ls())
+pwt_data <- read_excel("Data/pwt1001.xlsx", sheet = 3)
+Data <- pwt_data %>% filter(country=="Republic of Korea") %>% select(year,emp,avh,rgdpna,rnna,labsh) %>% mutate(y=rgdpna/(emp*avh),k=rnna/(emp*avh),lny=log(y),lnk=log(k)) %>% drop_na()
+
+dates <- seq(from = 1955, to = 2020, by = 10)
+
+Plot1 <- Data %>% ggplot(aes(x = year, y = lny)) + geom_line() + labs(title = "Logarithm of real GDP per hour", x = "", y = "") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.minor = element_blank())
+
+Plot2 <- Data %>% ggplot(aes(x = year, y = lnk)) + geom_line() + labs(title = "Logarithm of real capital per hour", x = "", y = "", caption = "Source: Penn World Table 10.01") + scale_x_continuous(breaks = dates) + theme_bw() + theme_minimal() + theme(panel.grid.minor = element_blank())
+
+Plot1 + Plot2
+```
+
+*Figure 1* shows that the strong growth in output per worker that occurred in South Korea between the 1960s and 1990s was also associated with a strong growth in the capital-labour ratio. This raises the following questions: What has been the role of capital accumulation in the growth of labour productivity in South Korea over this period? Was capital accumulation the main determinant of labour productivity growth or were there other factors that played more important roles?
+
+The neoclassical **production function** states that output per hour can increase either if the capital-labour ratio (or capital per hour) increases or if total factor productivity (TFP) increases. The **capital-labour ratio** captures the intensity with which capital is employed in production. It is a better measure of the importance of capital accumulation than the capital stock, which would also be expected to increase with population. An increase in the capital-labour ratio implies that the capital stock is growing at a faster rate than the labour input. **Total factor productivity** includes any factor that improves the efficiency of the economy at combining capital and labour in order to produce total output. An increase in total factor productivity may consist in technological innovations such as the diffusion of software packages which dramatically decreased the time spent performing some administrative tasks or computations, or in the implementation of better management techniques, or a reallocation of capital and skills in more productive sectors or the most productive firms within a sector, etc...
+
+**Growth accounting** can be used to provide a rough description of the growth of output per hour over a given interval of time in terms of the relative contribution of capital accumulation and total factor productivity growth. This method allowed R. Solow (1956) to assign close to 88\% of the growth in output per hour in the US in the first part of the 20^th^ century to TFP growth and the remaining 12\% to capital accumulation. Since then economists have refined the methodology to allow for more precise estimates using more precise decompositions taking into account the role played by different types of capital and the different skill levels of the workforce in different sectors. The major role assigned to TFP growth in developed economies remains the key result obtained through this type of exercise. Another important contribution of growth accounting is to provide one method to estimate total factor productivity growth, a factor that is difficult to observe or measure, and even still difficult to explain. 
+
+Although growth accounting can yield some powerful insights, its ability to describe accurately the underlying economic mechanisms depends on strong assumptions, the failure of which may cast doubt on the conclusions that can be drawn from these calculations. In the next sections, we will explain how we arrive at the growth accounting decomposition and illustrate the use of this methodology by examining the case of labour productivity growth in South Korea between 1953 and 2019. 
+
+
 ## Growth accounting equation
 
-**TBA**
+In order to structure our investigation of the relative contributions of the factor inputs to the growth of output, we need to use a theoretical framework to organise our thoughts. Whether the results of a growth accounting provides a good picture of the growth experience of a country over a given period depends on how good an approximation these assumptions are for the economy in question at the moment of time considered.
+
+### Derivation
+
+**Assumption 1: Cobb-Douglas production function** 
+$$Y_t=A_tK_t^\beta L_t^{1-\beta}$$
+where $Y_t$ is Real GDP, $K_t$ is the capital stock (structures, transport and communication equipment, computers, software, machinery, ...), $L_t$ is the quantity of labour input (measured in number of workers, number of hours worked, hours worked adjusted for labour quality, ...) and $A_t$ is the stock of technology (may capture technological progress, the allocation of resources in the economy, the organisation of labour and management practices, ...). Note that all variables are a function of time (they have a time subscript $t$). $\beta$ is the elasticity of output with respect to capital and assumed to be constant and $0<\beta<1$.
+
+The Cobb-Douglas production function exhibits **constant returns to scale** and **diminishing returns** to both capital and labour. It also embodies the idea of a complementarity between capital and labour in production: more of each input, holding the other constant, increases the productivity of the other input. 
+
+Since we are interested in the growth of labour productivity (or output per worker), which is more informative about living standards than total output, we rewrite the Cobb-Douglas production function in *intensive form* as:
+$$y_t=A_tk_t^\beta $$
+where $y$ is output per hour (labour productivity) and $k$ is the capital-labour ratio. 
+
+We are interested in growth rates. How can we express the relationship between the growth rate of labour productivity ($g_y$) and the growth rates of the capital-labour ratio ($g_k$) and total factor productivity growth ($g_A$) implied by this production function? By taking the logs.
+
+Taking the logarithm on both sides of the production function:
+$$\ln{y_t} = ln{A_t} + \beta \ln{k_t}$$
+
+where we use the following properties of logarithms: $\ln{ab} = \ln{a} + \ln{b}$ and $\ln{\frac{a}{b}} = \ln{a} - \ln{b}$.
+
+Subtracting $\ln{y_{t-1}} = ln{A_{t-1}} + \beta \ln{k_{t-1}}$ from the previous expression yields:
+
+$$\ln{y_t} - \ln{y_{t-1}}= ln{A_t} - ln{A_{t-1}} + \beta (\ln{k_t} - \ln{k_{t-1}})$$
+
+Using the approximation $g_{x,t} \approx \ln{x_t} - \ln{x_{t-1}}$ which holds for small values of $g_{x,t}$ (*see* Chapter 1):
+
+$$g_{y,t}= g_{A,t} + \beta g_{k,t}$$
+where $\beta g_{k,t}$ is the contribution of capital accumulation and $g_{A,t}$ is the contribution of TFP growth to labour productivity growth. 
+
+### Estimation
+
+National accounts provide data on GDP, labour and capital from which we can easily recover estimates for $g_y$ and $g_k$. 
+
+To obtain estimates of the elasticity of capita $\beta$, several options are possible:
+
+1. Set it equal to 0.3 as a rule of thumb. Recent studies (Vollrath, 2024) have shown that for the United States, this elasticity has been relatively constant around 0.2-0.3. To obtain such estimates, the authors of these studies do not rely on the assumption of perfect competition in the product markets but still need to make additional assumptions, such that firms choose the quantity of inputs that are **cost minimising**. This elasticity may be expected to be relatively similar in other developed economies. However, they may differ significantly in developing economies. 
+1. Use data on the **labour share of income**, provided in National accounts, from which it is possible to recover an estimate of $\beta$ as ($1 - \text{labour share of income}$). This relies on the assumption that **markets are perfectly competitive**, hence firms make zero profits, the wage and rental rate of capital are equal to their marginal products and, assuming constant returns to scale, total income is equal to the sum of the income distributed to labour and capital as a reward for their services. If product markets are not competitive so that firms have the ability to set the price of their final products, then this method will tend to overestimate the elasticity of capital.
+
+The default value of $\beta$ in all the examples will be 0.3. But it will be possible to experiment with different values of $\beta$ to check the robustness of results. 
+
+Finally, total factor productivity growth is not directly observed but can be estimated as the residual of the growth accounting equation:
+
+$$ g_{A,t}= g_{y,t} - \beta g_{k,t}  $$
 
 ## Case study: South Korea (1953-2019)
 
-**TBA**
+The *table* and *chart* below present the same growth accounting results for South Korea over the period 1953-2019 in two different ways. 
+
+```{r SK_GA_Chart, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+
+knitr::include_graphics(rep("images/SK_GA_Chart.png"))
+
+```
+
+
+```{r SK_GA_Table, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+
+knitr::include_graphics(rep("images/SK_GA_Table.png"))
+
+```
+*Growth rates are compound annual growth rates.*
+
+
+**Interpretation and discussion**
+
+Labour productivity over the full sample period grew at the average annual rate of 4.7%; this is faster than the growth in US labour productivity. This is indicating that the economy of South Korea was converging towards the US level of labour productivity. South Korea experienced a period of fast growth growing at an average rate of about 6% per year for about 50 years between the 1960s and 2000s. Its growth has since more than halved to less than 3%, similarly to other developed economies. 
+
+The growth of capital per hour contributed 1.4% towards the growth of labour productivity and TFP growth contributed the remaining 3.3%. TFP growth was therefore the main factor of growth over the full sample period, contributing about 70% of the growth in labour productivity and capital accumulation the remaining 30%. These shares remained remarkably constant over all subperiods. 
+
+These results suggest that the key to understanding the growth experience of South Korea is to look into the drivers of TFP growth. In particular, it might be interesting to disentangle the role of human capital accumulation (education, on-the-job-training, ...) from other factors of total factor productivity growth. This would allow us to determine how much weight was given in the growth strategy to the accumulation of factors of production as opposed to increases in efficiency. This could provide some clue as to the recent slowdown in TFP growth. 
 
 ## Exercise (Week 14)
 
@@ -103,10 +196,11 @@ These underlying causes may refer to differences in economic or political contex
 
 To address this question, you may use these two resources:
 
-1. The **university library** contains the most extensive database of academic papers at your disposal. Click on this (link)[https://bristol.libguides.com/economics] to start exploring.
+1. The **university library** contains the most extensive database of academic papers at your disposal and more resources. Click on this [link](https://bristol.libguides.com/economics) to start exploring.
 1. You may use **Copilot** as a starting point. A useful prompt: "Can you provide 5 differences between the United Kingdom and the United States which may be related to the wider economic context, policies or the behaviour of households which may explain the lower capital accumulation of capital stock per worker in the US relative to the UK between 1950 and 1973? Can you provide detailed academic sources in support of each argument you make in this answer?" Retain only the most promising arguments and check the sources!
 
 
+```{r appendix, eval=FALSE, include=FALSE}
 
 ## Appendix: Growth accounting derivation
 
@@ -167,4 +261,8 @@ where $\frac{RK}{Y}$ is the **share of capital income** and $\frac{wN}{Y}$ is th
 
 If the assumption of perfect competition does not hold (for example because of the presence of externalities, distortions in the factor markets,...), we would not be able to interpret $g$ as a measure of productivity growth and this methodology would be invalid. Other methods can be used to estimate $w_K$ and $w_N$.
 
+
+
+
+```
 

@@ -31,6 +31,7 @@ exercises-with-a-large-language-model-llms
 GA
 introduction-1
 growth-accounting-equation
+derivation
+estimation
 case-study-south-korea-1953-2019
 exercise-week-14
-appendix-growth-accounting-derivation

@@ -538,9 +538,9 @@ where $\bar{g}$ is the average growth rate and $y_0$ is the initial value of $y$
 - **Rule of 70**
 
 
-## Exercises {-}
+## Questions
 
-**Exercise 1**
+**Question 1**
 
 The annual growth rate of real GDP per worker in the UK was 0.18% in 2019 (*Source*: PWT). What is this growth rate in fractional term?
  
@@ -549,7 +549,7 @@ The annual growth rate of real GDP per worker in the UK was 0.18% in 2019 (*Sour
  a. 0.0018
  a. 18
  
- **Exercise 2**         
+ **Question 2**         
  
 The growth rate of GDP per capita in 2019 in Haiti was -0.02165 (*Source*: PWT). What is this growth rate in percentage?
  
@@ -558,7 +558,7 @@ The growth rate of GDP per capita in 2019 in Haiti was -0.02165 (*Source*: PWT).
  a. -2.2%
  a. 0%
 
-**Exercise 3**
+**Question 3**
 
 The table above presents GDP per worker in China (*Source*: PWT).
 
@@ -574,27 +574,26 @@ What is the growth rate of GDP per Worker in China in 2019?
  a. 3.75%
  a. 1.04
  
-**Exercise 4**
+**Question 4**
 
-Assume GDP per capita in Atlantis grows by 10% every year and that it starts at an initial level of \$1000. By which percentage will GDP per capita have increased after 10 years?
+Assume GDP per capita grows by 10% every year and that it starts at an initial level of \$1000. By which percentage will GDP per capita have increased after 10 years?
 
  a. 10%
  a. 100%
  a. 159%
  a. 171%
 
-**Exercise 5**
+**Question 5**
 
-Assume population grows at the rate of 5% every year in Gilead and that it starts with a total population of 100,000. By how many people total population will increase at the end of the first, second and third year respectively?
+Assume population grows at the rate of 5% every year and the initial population is 100,000. By how many people total population will increase at the end of the first, second and third year respectively?
 
-a. 500, 2500, 12500
 a. 5000, 5000, 5000
 a. 5000, 5250, 5512
 a. 500, 500, 500
 a. 5000, 4750, 4488
 
  
-**Exercise 6**
+**Question 6**
 
 ```{r mpdplot8a, echo=FALSE, fig.align='center',fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
 
@@ -605,7 +604,7 @@ mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>%
   rename(t = "year") 
 #dates <- seq(from = 1950, to = 2023, by = 10)
 
-dygraph(mpd2023, main = "GDP per capita in Indonesia: 1950-2022") %>% 
+dygraph(mpd2023) %>% 
   dySeries("gdppc", label = "GDP per capita") %>%
   dyLegend(show = "follow")%>%
   dyAxis("x", drawGrid = FALSE) %>%
@@ -615,16 +614,16 @@ dygraph(mpd2023, main = "GDP per capita in Indonesia: 1950-2022") %>%
             gridLineColor = "lightblue")
 
 ```
- 
-<br>
-Based on the information in the plot above (*Source*: Maddison Project Database 2023) the annual trend growth rate in GDP per capita in Indonesia between 1950 and 2018 was:
+*Source*: Maddison Project Database 2023
+
+The figure above represents GDP per capita in Indonesia. Based on the information in the plot above (move the cursor over the line to read actual numbers) the average (annual) growth rate in GDP per capita in Indonesia between 1950 and 2018 was:
  
  a. 12%
  a. 3.32%
  a. 3.27%
  a. 8.26%
 
-**Exercise 7**
+**Question 7**
 
 ```{r mpdplot8b, echo=FALSE, fig.align='center',fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
 
@@ -635,29 +634,33 @@ mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>%
   select(year, lny) %>% 
   rename(t = "year") 
 
-dygraph(mpd2023, main = "(Logarithm) GDP per capita in Indonesia: 1950-2022") %>% 
+dygraph(mpd2023) %>% 
   dySeries("lny", label = " Log(GDP per capita)") %>%
   dyLegend(show = "follow")%>%
   dyAxis("x", drawGrid = FALSE) %>%
   dyAxis("y", label = "Log (GDP per capita)") %>%
   dyOptions(includeZero = FALSE, 
-            axisLineColor = "navy", 
-            gridLineColor = "lightblue")
+           axisLineColor = "navy", 
+           gridLineColor = "lightblue")
+
+#dates <- seq(from = 1950, to = 2022, by = 10)
+
+#plot <- mpd2023 %>% ggplot(aes(x = t, y = lny)) + geom_line(colour = "blue")+ labs(x = "", y = "(log) GDP per capita")+ #scale_x_continuous(breaks = dates) + scale_y_continuous(limits = c(7,9.5), breaks = c(7,7.5,8,8.5,9,9.5)) + theme_bw() + #theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.grid.major.y = #element_line(),plot.title = element_text(hjust = 0.5))
+#plot
 
 ```
+*Source*: Maddison Project Database 2023
 
-<br>
-The figure above represents the logarithm of GDP per capita in Indonesia (*Source*: Maddison Project Database 2023). Discuss the advantages and disadvantages associated with each of these subsamplings i) if the goal is to analyse long-run growth trends in GDP growth in Indonesia and ii) if you goal is to systematically compare GDP growth in different countries over time:
+The figure above represents the logarithm of GDP per capita in Indonesia between 1950 and 2019 (move the cursor over the line to read actual numbers). 
 
-a. 1950-1970, 1970-1990, 1990-2010, 2010-2022
-a. 1950-1967, 1967-1997, 1997-2022
-a. 1950-1967, 1967-1974, 1974-1989, 1989-1997, 1990-2022
-a. 1950-1967, 1967-2022
+a. Divide the sample period into three subperiods based on what happened to the growth rate of GDP per capita.
+a. In which period did GDP per capita grow the fastest?
+a. In which period did GDP per capita in Indonesia grow at the slowest pace?
 
 
-**Exercise 8**
+**Question 8**
 
-```{r mpdplot8c, echo=FALSE, fig.align='center', fig.cap= "GDP per capita in Indonesia (ratio scale): 1950-2022",fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
+```{r mpdplot8c, echo=FALSE, fig.align='center',fig.width=6, fig.height=4, warning=FALSE, message=FALSE}
 
 rm(list=ls())
 mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>% 
@@ -672,15 +675,16 @@ plot3 <- mpd2023 %>% ggplot(aes(x = t, y = gdppc)) + geom_line(colour = "blue")+
 plot3
 
 ```
+*Source*: Maddison Project Database 2023
 
-The figure above represents GDP per capita in Indonesia on a ratio scale (*Source*: Maddison Project Database 2023). 
+The figure above represents GDP per capita in Indonesia on a ratio scale. 
 
 a. Based on this figure, how many years did it take approximately for GDP per capita to double in Indonesia over this period?
-b. Using your answer in a., provide an approximation for the trend growth rate. 
+a. Using your answer in a., provide an approximation for the average annual growth rate using the rule of 70. 
 
-**Exercise 9**
+**Question 9**
 
-*The rule of 70 gives the number of years it would take for a variable to double given their annual growth rate. But we could derive similar formulas to calculate the number of years it would take for a variable to triple, quadruple, ..., given their trend annual growth rate.*
+*The rule of 70 gives the number of years it would take for a variable to double given their annual growth rate. But we could derive similar formulas to calculate the number of years it would take for a variable to triple, quadruple, ..., given their average annual growth rate.*
 
 a. Derive an expression for the number of years it would take for a variable to be multiplied by 6 given an annual growth rate $\%g$. *Hint*: use the following approximation $\ln{(1+g)} \approx g$ (for small g).
 
@@ -732,7 +736,10 @@ Discuss the best strategy to estimate the trend growth rate in both cases.
 Table with GDP level and trend growth rate of GDP since the 2007-2008 financial crisis in the UK, France, Germany and Italy. Discuss the economic significance of the low trend rates of GDP growth in the UK over the last decade in the long-run.
 ```
 
-**Exercise 10**
+
+
+```{r questions-draft, eval=FALSE, include=FALSE}
+**Question 10**
 
 *In this chapter, we have discussed the implications of the compounding effects of growth rates on changes in the level of GDP in the long-run. Interest rates may also have compounding effects on the levels of financial wealth.*
 
@@ -741,43 +748,45 @@ Assume two countries A and country B where households start with initial wealth 
 a. Calculate the wealth of households in both countries after 5 years, 10 years, 20 years and 30 years.
 b. Compare household wealth in the two countries at the end of each period. What do you observe?
 
-## Taking stock using Large Language Models (LLMs) {-}
+```
+
+
+## Exercises with a large language model (LLMs)
 
 *We recommend using Microsoft Copilot for Edge browser, which is free of charge to all students through the University Microsoft license, to do these exercises.*
 
-Submit the following prompts to Microsoft Copilot before the class in week 14 and make notes of the answers to the bullet points. These answers will be discussed in class.
+The compounding effects  of growth is an important concept discussed in this chapter. This exercise helps you explore the concept further using a large language model such as Copilot. 
+
+Submit the following prompts to Microsoft Copilot before the class in week 14 and note the following in each case (if relevant):
+
+- Does the answer address the question?
+- Check that the numerical illustrations and the reasoning are correct.
+- What insight did you learn from this answer if any?
+- Is there something inaccurate in the reasoning or that you do not understand? If yes, can you write a follow-up prompt to address it?
+- Which element of the prompt improves the quality of the answer?
+- What can you say about the sources used by Copilot?
 
 **Prompt 1: Explaining a concept using analogies**
 
 *"Provide a clear, multiple paragraph explanation of compounding effects in economics addressed to a university student using specific examples and give me five analogies I can use to understand the concept in different ways."*
 
-- Does the answer address the question?
-- What insight did you learn from this answer if any?
-- Is there something inaccurate in the reasoning or that you do not understand? If yes, can you write a follow-up prompt to address it?
-- Which element of the prompt improves the quality of the answer?
 
 **Prompt 2: Explaining a concept using numerical and real world examples**
 
 *"Provide a clear one paragraph explanation of compounding effects applied to GDP growth addressed to a university student. Provide three varied numerical examples, including the description of a precise scenario and an explanation of how compounding effects arise in each context. Then provide three accurate real world examples, using real data (provide the source of the data) and explain the economic significance of compounding effects in each case."*
-
-- Check that the numerical illustrations and the reasoning are correct.
-- What insight did you learn from this answer if any?
-- Is there something inaccurate in the reasoning or that you do not understand? If yes, can you write a follow-up prompt to address it?
-- What can you say about the sources used by Copilot?
-- Which element of the prompt improves the quality of the answer?
 
 
 **Prompt 3: Exploring the relevance of a concept beyond what has been explicitly taught**
 
 *"When confronted with new and complex concepts, adding many and varied examples helps me better understand those concepts. Can you provide four varied examples of compounding effects in economics beyond those related to economic growth including the description of a precise scenario, an explanation of how it gives rise to compounding effects and a detailed numerical example of how compounding effects work in each context."*
 
+```{r prompt-draft, eval=FALSE, include=FALSE}
+
 Alternatively, to explore how a concept applies to a specific topic of interest (eg environment, inequality, macroeconomic policy, ...)
 
 *"Can you provide four different examples of compounding effects specifically related to the long-run dynamics of environmental phenomena / inequality. Include the description of a precise scenario, an explanation of how it gives rise to compounding effects and a detailed numerical example of how compounding effects work in each context."*
 
-- Check that the numerical illustrations and the reasoning are correct.
-- What insight did you learn from this answer if any?
-- Can you ask a follow-up question (eg request more detail, add policy implications, ...)
+```
 
 **Prompt 4: Create a quiz to test your understanding or the understanding of your peers**
 
@@ -788,6 +797,8 @@ Alternatively, to explore how a concept applies to a specific topic of interest 
 - Select the best three MCQs and propose them to one of your peers.
 - Once you are confident you can answer all questions, ask for more difficult questions in a follow-up prompt (eg by adopting the persona of an researcher in academia).
 
+
+```{r Practice-draft, eval=FALSE, include=FALSE}
 
 ## Practice questions in Excel {-}
 
@@ -869,6 +880,10 @@ Plot UK real GDP using data from the Maddison Project Database since 1252 on a n
 1. Repeat the same exercise for the US. Compare the trends in labour productivity growth in both countries.
 
 1. (Discussion question) What are the implications of the recent trends in labour productivity growth for real wages growth? How do these trends in labour productivity growth differ from those of GDP per capita?
+
+
+```
+
 
 
 ```{r Discussion_section, eval=FALSE, include=FALSE}

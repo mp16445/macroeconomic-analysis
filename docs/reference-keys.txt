@@ -11,7 +11,6 @@ fig:mpdplot5
 fig:mpdplot2
 fig:mpdplot6
 tab:mpd2023Tab
-fig:mpdplot8c
 LRG
 introduction
 growth-rates
@@ -27,8 +26,10 @@ logarithm-plots
 logarithmic-ratio-scales
 rule-of-70
 growth-in-the-united-kingdom-and-the-united-states
+questions
+exercises-with-a-large-language-model-llms
 GA
 labour-productivity-and-population-growth
 capital-accumulation-and-total-factor-productivity-growth
-exercises-1
+exercises
 practice-questions

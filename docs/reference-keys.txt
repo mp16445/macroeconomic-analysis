@@ -29,7 +29,8 @@ growth-in-the-united-kingdom-and-the-united-states
 questions
 exercises-with-a-large-language-model-llms
 GA
-labour-productivity-and-population-growth
-capital-accumulation-and-total-factor-productivity-growth
-exercises
-practice-questions
+introduction-1
+growth-accounting-equation
+case-study-south-korea-1953-2019
+exercise-week-14
+appendix-growth-accounting-derivation

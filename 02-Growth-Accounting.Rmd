@@ -127,7 +127,7 @@ In order to perform these practice questions, you need to work on a laptop or a 
 ### Part 2: Describing long-run trends in productivity {-}
 
 
-1. Create a new Excel sheet with the following variables for the **United Kingdom**: "rgdpna", "rnna", "emp", "avh" and "labsh". Check the variable definitions in the "Legend" sheet.
+1. Create a new Excel sheet with the following variables for the **United Kingdom**: "rgdpna", "rnna", "pop", "emp", "avh" and "labsh". Check the variable definitions in the "Legend" sheet.
 
 1. In a new column, create a new variable for labour productivity labelled "y" using "rgdpna", "emp" and "avh". Then create the (natural) logarithm of this variable, labelled "lny". 
 
@@ -192,12 +192,12 @@ Based on your results in the previous part, investigate the possible underlying 
 
 These underlying causes may refer to differences in economic or political context (eg the UK faced higher reconstruction costs than the US in 1950), differences in household behaviour, differences in policies, ...
 
-**Can you identify one or two arguments to explain some differences in labour productivity growth trends you have identified in Part 3 between the UK and the UK? Can you provide one or two academic sources providing support to these arguments?**
+**Can you identify one or two arguments to explain some differences in labour productivity growth trends you have identified in Part 3 between the United Kingdom and the United States? Can you provide one or two academic sources providing support to these arguments?**
 
 To address this question, you may use these two resources:
 
 1. The **university library** contains the most extensive database of academic papers at your disposal and more resources. Click on this [link](https://bristol.libguides.com/economics) to start exploring.
-1. You may use **Copilot** as a starting point. A useful prompt: "Can you provide 5 differences between the United Kingdom and the United States which may be related to the wider economic context, policies or the behaviour of households which may explain the lower capital accumulation of capital stock per worker in the US relative to the UK between 1950 and 1973? Can you provide detailed academic sources in support of each argument you make in this answer?" Retain only the most promising arguments and check the sources!
+1. You may use **Copilot** as a starting point. A useful prompt: "Can you provide 5 differences between the United Kingdom and the United States which may be related to the wider economic context, policies or the behaviour of households and firms which may explain the lower capital accumulation of capital stock per worker in the US relative to the UK between 1950 and 1973? Can you provide detailed academic sources in support of each argument you make in this answer?" Retain only the most promising arguments and check the sources!
 
 
 ```{r appendix, eval=FALSE, include=FALSE}

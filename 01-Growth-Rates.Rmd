@@ -689,7 +689,7 @@ a. Using your answer in a., provide an approximation for the average annual grow
 
 a. Derive an expression for the number of years it would take for a variable to be multiplied by 6 given an annual growth rate $\%g$. *Hint*: use the following approximation $\ln{(1+g)} \approx g$ (for small g).
 
-a. In the introduction we saw that GDP per capita in the UK and Nigeria have been multiplied by about 6 between 1885 and 2022. Using the expression derived in a., find an estimate of the trend annual growth rate in the two countries over this period. 
+a. In the introduction we saw that GDP per capita in the UK and Nigeria have been multiplied by about 6 between 1885 and 2022. Using the expression derived in a., find an estimate of the average annual growth rate in the two countries over this period. 
 
 
 ```{r ex-draft, eval=FALSE, echo=FALSE}
@@ -756,7 +756,7 @@ b. Compare household wealth in the two countries at the end of each period. What
 
 *Although any large language model (LLM) can be used to do this exercise, we recommend using Microsoft Copilot for Edge browser, which is free of charge to all students through the University Microsoft license, to do these exercises.*
 
-The compounding effects  of growth is an important concept discussed in this chapter. This exercise helps you explore the concept further using a large language model such as Copilot. 
+The compounding effects  of growth is an important concept discussed in this chapter. This exercise helps you explore this concept further using Copilot. 
 
 Submit the following prompts to Microsoft Copilot before the class in week 14 and note the following in each case (if relevant):
 

@@ -636,7 +636,7 @@ mpd2023 <- read_csv("Data/mpd2023.csv",show_col_types = FALSE) %>%
   rename(t = "year") 
 
 dygraph(mpd2023) %>% 
-  dySeries("lny", label = " Log(GDP per capita)") %>%
+  dySeries("lny", label = " Ln(GDP per capita)") %>%
   dyLegend(show = "follow")%>%
   dyAxis("x", drawGrid = FALSE) %>%
   dyAxis("y", label = "Log (GDP per capita)") %>%
@@ -752,9 +752,9 @@ b. Compare household wealth in the two countries at the end of each period. What
 ```
 
 
-## Exercises with a large language model (LLMs)
+## Exercises with Copilot
 
-*We recommend using Microsoft Copilot for Edge browser, which is free of charge to all students through the University Microsoft license, to do these exercises.*
+*Although any large language model (LLM) can be used to do this exercise, we recommend using Microsoft Copilot for Edge browser, which is free of charge to all students through the University Microsoft license, to do these exercises.*
 
 The compounding effects  of growth is an important concept discussed in this chapter. This exercise helps you explore the concept further using a large language model such as Copilot. 
 

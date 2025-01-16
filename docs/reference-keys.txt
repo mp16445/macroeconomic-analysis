@@ -27,7 +27,7 @@ logarithmic-ratio-scales
 rule-of-70
 growth-in-the-united-kingdom-and-the-united-states
 questions
-exercises-with-a-large-language-model-llms
+exercises-with-copilot
 GA
 introduction-1
 growth-accounting-equation

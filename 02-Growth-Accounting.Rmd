@@ -159,7 +159,7 @@ where $g_y$ is the growth rate of labour productivity, $g_k$ is the growth rate 
 
 In Excel, construct a table as in the Excel tutorial - Section 7.4 containing the full sample period and each subperiod identified in Part 2 in each row.
 
-*Hint*: use the compound growth rate formula, $g_{x,t-s} = \left(\frac{x_t}{x_s}\right)^{\frac{1}{s-t}}-1$, to calculate average growth rates between any two periods $t$ and $s$ in this exercise.
+*Hint*: use the compound growth rate formula, $g_{x,t-s} = \left(\frac{x_s}{x_t}\right)^{\frac{1}{s-t}}-1$, to calculate average growth rates between any two periods $t$ and $s$ in this exercise.
 
 
 1. Column 1: calculate the average annual growth rate of UK labour productivity ($g_y$) over the full sample period and over each subperiod. 

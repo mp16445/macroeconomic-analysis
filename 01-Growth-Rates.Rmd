@@ -581,7 +581,7 @@ Assume GDP per capita grows by 10% every year and that it starts at an initial l
  a. 10%
  a. 100%
  a. 171%
- a. 259%
+ a. 159%
  
 
 **Question 5**

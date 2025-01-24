@@ -1,0 +1,353 @@
+# Life-cycle model {#LCM}
+
+-------------------------------------------------------------------------------------
+
+By the end of this chapter, you should be able to:
+
+- Describe the simple life-cycle model without government: firms' and households' objectives, the production technology and resource constraints.  
+- Understand how to solve for the equilibrium **and** the steady state values of the model and the differences between these two concepts.
+- Analyse the effect of shocks to the *exogenous* parameters of the model on key *endogenous* variables on the steady state and along the transition path. 
+- Simulate the model to analyse the effect of shocks (policies, events) and evaluate the ability of the model to explain real world observations.
+
+-------------------------------------------------------------------------------------
+
+## Introduction
+
+The aim of this chapter is not to provide a detailed explanation of the life-cycle model, but to summarize the key elements of the model and the key steps that explain the solution of the model. A good understanding of these is required to perform model simulations. The key aim of this chapter is therefore to give you the tools to understand how model simulations work and how they can be used to analyse economic events and confront the predictions of the theory to the data. 
+
+You can find a more detailed discussion of the model in the main reference for this part of the course:
+
+Alan J. Auerbach and Laurence J. Kotlikoff. (1998). *Macroeconomics. An integrated approach*, 2nd Ed., The MIT Press: **Chapters 1, 2 & 3.**
+
+## Model setup
+
+
+### The markets for goods, capital and labour
+
+Assume an economy where a single **output good** is produced by **firms**. **Households** purchase this good in the **good market** and decide either to consume it or to save it, in which case it becomes instantaneously a capital/investment good. This output good is also the unit of measurement in this economy, so its price is normalised to one ($P=1$) and all the other prices (wage and interest rate) are expressed in units of output good.
+
+```{r LC_MODEL_SETUP, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+
+knitr::include_graphics(rep("images/LC_MODEL_SETUP.png"))
+
+```
+
+Firms produce the output good using two factor inputs: capital and labour. The price of renting the capital stock is the interest rate (or rental rate) $r$ and the price of hiring labour is the wage $w$. Firms hire labour and capital from households in the market for capital and labour. 
+
+We assume that the markets for capital and labour are **perfectly competitive** so that both firms and households take the wage and the interest rate as given when making their labour and capital demand and supply decisions. In other words, individual firms and households do not have the power to affect these prices. Such a situation may arise because there are infinitely many firms and households competing for jobs and workers or because of free market entry.
+
+
+### Production technology
+
+The aggregate production function is assumed to take the form of the **Cobb-Douglas production function**: 
+$$ Y_t =A K_t^{\beta}L_t^{1-\beta} \quad [\text{Total output}]$$
+where $Y_t$ is total output, $K_t$ is the total capital stock, $L$ is the total amount of labour input (number of workers or hours) $A$ is total factor productivity (or multifactor productivity) and $\beta$ is the elasticity of output with respect to capital (the elasticity of output with respect to labour is $1-\beta$). 
+
+This production function exhibits two important properties:
+
+**Property 1: Constant returns to scale**: Increasing *both* capital and labour by the same percentage leads to an equal percentage change in output.  
+$$ A(\lambda K_t)^\beta(\lambda L_t)^{1-\beta}= \lambda A K_t^{\beta}L_t^{1-\beta}  $$
+
+**Property 2: Diminishing returns to capital and labour**:
+$$MPK= \frac{\partial Y}{\partial K} = \beta \left(\frac{L_t}{K_t}\right)^{1-\beta} $$
+The **marginal product of capital** is the amount by which total output increases when the capital stock increases by one marginal unit, holding constant the amount of labour input. It is decreasing with the size of the capital stock and increasing with the amount of labour input. In other words, the higher the level of the capital stock, the lower its return and the higher the labour input the higher the marginal productivity of capital. 
+
+$$MPL= \frac{\partial Y}{\partial L} = (1-\beta) \left(\frac{K_t}{L_t}\right)^{\beta} $$
+The **marginal product of labour** is the amount by which total output increases when the labour input increases by one marginal unit, holding constant the amount of capital. It is decreasing with the ampunt of labour input used and increasing with the level of the capital stock. In other words, the more labour is used in production, the lower its return and the higher the capital stock, the higher the marginal productivity of labour. 
+
+Because our focus will be on **labour productivity**, we will expressed the Cobb-Douglas production function in *intensive form*:
+$$ y_t =A k_t^{\beta} \quad [\text{Labour productivity}]$$
+where $y = \frac{Y}{L}$ is labour productivity (output per worker/hour) and $k= \frac{K}{L}$ is the capital-labour ratio (the amount of capital per unit of labour used). 
+
+
+## Firms' demand for capital and labour
+
+In each periods, firms choose the amount of capital and labour employed that maximises their profits, taking as given $\bar{w}_t$ and $\bar{r}_t$ (perfectly competitive markets).
+
+Firms' profit maximisation problem:
+$$\max_{L,K} \pi = PY_t - \bar{w}_tL_t-\bar{r}_tK_t$$
+where $Py=Y$ is total revenue, $\bar{w}L$ is total labour costs and $\bar{r}K$ is total capital costs, 
+
+**Firms' optimal demand for capital and labour satisfy the condition that marginal revenue is equal to marginal cost**: $MR = MC$ 
+
+**Firms' demand for capital**:
+$$MPK= \frac{\partial Y}{\partial K} =\beta Ak_t^{\beta -1} = \bar{r}_t$$
+```{r CAPITAL_DEMAND, echo=FALSE, out.width="50%", out.height="50%", fig.align='center'}
+
+knitr::include_graphics(rep("images/mpk.png"))
+
+```
+
+Firms demand capital up to the point where the marginal product of capital is just equal to the market interest rate. Assuming the interest rate is equal to $\bar{r}_2$, the optimal demand for capital is given by $K_2$. To see why any other amount of capital stock would not be optimal, let's consider two cases:
+
+- A higher capital stock would imply a lower marginal return to capital (due to diminishing returns) than the interest rate $\bar{r}_2$, so firms would be making a loss. Firms would be able to reduce their loss by reducing their capital stock.
+- A lower capital stock would imply a higher marginal return to capital (due to diminishing returns) than the interest rate $\bar{r}_2$, so firms would be making a positive profit. Firms would be able to increase their profit by increasing their capital stock by a marginal amount. 
+
+**Firms' demand for labour**:
+$$MPL= \frac{\partial Y}{\partial L} = (1-\beta)A k_t^{\beta} = \bar{w}_t $$
+```{r Labour_DEMAND, echo=FALSE, out.width="50%", out.height="50%", fig.align='center'}
+
+knitr::include_graphics(rep("images/mpl.png"))
+
+```
+
+Firms demand capital up to the point where the marginal product of labour is just equal to the market wage. Assuming the wgae is equal to $\bar{w}_2$, the optimal demand for labour is given by $L_2$. Following the same reasoning as for capital, it is possible to show that any other amount of labour would not be optimal.
+
+
+
+## Households' supply for capital and labour
+
+### Setup
+
+We assume that households live for 2 periods (about 30 years each), so at any point in time they are either "young" or "old". Households who are young in one period become old in the second period, while a new generation of young households arrives. The diagram below shows how the generations overlap over time. 
+
+```{r LC_DIAGRAM, echo=FALSE, fig.align='center'}
+
+knitr::include_graphics(rep("images/LC_DIAGRAM.png"))
+
+```
+
+We further assume that there is no population growth, and at any point in time there are $N$ members of the young generation and $N$ members of the old generation. 
+
+**"Young" households** start life with zero assets, work full-time and earn labour income $w$. At the end of the first period they decide how much of their income to consume, and how much to save. When they save they accumulate the assets that they will hold at the beginning of the net period. 
+
+*More formally, "young" households* supply labour, $N$, earn the market wage $\bar{w}$, consume $c_{y,t}$ and accumulate assets $a_{t+1}$. This gives us the **total supply of labour** in the economy:
+$$N  \quad [\text{Labour supply}]$$
+
+**"Old" households** do not work (they are retired). At the beginning of the period, they invest their assets in their own firms, employ young households to produce output, pay young households wage payments and keep the rest as capital income. At the end of the period they consume all their assets and capital income and end life with zero assets.
+
+*More formally, "old" households*, invest their assets $a_{t+1}$ as capital and earn capital income $\bar{r}_{t+1}a_{t+1}$ and consume all their capital and income at the end of the period, $c_{o,t+1}$. This gives us the **total supply of capital** in the economy as the sum of all the assets accumulated by the old generation at the end of the previous period:
+$$K_{t+1} = Na_{t+1}  \quad [\text{Capital supply}]$$
+
+
+### Households' problem
+
+Because there is no uncertainty in the model, households decide on their consumption levels for both periods of their lives at the beginning of their lifetime. More precisely, households' choices of how much to consume when young and when old maximise their **lifetime utility** subject to their **intertemporal budget constraint**.
+
+### The intertemporal budget constraint
+
+Young households' budget constraint:
+$$ c_{y,t} + a_{t+1} =  w_t$$
+Old households' budget constraint:
+$$c_{o,t+1}=  (1+r_{t+1})a_{t+1} \quad [\text{Old household consumption}]$$
+Combining the two, we obtain the **intertemporal budget constraint**:
+$$ c_{y,t} + \frac{c_{o,t+1}}{1+r_{t+1}}=  w_t $$
+which states that the present value of consumption when young and old (left-hand side) should be equal to the present value of lifetime income (right-hand side), where $\frac{1}{1+r_{t+1}}$ is the price of consumption when old at the beginning of life. 
+
+```{r LT_BC, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+
+knitr::include_graphics(rep("images/LT_BC.png"))
+
+```
+
+The intertemporal budget constraint represents the set of combinations of consumption when young and when old that are achievable, for given $w$ and $r$. The diagram makes it clear that the rate at which consumption when young can be traded for consumption when old is $1+r_{t+1}$.
+
+### Lifetime utility
+
+Households preferences for consumption over their lifetime takes the form of a Cobb-Douglas utility function:
+$$u_t = c_{y,t}^{\alpha} c_{o,t+1}^{1-\alpha} $$
+where $u_t$ is the lifetime utility of a typical member of the generation born at time $t$ and $0<\alpha<1$ is the key preference parameter, assumed to be constant and capturing how much households value consumption when young relative to consumption when old. Lifetime utility is also a measure of the **welfare** of each generation, which depends only on their consumption levels in both periods here.  
+
+**Important properties of this utility function**:
+
+- Utility is increasing in both consumption when young and consumption when old.
+- **Diminishing marginal utility** of consumption: as seen on the diagram, the marginal rate of substitution between $c_{y,t}$ and $c_{o,t+1}$, ie the rate at which households would be willing to substitute consumption when young for consumption when old is decreasing. 
+
+```{r IC, echo=FALSE, out.width="65%", out.height="65%", fig.align='center'}
+
+knitr::include_graphics(rep("images/IC2.png"))
+
+```
+
+
+### Optimal consumption and saving decision
+
+Households' optimal consumption choices satisfies:
+$$ MRS = -\frac{MU{cy,t}}{MU{co,t+1}} = - (1+r_{t+1})  \quad [\text{Tangency condition}]$$
+$$ c_{y,t} + \frac{c_{o,t+1}}{1+r_{t+1}}=  w_t  \quad [\text{Intertemporal budget constraint}]$$
+
+```{r OC, echo=FALSE, out.width="65%", out.height="65%", fig.align='center'}
+
+knitr::include_graphics(rep("images/OC.png"))
+
+```
+
+Solving for $c_{y,t}$ and $a_{t+1}$ yields: 
+
+$$c_{y,t} = \alpha w_t \quad [\text{Young household consumption}]$$
+
+
+
+$$a_{t+1}= (1- \alpha) w_t \quad [\text{Young household saving = Assets when old}]$$
+
+### Saving and investment
+
+So far we have solved for the saving of "young" households separately. We turn now to the measure of national saving.
+
+**Saving of the "young" households** at time $t$: 
+$$ S_{y,t} =  Na_{t+1} $$
+**Saving of the "old" households** at time $t$: 
+$$ S_{o,t} =  r_tNa_t - N(1+r_t)a_t = - Na_t $$
+where the first term ($r_tNa_t$) is total capital income earned by all the members of the "old" generation at time $t$ and the second term ($N(1+r_t)a_t$) is the total consumption by the members of the "old" generation at time $t$.
+
+National saving ($S_t$) is equal to the sum of the saving of the young and old households at any given point in time:
+$$S_t = S_{y,t} + S_{o,t} = Na_{t+1} - Na_t  = K_{t+1} - K_t = I_t$$
+where investment ($I_t$) is equal to the change in the capital stock between the current period and the next ($K_{t+1} - K_t$) assuming capital does not depreciates. 
+
+At any point in time, national investment is equal to national saving. Given that output must be equal to the sum of consumption and investment ($Y_t=C_t+I_t$), this is equivalent to saying that the good market is in equilibrium. 
+
+
+## Equilibrium
+
+Having discussed the supply and demand sides of the economy, we are now in a position to solve for the equilibrium values of the key variables of our model, labour productivity, the capital-labour ratio, the wage, the interest and consumption when young and when old. 
+
+
+### Equilibrium in the market for capital and labour
+
+Equilibrium in the labour and capital markets is achieved when demand is equal to supply. 
+
+```{r KLE, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+
+knitr::include_graphics(rep("images/KLE.png"))
+
+```
+
+The demand for labour is decreasing in the wage whereas the supply of labour is fixed ($N$) and independent of the wage. Therefore, **equilibrium labour input** ($L_t$) is equal to the fixed labour supply:
+$$L_t = N  \quad [\text{Equilibrium labour}]$$
+and the **equilibrium wage** is equal to the marginal product of labour at this equilibrium value of labour: 
+$$MPL= (1-\beta)A k_t^{\beta} = w_t \quad [\text{Equilibrium wage}]$$
+Equilibrium wage is determined by the current level of the capital-labour ratio $k_t$ and TFP $A$. The higher the capital-labour ratio or TFP, the more productive is an additional unit of labour input and the higher the wage. 
+
+The demand for capital is decreasing in the interest rate whereas the current supply of capital per worker is independent of the interest rate and is determined by the savings of the "old" generation in the previous period, which in turns is determined by the wage received by the old generation in the previous period: 
+$$K_t = Na_t = N(1-\alpha)w_{t-1} \quad [\text{Equilibrium capital stock}]$$ 
+Therefore, the **equilibrium capital input** ($K_t$) is equal to its supply of capital at the beginning of the current period, and similarly for the **equilibrium capital-labour ratio**:
+$$k_t = (1-\alpha)w_{t-1} \quad [\text{Equilibrium capital-labour ratio}]$$
+The **equilibrium interest rate** is determined by the current level of the capital-labour ratio $k_t$ and TFP $A$.
+$$MPK= \beta Ak_t^{\beta -1} = r_t \quad [\text{Equilibrium interest rate}]$$
+
+### The transition equation
+
+**Derivation**
+
+Because output and labour productivity depend on the capital stock ($K$), labour ($L$) and total factor productivity ($A$) and the last two are fixed parameters, only changes in the capital stock can explain changes in growth in this model economy. 
+
+The **transition equation** is the key equilibrium condition of this model. The intuition for this equation is provided by the discussion in the previous section. What determines the capital stock in each period?
+
+The capital-labour ratio at time $t+1$ ($k_{t+1}$) is determined by the assets accumulated by households of the "old" generation in the previous period ($a_{t+1}$), which was determined by the wage they earned in the previous period ($w_t$), which in turn was determined by the previous period capital-labour ratio ($k_t$). 
+
+The transition equation makes this link between current and future capital-labour ratio appear more clearly:  
+$$k_{t+1} = a_{t+1} =(1-\alpha)w_t = (1-\alpha)(1-\beta)A k_t^{\beta} $$
+The equilibrium value of the capital-labour ratio at any point in time $t+1$ depends on the fixed parameters $\alpha$, $\beta$ and $A$ and on its value at time $t$. In order to solve for the equilibrium values of $k_t$ at each point in time, $t=0, 1, 2, 3, ...$, we also need to know its initial value $k_0$.
+
+**The transition path diagram**
+
+```{r TPD1, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+
+knitr::include_graphics(rep("images/TPD1.png"))
+
+```
+
+The transition path diagram represents the equilibrium values of $k_{t+1}$ for all the possible values that can be taken by $k_t$. The straight line is a 45-degree line whereby $k_{t+1}=k_t$. 
+
+To understand the dynamics of the equilibrium capital ratio, we can trace its time path starting with any initial value $k_0$. The diagram represents one such time path. Starting from the initial value $k_0$, the capital stock increases at $t=1$ as the transition equation is above the 45-degree line. In the next period, starting with an initial value $k_1$, the capital stock keeps increasing as the transition equation is still above the 45-degree line. This continues until the capital ratio reaches the value $\bar{k}$, at which point it remains constant. 
+
+It is possible to show that starting at an initial value $k_0$ above $\bar{k}$ would lead it to converge down towards $\bar{k}$ over time. $\bar{k}$ is the steady state value of the capital stock. It represents the equilibrium value of the capital ratio in the long-run.
+
+Why is the capital-labour ratio converging to a constant value? Because the capital stock depends on the wage, and as the capital stock increases, the wage increases by less and less each time (due to diminishing returns to capital), leading to smaller increases in savings, assets and the capital stock.  
+
+
+### The steady state
+
+
+## Analysis of shocks
+
+
+## Exercises with Copilot (Week 15)
+
+*Although any large language model (LLM) can be used to do this exercise, we recommend using Microsoft Copilot for Edge browser, which is free of charge to all students through the University Microsoft license, to do these exercises.*
+
+The notions of **equilibrium** and **steady state** are important concepts discussed in this chapter. This exercise helps you explore these two concepts further using Copilot. 
+
+**Submit the following prompts to Microsoft Copilot and ask yourself the following in each case (if relevant)**:
+
+- Does the answer address the question?
+- What insight did you learn from this answer if any?
+- Is there something inaccurate in the reasoning or that you do not understand? If yes, can you write a follow-up prompt to address it?
+- Which element of the prompt improves the quality of the answer?
+
+**Prompt 1: Explaining and comparing the concepts **
+
+*"Provide a clear, multiple paragraph explanation addressed to a second-year university student of the two concepts of equilibrium and the steady state in macroeconomic models such as the life-cycle growth model. First, explain each concept separately. Then explain the key differences between them."*
+
+```{r Copilot-draft, eval=FALSE, include=FALSE}
+
+**Prompt 2: Explaining the concepts taking stock of previous learning**
+
+*"I am a second-year Economics student at the university. When confronted with new and complex concepts, using analogies taken from what I learnt previously helps me understand these concepts faster. Give me 3 examples of topics I have learnt in first-year either in microeconomics or macroeconomics where the concepts of equilibrium and steady are relevant. Explain which concept should be the most familiar and which should be relatively new to me and why."*
+
+**Prompt 2: Explaining concepts using analogies**
+
+*"When confronted with new and complex concepts, using analogies taken from situations faced by me, a second-year university student in Economics, in my everyday life helps me understand these concepts faster. Give me five analogies I can use to understand the two concepts of equilibrium and steady state in macroeconomic models such as the life-cycle growth model in different ways."*
+
+```
+
+**Prompt 2: Exploring the relevance of a concept beyond Economics**
+
+*"Provide the name of three disciplines beyond Economics where the two concepts of equilibrium and steady state are commonly used. For each discipline, can you provide one example of a problem to which these concepts are applied. Explain these examples as if I know nothing of the discipline."*
+
+
+**Prompt 3: Create a quiz to test your understanding or the understanding of your peers**
+
+*"Create a diagnostic quiz on equilibrium and steady state concepts in the life-cycle growth model for a second-year university student. Look up the topic and construct five highly relevant multiple-choice questions that go beyond just definitions. Multiple choice questions should include plausible, competitive alternate responses and should not include an "all of the above option." At the end of the quiz, you will provide an answer key and explain the right answer."*
+
+- Attempt the test
+- Evaluate the relevance and accuracy of the question.
+- Select the best three MCQs and propose them to one of your peers.
+- Once you are confident you can answer all questions, ask for more difficult questions in a follow-up prompt (eg by adopting the persona of an researcher in academia).
+
+
+## Exercise: Model simulations (Week 15)
+
+This exercise guides you through the calculation of the equilibrium and steady state values of a model economy. It then asks you to perform some simple analyses of shocks to the model and produce model predictions that are easily comparable to real world observations (log plots and growth accounting results).
+
+*In order to perform these practice questions, you will need to work on a laptop or a desktop computer (using a mouse), **not** a tablet. You also need to have installed Excel on your device (you may not be able to perform all the operations using the web version).*
+
+
+### Part 1: Preliminaries{-}
+
+- Read the chapter section above to refresh your memory of the life-cycle model.
+- Download the "**LIFE_CYCLE_MODEL_SIMULATION**" Excel spreadsheet in the Week 15 class folder. Check that you understand what the parameters / variables in each column represent in the basic description of the model.
+- Read Auerbach and Kotlikoff, Chapter 3, pp 62-64 ("Tracking the economy's growth path"). The first part of this exercise asks you to replicate the simulation results discussed in this section.  
+
+### Part 2: Tracking the economy's growth path  {-}
+
+To complete this part, go to "**Part 2**" sheet.
+
+In this part, we will assume $\beta=0.3$, $\alpha=0.5$, $A=10$, $N=100$ and $k_0=1.5$. 
+
+1. Input the values for the exogenous parameters of the model ($\beta$, $\alpha$, $A$, $N$ and $k_0$) into the blue cells.
+1. Calculate the equilibrium value of $k_1$ in cell F8.
+1. Calculate the equilibrium values of the capital-labour ratio $k$ in all subsequent periods (Column F).
+1. Calculate the equilibrium values of the remaining variables of the model in period 1 and all subsequent periods (Columns G to Q).
+1. Calculate the (natural) logarithm of $k$ and $y$ in columns R and S and make a plot (only plot the first 10 periods). Calculate the growth rates of labour productivity and of the capital labour ratio (columns T and U). What happens to the levels and growth rates of the capital-labour ratio and labour productivity over time?
+1. On a piece of paper, draw a transition diagram to explain the time path of the capital-labour ratio in this simulation. Indicate on the diagram the initial and steady state values of $k$ in this example. How does the life-cycle model explain the change in the growth rate of $k$ over time in this example?  
+1. In the growth accounting box (top), decompose the growth rate of labour productivity into the contribution of capital accumulation and the contribution of TFP growth between period 0 and period 10. How much of the growth in labour productivity is contributed by capital accumulation in this simulation?
+
+
+### Part 3: Analysis of shocks  {-}
+
+To complete this part, go to "**Part 3**" sheet.
+
+In this part, we will analyse the effects of two exogenous shocks, one to a "capital accumulation" parameter ($\alpha$) and one to the TFP parameter ($A$).   
+
+In this part, we will assume that **initially** (period 0 to 10), $\beta=0.3$, $\alpha=0.5$, $A=10$, $N=100$ and $k_0=5.987$.
+
+1. Input the values for the exogenous parameters of the model ($\beta$, $\alpha$, $A$, $N$ and $k_0$) into the blue cells and calculate the values all the variables in periods 0 to 10. How would you characterise the state of the economy in this period?
+1. Assume that in period 10, the TFP parameter $A$ increases permanently to 20 and all the other parameters remain the same. Input the new parameter values in the orange cells and calculate the values of all the variables between period 10 and 30. 
+1. Calculate the (natural) logarithm of $k$ and $y$ in columns R and S and make a plot (only plot the first 10 periods). Calculate the growth rates of labour productivity and of the capital labour ratio (columns T and U). What happens to the levels and growth rates of the capital-labour ratio and labour productivity after period 10?
+1. On a piece of paper, draw a transition diagram to explain the time path of the capital-labour ratio in this simulation. Indicate on the diagram the initial and final steady state values of $k$ in this example. How does the life-cycle model explain the change in the growth rates of $k$ and $y$ over time in this example?  
+1. In the growth accounting box (top), decompose the growth rate of labour productivity into the contribution of capital accumulation and the contribution of TFP growth between period 10 and period 20. How much of the growth in labour productivity is contributed by capital accumulation and by TFP growth following this shock?
+1. Repeat the same analysis (create a new sheet) assuming that $\alpha$ increases permanently to $0.7$ and all the other parameters remain the same.
+
+
+

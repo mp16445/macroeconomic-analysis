@@ -199,6 +199,35 @@ To address this question, you may use these two resources:
 1. The **university library** contains the most extensive database of academic papers at your disposal and more resources. Click on this [link](https://bristol.libguides.com/economics) to start exploring.
 1. You may use **Copilot** as a starting point. A useful prompt: "Can you provide 5 differences between the United Kingdom and the United States which may be related to the wider economic context, policies or the behaviour of households and firms which may explain the lower capital accumulation of capital stock per worker in the US relative to the UK between 1950 and 1973? Can you provide detailed academic sources in support of each argument you make in this answer?" Retain only the most promising arguments and check the sources!
 
+## Exercise: Formative assessment (Week 15)
+
+### Part 1: Preliminaries{-}
+
+Before attempting this exercise:
+
+- Check your team allocation in the **Group formative assessment** folder on Blackboard --> Learning Materials.
+- Agree with your team on the **pair of countries** you want to focus in your formative assessment. Do not choose randomly a pair of countries. Here are some ideas to help guide your choice: 
+   1. Select a pair of countries satisfying the conditions stated in *Country selection* (Formative brief).  
+   1.	Select a pair of countries which you think may offer an interesting contrast (different policies, political institutions, economic success, …) but are similar enough that they may lead to meaningful comparisons (similar sizes, institutions, shared initial or final level of labour productivity, shocks or external events, region, economic specialisation, shared past …). 
+
+
+### Part 2: Growth accounting{-}
+
+Each team member should do this on their own:
+
+1. Make two plots describing labour productivity growth in each countries. Identify 2 to 4 subperiods. Produce growth accounting results for the two countries over the full sample period and the *same* subperiods. 
+1. Compare the results of your analysis for the two countries. List the similarities and differences in the growth trends and growth accounting results. Does this comparison suggest some interesting questions, ideas, differences worthy of investigation? 
+
+
+### Part 3: Sources of changes in labour productivity {-}
+
+**_Can you identify one or two arguments to explain some differences in labour productivity growth trends you have identified in Part 2 between your two countries? Can you provide one or two academic sources providing support to these arguments?_**
+
+To address this question, you may use these two resources:
+
+1. The **university library** contains the most extensive database of academic papers at your disposal and more resources. Click on this [link](https://bristol.libguides.com/economics) to start exploring.
+1. You may use **Copilot** as a starting point. An example of a prompt you might use (applied to the example of the US and UK in the previous exercise): "Can you provide 5 differences between the United Kingdom and the United States which may be related to the wider economic context, policies or the behaviour of households and firms which may explain the reduce role of capital accumulation in the US relative to the UK between 1950 and 1973? Can you provide detailed academic sources in support of each argument you make in this answer?" 
+1. Make a list of the most promising arguments, check that they can all be linked to some academic sources!
 
 ```{r appendix, eval=FALSE, include=FALSE}
 

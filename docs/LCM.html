@@ -23,7 +23,7 @@
 <meta name="author" content="Marion Prat" />
 
 
-<meta name="date" content="2025-01-24" />
+<meta name="date" content="2025-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -74,6 +74,7 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -187,6 +188,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.5.1" data-path="LCM.html"><a href="LCM.html#equilibrium-in-the-market-for-capital-and-labour"><i class="fa fa-check"></i><b>3.5.1</b> Equilibrium in the market for capital and labour</a></li>
 <li class="chapter" data-level="3.5.2" data-path="LCM.html"><a href="LCM.html#the-transition-equation"><i class="fa fa-check"></i><b>3.5.2</b> The transition equation</a></li>
 <li class="chapter" data-level="3.5.3" data-path="LCM.html"><a href="LCM.html#the-steady-state"><i class="fa fa-check"></i><b>3.5.3</b> The steady state</a></li>
+<li class="chapter" data-level="3.5.4" data-path="LCM.html"><a href="LCM.html#the-full-equilibrium"><i class="fa fa-check"></i><b>3.5.4</b> The full equilibrium</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="LCM.html"><a href="LCM.html#analysis-of-shocks"><i class="fa fa-check"></i><b>3.6</b> Analysis of shocks</a></li>
 <li class="chapter" data-level="3.7" data-path="LCM.html"><a href="LCM.html#exercises-with-copilot-week-15"><i class="fa fa-check"></i><b>3.7</b> Exercises with Copilot (Week 15)</a></li>
@@ -288,7 +290,7 @@ where <span class="math inline">\(Py=Y\)</span> is total revenue, <span class="m
 <div id="setup" class="section level3 hasAnchor" number="3.4.1">
 <h3><span class="header-section-number">3.4.1</span> Setup<a href="LCM.html#setup" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We assume that households live for 2 periods (about 30 years each), so at any point in time they are either “young” or “old”. Households who are young in one period become old in the second period, while a new generation of young households arrives. The diagram below shows how the generations overlap over time.</p>
-<p><img src="images/LC_DIAGRAM.png" width="1861" style="display: block; margin: auto;" /></p>
+<p><img src="images/LC_DIAGRAM.png" style="display: block; margin: auto;" /></p>
 <p>We further assume that there is no population growth, and at any point in time there are <span class="math inline">\(N\)</span> members of the young generation and <span class="math inline">\(N\)</span> members of the old generation.</p>
 <p><strong>“Young” households</strong> start life with zero assets, work full-time and earn labour income <span class="math inline">\(w\)</span>. At the end of the first period they decide how much of their income to consume, and how much to save. When they save they accumulate the assets that they will hold at the beginning of the net period.</p>
 <p><em>More formally, “young” households</em> supply labour, <span class="math inline">\(N\)</span>, earn the market wage <span class="math inline">\(\bar{w}\)</span>, consume <span class="math inline">\(c_{y,t}\)</span> and accumulate assets <span class="math inline">\(a_{t+1}\)</span>. This gives us the <strong>total supply of labour</strong> in the economy:
@@ -382,19 +384,41 @@ The equilibrium value of the capital-labour ratio at any point in time <span cla
 <p>The transition path diagram represents the equilibrium values of <span class="math inline">\(k_{t+1}\)</span> for all the possible values that can be taken by <span class="math inline">\(k_t\)</span>. The straight line is a 45-degree line whereby <span class="math inline">\(k_{t+1}=k_t\)</span>.</p>
 <p>To understand the dynamics of the equilibrium capital ratio, we can trace its time path starting with any initial value <span class="math inline">\(k_0\)</span>. The diagram represents one such time path. Starting from the initial value <span class="math inline">\(k_0\)</span>, the capital stock increases at <span class="math inline">\(t=1\)</span> as the transition equation is above the 45-degree line. In the next period, starting with an initial value <span class="math inline">\(k_1\)</span>, the capital stock keeps increasing as the transition equation is still above the 45-degree line. This continues until the capital ratio reaches the value <span class="math inline">\(\bar{k}\)</span>, at which point it remains constant.</p>
 <p>It is possible to show that starting at an initial value <span class="math inline">\(k_0\)</span> above <span class="math inline">\(\bar{k}\)</span> would lead it to converge down towards <span class="math inline">\(\bar{k}\)</span> over time. <span class="math inline">\(\bar{k}\)</span> is the steady state value of the capital stock. It represents the equilibrium value of the capital ratio in the long-run.</p>
-<p>Why is the capital-labour ratio converging to a constant value? Because the capital stock depends on the wage, and as the capital stock increases, the wage increases by less and less each time (due to diminishing returns to capital), leading to smaller increases in savings, assets and the capital stock.</p>
+<p>Why is the capital-labour ratio converging to a constant value? Assume for now that <span class="math inline">\(\alpha=0.5\)</span>, so that young households save half of their first period labour income (<span class="math inline">\(k_{t+1} = a_{t+1}= 0.5w_t\)</span>). For the capital stock to increase, young households’ savings must be higher than the current capital stock (<span class="math inline">\(k_{t+1} = a_{t+1}= 0.5w_t&gt;k_t\)</span>). As the capital stock increases, the wage increases but by less and less with each additional increase in the capital stock (due to diminishing returns) and therefore so does the increase in the savings of the young. As the additional savings generated by an additional unit of capital falls over time, it will arrive a point where the savings of the young are just equal to the current capital stock (<span class="math inline">\(k_{t+1} = a_{t+1}= 0.5w_t=k_t\)</span>). At this point, the saving of the young in each period is just enough to maintain the capital stock at the same level in each period. The capital stock will stabilise at this level and the economy will stop growing.</p>
 </div>
 <div id="the-steady-state" class="section level3 hasAnchor" number="3.5.3">
 <h3><span class="header-section-number">3.5.3</span> The steady state<a href="LCM.html#the-steady-state" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The steady state is defined as the long-run position towards which the economy converges, a situation in which the capital-labour ratio and labour productivity remain constant.</p>
+<p>Using the transition equation and this definition, it is possible to solve for the steady state value of the capital ratio <span class="math inline">\(\bar{k}\)</span>:
+<span class="math display">\[ \bar{k} = (1-\alpha)(1-\beta)A \bar{k}^{\beta}\quad \rightarrow \quad \bar{k} = [(1-\alpha)(1-\beta)A]^{\frac{1}{1-\beta}}   \]</span></p>
+</div>
+<div id="the-full-equilibrium" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> The full equilibrium<a href="LCM.html#the-full-equilibrium" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the previous section, We have seen how to calculate the equilibrium values of the capital ratio as function of the <strong>exogenous parameters</strong> of the model: <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(A\)</span>, <span class="math inline">\(N\)</span> and <span class="math inline">\(k_0\)</span>.</p>
+<p>Once we have the equilibrium value of the capital ratio, it is possible to solve for the values of all the other <strong>endogenous variables</strong> of the model using the following relationships:
+<span class="math display">\[y_t = Ak_t^\beta\]</span>
+<span class="math display">\[K_t = k_tN \quad \text{and} \quad Y_t = y_tN\]</span>
+<span class="math display">\[ I_t = K_{t+1}-K_t \]</span>
+<span class="math display">\[ r_t = \beta Ak_t^{\beta -1}   \]</span>
+<span class="math display">\[ w_t = (1-\beta) Ak_t^{\beta}   \]</span>
+<span class="math display">\[c_{y,t}= \alpha w_t  \]</span>
+<span class="math display">\[a_{t+1} = (1-\alpha) w_t  \]</span></p>
+<p><span class="math display">\[c_{o,t+1}= (1 + r_{t+1}) a_{t+1}  \]</span>
+<span class="math display">\[S_t = Y_t - Nc_{y,t} -Nc_{o,t+1}  \]</span></p>
 </div>
 </div>
 <div id="analysis-of-shocks" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> Analysis of shocks<a href="LCM.html#analysis-of-shocks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>exogenous parameters</strong> of the model (<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(A\)</span>, <span class="math inline">\(N\)</span> and <span class="math inline">\(k_0\)</span>) capture charateristics of the economic environment which may change as a result of shocks occurring outside of the model. For example, <span class="math inline">\(\alpha\)</span> captures the propensity to consume when young relative to when old and affects directly the share of labour income saved by young households, and therefore capital accumulation. This parameter may change due to cultural changes in the attitude of yonger generations towards the future, policies changing the incentives to save (eg taxation of savings), …</p>
+<p>An interesting exercise therefore is to analyse the effect of a shock to these parameters on growth (of capital, output, labour productivity, consumption) both on the short-run and long-run equilibrium values (ie the steady state) of the economy.</p>
+<p>For example, we can ask what would be the effect of a permanent rise in <span class="math inline">\(\alpha\)</span>, ie an increase in young households’ propensity to consume, and therefore a fall in their saving on labour productivity growth in the long-run and the short-run. The diagram below shows how the transition path schedule would shift down on impact as for a given level of the capital ratio and income per worker the level of saving falls, leading to an immediate fall in the capital stock on the next period. The economy would then converge to a lower steady state value of the capital-labour ratio.</p>
+<p><img src="images/saving_shock.png" width="55%" height="55%" style="display: block; margin: auto;" /></p>
+<p>The model therefore predicts that a rise in <span class="math inline">\(\alpha\)</span> would lead to a fall in the labour productivity <strong>growth</strong> rate in the short-run, but not in the long-run as the capital ratio stabilises at a new steady state level eventually. However, the shock would have a permanent negative effect on the <strong>level</strong> of the capital-labour ratio and therefore on the level of productivity growth since <span class="math inline">\(y_t\downarrow = A(k_t\downarrow)^\beta\)</span>.</p>
 </div>
 <div id="exercises-with-copilot-week-15" class="section level2 hasAnchor" number="3.7">
 <h2><span class="header-section-number">3.7</span> Exercises with Copilot (Week 15)<a href="LCM.html#exercises-with-copilot-week-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><em>Although any large language model (LLM) can be used to do this exercise, we recommend using Microsoft Copilot for Edge browser, which is free of charge to all students through the University Microsoft license, to do these exercises.</em></p>
-<p>The notions of <strong>equilibrium</strong> and <strong>steady state</strong> are important concepts discussed in this chapter. This exercise helps you explore these two concepts further using Copilot.</p>
+<p>The notions of <strong>equilibrium</strong> and <strong>steady state</strong> are important concepts discussed in this chapter. This exercise helps you explore these two concepts further using Copilot. (Note that it may also be useful to check the notions of <em>exogenous</em> parameters and <em>endogenous</em> variables).</p>
 <p><strong>Submit the following prompts to Microsoft Copilot and ask yourself the following in each case (if relevant)</strong>:</p>
 <ul>
 <li>Does the answer address the question?</li>

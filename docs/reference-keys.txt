@@ -53,6 +53,7 @@ equilibrium
 equilibrium-in-the-market-for-capital-and-labour
 the-transition-equation
 the-steady-state
+the-full-equilibrium
 analysis-of-shocks
 exercises-with-copilot-week-15
 exercise-model-simulations-week-15

@@ -52,8 +52,8 @@ saving-and-investment
 equilibrium
 equilibrium-in-the-market-for-capital-and-labour
 the-transition-equation
-the-steady-state
 the-full-equilibrium
+the-steady-state
 analysis-of-shocks
 exercises-with-copilot-week-15
 exercise-model-simulations-week-15

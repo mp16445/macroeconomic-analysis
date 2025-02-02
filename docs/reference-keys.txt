@@ -55,5 +55,13 @@ the-transition-equation
 the-full-equilibrium
 the-steady-state
 analysis-of-shocks
+the-life-cycle-model-with-population-growth
+the-life-cycle-model-with-fiscal-policy
+the-government-intertemporal-budget-constraint
+fiscal-policy
+equilibrium-1
+transition-diagram-steady-state-and-fiscal-policy-shocks
+government-investment
 exercises-with-copilot-week-15
 exercise-model-simulations-week-15
+questions-week-16

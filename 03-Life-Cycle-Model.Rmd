@@ -4,7 +4,8 @@
 
 By the end of this chapter, you should be able to:
 
-- Describe the simple life-cycle model without government: firms' and households' objectives, the production technology and resource constraints.  
+- Describe the simple life-cycle model without population growth and technological progress: firms' and households' objectives, the production technology and resource constraints. 
+- Describe extensions of the life-cycle model with population growth and with fiscal policy.
 - Understand how to solve for the equilibrium **and** the steady state values of the model and the differences between these two concepts.
 - Analyse the effect of shocks to the *exogenous* parameters of the model on key *endogenous* variables on the steady state and along the transition path. 
 - Simulate the model to analyse the effect of shocks (policies, events) and evaluate the ability of the model to explain real world observations.
@@ -274,10 +275,12 @@ $$S_t = Y_t - Nc_{y,t} -Nc_{o,t}  $$
 
 ### The steady state
 
-The steady state is defined as the long-run position towards which the economy converges, or the long run equilibrium. In the model without technological progress, it corresponds to a situation in which the capital-labour ratio and labour productivity remain constant.
+The steady state is defined as the long-run position towards which the economy converges, or the long run equilibrium. In this model, it corresponds to a situation in which the capital-labour ratio remains constant.
 
 Using the transition equation and this definition, it is possible to solve for the steady state value of the capital ratio  $\bar{k}$:
 $$ \bar{k} = (1-\alpha)(1-\beta)A \bar{k}^{\beta}\quad \rightarrow \quad \bar{k} = [(1-\alpha)(1-\beta)A]^{\frac{1}{1-\beta}}   $$
+Because all the other variables of the model are determined by the capital-labour ratio, they also all converge to a constant steady state value. In other words, this model cannot explain growth in the long-run.
+
 
 ## Analysis of shocks
 
@@ -295,6 +298,183 @@ knitr::include_graphics(rep("images/saving_shock.png"))
 
 The model therefore predicts that a rise in $\alpha$ would lead to a fall in the labour productivity **growth** rate in the short-run, but not in the long-run as the capital ratio stabilises at a new steady state level eventually. However, the shock would have a permanent negative effect on the **level** of the capital-labour ratio and therefore on the level of productivity growth since $y_t\downarrow = A(k_t\downarrow)^\beta$. 
 
+## The life-cycle model with population growth
+
+So far we have assumed no population growth. To capture the fact that the population may be growing over time and analyse the effects of changes in the population growth rate on the equilibrium values of the variables in the model, we now assume that population is growing as follows:
+$$ N_{y,t+1} = (1+n)N_{y,t}= (1+n)N_{o,t+1} $$
+where $N_{y,t+1}$ is the number of households in the young generation at time $t+1$, $N_{y,t}$ is the number of households in the young generation at time $t$, which is the same as the number of households in the old generation at time $t+1$, $N_{o,t+1}$, and $n$ is the constant exogenous growth rate of the population. 
+
+Since the capital-labour ratio $k_t$ represents the amount of capital per worker, it is now defined as the amount of capital per member of the young generation:
+$$k_t=\frac{K_t}{N_{y,t}}$$
+
+and since labour productivity $y_t$ represents the amount produced per worker it is now defined as the amount of output produced per member of the young generation:
+$$y_t=\frac{Y_t}{N_{y,t}}$$
+
+**Transition equation **
+
+The equilibrium in the capital market states that the capital stock in the next period is equal to the assets accumulated by the current old generation in the previous period:
+$$K_{t+1}= N_{o,t+1}a_{t+1}  $$
+Since everything else remains the same, assets at time $t+1$ are still equal to $a_{t+1}=(1-\alpha) w_t$ and $w_t= (1-\beta) Ak_t^{\beta}$, we can derive the transition equation as follows:
+$$ k_{t+1} = \frac{K_{t+1}}{N_{y,t+1}} =\frac{N_{o,t+1}a_{t+1}}{N_{y,t+1}}= \frac{a_{t+1}}{1+n} = \frac{1-\alpha}{1+n}w_{t} = \frac{1-\alpha}{1+n}(1-\beta) Ak_t^{\beta}$$
+
+**Transition path diagram **
+
+The transition path diagram below conserves the same concave due to diminishing returns to capital. Along the equilibrium path, the economy will therefore still converge to a steady state where the capital-labour ratio is constant.
+
+```{r transition_equation_pop, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+
+knitr::include_graphics(rep("images/TPD3.png"))
+
+```
+
+Along the equilibrium path, the economy will therefore still converge to a steady state where the capital-labour ratio is constant. However now, the steady state capital-labour ratio is lower as the assets accumulated by the old generation in the previous period is now spread out over a higher number of households of the young generation in the current period. This means that more savings in the previous period will be required to maintain the same level of the capital-labour ratio.
+
+One can now ask what happens to the growth rate of the capital-labour ratio in the short-run when the population growth rate $n$ changes. 
+
+```{r transition_equation_pop2, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+
+knitr::include_graphics(rep("images/TPD4.png"))
+
+```
+
+A rise in the population growth rate rotates the transition curve down. Since the initial steady state level of capital was just sufficient to generate savings required to maintain it at the same level, it is not enough to accommodate larger arrivals of young workers in the labour market. As a result, the capital-labour ratio falls in the short-run, before stabilising at a new lower steady state level in the long-run. 
+
+
+**The steady state in the model with population growth**
+
+In the model with population growth, the equilibrium values of the variables of the model converge to different steady state growth rates.
+
+First, labour productivity $y$, the wage $w$, the interest rate $r$ and all the other per worker variables such as consumption $c_y$ and $c_o$ and savings $a$ are functions of the capital-labour ratio $k$. Since the steady state value of the capital-labour ratio is constant, they also converge to a constant steady state value. In other words, as in the model without population growth, this model still cannot explain long-run growth in labour productivity and living standards. 
+
+Second, output $Y$, the capital stock $K$ and consumption grow at the constant population growth rate $n$. Using the definition of the capital-labour ratio, we know that $\bar{k}=\frac{K_t}{N_{y,t}}$ in the steady state. Since $\bar{k}$ is constant and $N_{y,t}$ grows at the rate $n$, it must be that $\bar{K}_t$ is also growing at the rate $n$ in the steady state. The same reasoning follows output. This model predicts that in an economy with no labour productivity growth, output would be growing at a constant rate in the long-run, equal to the population growth rate. 
+
+## The life-cycle model with fiscal policy
+
+### The government intertemporal budget constraint
+
+The government intertemporal budget constraint (GIBC) can be written as follows: 
+
+$$ \underbrace{B_t + \frac{G_t}{R_t} + \frac{G_{t+1}}{R_tR_{t+1}}+\frac{G_{t+2}}{R_tR_{t+1}R_{t+2}}  + ...}_{\text{Current debt + Present value of government purchases}}= \underbrace{\frac{Z_t }{R_t} + \frac{Z_{t+1}}{R_tR_{t+1}}+\frac{Z_{t+2}}{R_tR_{t+1}R_{t+2}}  + ...}_{\text{Present value of net tax payments}} $$
+
+where $B_t$ is the current debt (the stock of government bonds), $G_t$ is government spending (consumption), $Z_t$ is net tax payments (the difference between the amount received by the government in tax revenues and transfers to households) and $R_{t+s} = 1+r_{t+s}$ is the period $s$ *discount factor*.
+
+The GIBC states that the sum of the current debt and the present value of future government spending (consumption)  must be equal to the present value of future net tax payments. The implication for the conduct of fiscal policy in our model is that any increase in government spending $G_t$ at time $t$ must be financed either by an increase in net tax payments (a rise in tax revenues or a fall in transfers) $Z_t$ at time $t$ or by a rise in net tax payment in the future $Z_{t+s}$ ($t=1, 2, 3, ...$).
+
+
+### Fiscal policy
+
+In this section, we assume no population growth, so there are the same number of households in each generation ($N$).
+
+Assume the government wants to finance government spending $\bar{G}$ at time $t$ and all following periods. Furthermore, this additional government consumtpion is fully consume during the period, ie it has no impact on the economy's capital stock or productivity in the subsequent periods. 
+
+Because the GIBC must hold at all times, such an expenditure can be financed at time $t$ either by taxation or by running a budget deficit (borrowing) which must be repaid by higher taxes in the future. 
+
+
+**Taxation (only)**
+
+Assume current government purchases are financed in full by higher taxation in the current period. 
+
+Net tax payments can either fall on young households or on old households as follows:
+
+$$ Z_t = Nz_{y,t} + Nz_{o,t} $$
+
+where $z_{y,t}$ is net tax payments by young households and $z_{o,t}$ is net tax payments by old households.
+
+We will only consider the two extreme cases where all the tax burden falls on the young or on the old households:
+
+- *The burden of taxation falls entirely on old households*:
+$$Z_t=Nz_{o,t}=N\bar{g}=\bar{G}$$
+Each household of the old generation pays an equal share $\bar{g}$. The present value of taxation for households under such a scheme is equal to:
+
+$$\hat{z}= \frac{z_{o,t+1}}{1+r_{t+1}}=\frac{\bar{g}}{1+r_{t+1}}$$
+
+- *The burden of taxation falls entirely on young households*: 
+$$Z_t=Nz_{y,t}=N\bar{g}=\bar{G}$$
+Each household of the old generation pays an equal share $\bar{g}$. The present value of taxation for households under such a scheme is equal to:
+$$\hat{z}= z_{y,t}=\bar{g}$$
+The tax burden is higher under the second scheme because households forego the interest rate they would have earned on their first period income by paying taxes.
+
+**Deficit finance**
+
+Assume current government purchases are financed in full by a budget deficit (higher borrowing) in the current period, which is fully repaid by higher taxation in the next period. 
+
+$$G_t = B_{t+1} = Nb_{t+1}$$
+
+At $t$: the government sells bonds $b_{t+1}$ to "young" households. Young households purchase bonds at the beginning of period $t+1$ with the savings they would have used to purchase capital assets.
+
+At $t+1$: the government repays the amount borrowed from old households with interest $(1+r_{t+1})b_{t+1}$ and simultaneously taxes them to raise the funds $z_{o,t+1} = (1+r_{t+1})b_{t+1}$ needed to pay these interest repayments. *Deficit finance* is deferred taxation.
+
+This gives the third method to finance government spending $\bar{G}$ at time $t$:
+
+- *Deficit finance (borrowing)*: 
+$$\bar{G} = B_{t+1} = Nb_{t+1}=N\bar{g}$$
+Each household of the old generation purchase an equal share $\bar{g}$ of the debt at the beginning of period $t+1$ with their previous period saving, are repaid with interest at the end of the period and pay the same amount in tax. The present value of taxation for households under such a scheme is equal to:
+$$\hat{z}= \frac{z_{o,t+1}}{1+r_{t+1}}=\frac{(1+r_{t+1})b_{t+1}}{1+r_{t+1}}=\bar{g}$$
+Households' tax burden over their lifetime in this third scheme is the same as under the second scheme. If households can fully anticipate that budget deficits today leads to higher taxation in the future, they should realise that financing higher government spending with higher debt is equivalent to being taxed more when young.
+
+### Equilibrium
+
+Fiscal policy only changes the consumption-saving decision of households, so we focus on the equilibrium conditions associated with households' decisions.
+
+To simplify the exposition further, we will assume that households do not care about consumption when young ($\alpha=0$). Although not a realistic assumption, this is not a crucial assumption to analyse the role of taxation on capital accumulation. 
+
+*Young household consumption*:
+$$c_{y,t} = \alpha w_t = 0$$
+*Capital assets accumulated by young households (= Saving - bonds purchased)*:
+$$a_{t+1} = (1-\alpha)w_t - \ z_{y,t} -b_{t+1}=w_t - (\ z_{y,t} +b_{t+1})$$
+*Old household consumption (= Income earned from capital assets and bonds minus taxation)*:
+$$c_{o,t+1}= (1 + r_{t+1}) a_{t+1} + (1+r_{t+1})b_{t+1} - z_{o,t+1}$$
+*Transition equation*:
+$$ k_{t+1} =  a_{t+1} = w_t - (\ z_{y,t} +b_{t+1}) =(1-\beta) A k_t^{\beta} - ( z_{y,t} +b_{t+1} )$$
+
+The equations for $Y_t$, $L_t$, $K_t$, $y_t$, $r_t$, $S_t$ and $I_t$ describing how the *endogenous* variables of the model behave in equilibrium remain the same as before.
+
+The equilibrium now includes two new *exogenous* fiscal policy variables ($z_{y,t}$, $z_{o,t+1}$ or $b_{t+1}$) in addition the exogenous parameters ($\beta$, $A$, $N$ and $k_0$). 
+
+### Transition Diagram, steady state and fiscal policy shocks
+
+```{r transition_equation_fiscal_policy, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+
+knitr::include_graphics(rep("images/TPD5.png"))
+
+```
+
+The transition diagram conserves the same concave shape as in the model without fiscal policy due to diminishing returns to capital. However an increase in taxes on young households (the savers) or in the budget deficit rotates the transition path diagram clockwise. The steady state capital-labour ratio is now lower. In the absence of fiscal policy ($z_{y,t}=z_{o,t}=b_{t+1}=0$), savings would be fully invested in capital assets and contribute to the capital stock in the next period. 
+
+With fiscal policy ($z_{y,t}+b_{t+1}>0$), savings are reduced by the amount that needs to be paid in tax ($z_{y,t}$) and are used in part to purchase government debt $b_{t+1}$. A the initial steady state level of the capital-labour ratio, the same wage leads to lower investment in capital assets and therefore a lower capital stock in the next period. This means that a higher wage in the previous period would be required to maintain the same level of the capital-labour ratio, which has become unsustainable. As a result, the economy converges to a lower steady state level of the capital-labour ratio and labour productivity. 
+
+A fiscal policy shock affects capital accumulation and growth when the sum of taxation of the young and the debt ($z_{y,t}+b_{t+1}$) changes. A rise in either of these policies, holding everything else constant will lead the capital-labour ratio and labour productivity (and their growth) to fall for some time before stabilising permanently at a lower level. 
+
+### Government investment
+
+So far we have assumed that government spending is fully consumed within the period. However, the government does invest in infrastructure projects, buildings, research, ..., which adds to the capital stock. 
+
+**Transition equation**
+
+To capture this fact, the capital stock at time $t+1$ can be rewritten as:
+$$K_{t+1} = Na_{t+1} + K_{t+1}^G$$
+where $Na_{t+1}$ is the privately-owned capital stock and $K_{t+1}^G$ is government capital assets.
+
+Expressed per unit of labour, this gives the following revised transition equation:
+$$ k_{t+1} =  a_{t+1} + k_{t+1}^G = w_t - (z_{y,t} +b_{t+1}) + k_{t+1}^G =(1-\beta) A k_t^{\beta} - (z_{y,t} +b_{t+1}) + k_{t+1}^G$$
+where $k_{t+1}^G$ represents an additional channel through which government policy affects capital accumulation and growth.
+
+**Transition path diagram**
+
+To see the effect of government capital investment on growth and living standards in the long-run, we now turn to the transition diagram.
+
+```{r transition_equation_government_investment, echo=FALSE, out.width="65%", out.height="65%", fig.align='center'}
+
+knitr::include_graphics(rep("images/TPD6.png"))
+
+```
+
+For given initial levels of the capital labour ratio, taxation and debt, a rise in government investment (relative to pure government consumption or transfer) raises the capital labour ratio in the next period. This leads to a rise in labour productivity, the wage and savings, which raises further the capital stock.In the short-run, a rise in government spending on capital assets therefore raises growth. In the long-run, the economy converges to a new higher steady state level of the capital stock.  
+
+Ultimately, government investment needs to be financed, leading to two possible cases:
+
+- If $k^G_{t+1}$ is financed by taxing the young or by borrowing ($z_{y,t} +b_{t+1}\uparrow$) then the net effect on capital accumulation is null: government investment replaces private investment.
+- If $k^G_{t+1}$ is financed by taxing the old then the net effect on capital accumulation is positive.
 
 ## Exercises with Copilot (Week 15)
 
@@ -314,6 +494,7 @@ The notions of **equilibrium** and **steady state** are important concepts discu
 *"Provide a clear, multiple paragraph explanation addressed to a second-year university student of the two concepts of equilibrium and the steady state in macroeconomic models such as the life-cycle growth model. First, explain each concept separately. Then explain the key differences between them."*
 
 ```{r Copilot-draft, eval=FALSE, include=FALSE}
+It corresponds to a situation where the variables move along a balanced growth path where they grow at a constant rate (which may be zero).
 
 **Prompt 2: Explaining the concepts taking stock of previous learning**
 
@@ -350,7 +531,7 @@ This exercise guides you through the calculation of the equilibrium and steady s
 ### Part 1: Preliminaries{-}
 
 - Read the chapter section above to refresh your memory of the life-cycle model.
-- Download the "**LIFE_CYCLE_MODEL_SIMULATION**" Excel spreadsheet in the Week 15 class folder. Check that you understand what the parameters / variables in each column represent in the basic description of the model.
+- Download the "**LIFE_CYCLE_MODEL_SIMULATION**" Excel spreadsheet in the Week 14 class folder. Check that you understand what the parameters / variables in each column represent in the basic description of the model.
 - Read Auerbach and Kotlikoff, Chapter 3, pp 62-64 ("Tracking the economy's growth path"). The first part of this exercise asks you to replicate the simulation results discussed in this section.  
 
 ### Part 2: Tracking the economy's growth path  {-}
@@ -383,5 +564,77 @@ In this part, we will assume that **initially** (period 0 to 10), $\beta=0.3$, $
 1. In the growth accounting box (top), decompose the growth rate of labour productivity into the contribution of capital accumulation and the contribution of TFP growth between period 10 and period 20. How much of the growth in labour productivity is contributed by capital accumulation and by TFP growth following this shock?
 1. Repeat the same analysis (create a new sheet) assuming that $\alpha$ increases permanently to $0.7$ and all the other parameters remain the same.
 
+## Questions (Week 16)
 
+Download the "**LIFE_CYCLE_MODEL_SIMULATION_EXTENSIONS**" Excel spreadsheet in the Week 15 class folder. Check that you understand what the parameters / variables in each column represent in the basic description of the model.
+
+This Excel spreadsheet contains two sheets. One entitled "POP" which will allow you to perform simulations of the life-cycle model with population growth. The second, entitled "FISCAL POLICY" will allow you to perform simulations using the model with fiscal policy. 
+
+**Question 1**
+
+Use the life-cycle model with population growth ("POP" Excel sheet) to answer this question. In this model the parameters are initially set at $\beta=0.3$, $\alpha=0.5$, $A=10$, $n=0.3$, $N_o=100$ and $k=1.5$. 
+
+**What is the effect of a sudden decline in population growth due to a fall in the fertility rate?**
+
+*Hint*: To generate the prediction of the model, input a negative shock to the population growth rate ($n$) at period 10, and check the effect on the logarithm of $k$ or $y$ or on their growth rates. 
+ 
+ a. A permanent rise in the growth rates and the levels of the capital-labour ratio and labour productivity.
+ a. A temporary rise in the growth rates of the capital-labour ratio and labour productivity and a permanent increase in their levels.
+ a. A permanent fall in the growth rates and the levels of the capital-labour ratio and labour productivity.
+ a. A temporary fall in the growth rates of the capital-labour ratio and labour productivity and a permanent fall in their levels.
+ 
+ 
+**Question 2**         
+ 
+Use the life-cycle model with population growth ("POP" Excel sheet) to answer this question. In this model the parameters are initially set at $\beta=0.3$, $\alpha=0.5$, $A=10$, $n=0.3$, $N_o=100$ and $k=1.5$. 
+ 
+**What is the effect of a rise in the elasticity of capital $\beta$ due to a rise in automation, the share of tasks that can be performed by machines (capital)?**
+
+*Hint*: To generate the prediction of the model, input a positive shock to the elasticity of capital ($\beta$) at period 10, and check the effect on the logarithm of $k$ or $y$ or on their growth rates. 
+
+ a. A permanent rise in both the capital-labour ratio and labour productivity. 
+ a. A temporary rise in the growth rates of both the capital labour ratio and labour productivity.
+ a. A permanent fall in the capital-labour ratio and a permanent rise in labour productivity.
+ a. A temporary fall in the growth rates of both the capital labour ratio and labour productivity. 
+ 
+ **Question 3**         
+ 
+Use the life-cycle model with fiscal ("FISCAL POLICY" Excel sheet) to answer this question. In this model the parameters are initially set at $\beta=0.3$, $\alpha=0.0$, $A=6$, $\bar{g}=0$, $N=100$, $k=1.5$, $k^G=z_y=z_0=0$. 
+ 
+**What is the effect of funding a rise in government spending on defense ($G$) by taxing the old generation?**
+
+*Hint*: To generate the prediction of the model, input a positive shock to taxation of old households ($\bar{g}=z_0=2$) at period 10, and check the effect on the logarithm of $k$ or $y$ or on their growth rates. 
+ 
+ a. A permanent fall in the levels of capital-labour ratio and labour productivity.
+ a. A temporary fall in the growth rates of the capital-labour ratio and labour productivity and in the their levels.
+ a. A permanent fall in the growth rates of the capital-labour ratio and labour productivity.
+ a. No effect on the growth rates or the levels of the capital labour ratio and labour productivity.
+
+**Question 4**         
+ 
+Use the life-cycle model with fiscal ("FISCAL POLICY" Excel sheet) to answer this question. In this model the parameters are initially set at $\beta=0.3$, $\alpha=0.0$, $A=6$, $\bar{g}=0$, $N=100$, $k=1.5$, $k^G=z_y=z_0=0$. 
+ 
+**What is the effect of funding a rise in government spending on defense ($G$) by taxing the young generation?**
+
+*Hint*: To generate the prediction of the model, input a positive shock to taxation of old households ($\bar{g}=z_y=2$) at period 10, and check the effect on the logarithm of $k$ or $y$ or on their growth rates. 
+ 
+ a. A permanent fall in the levels of capital-labour ratio and labour productivity.
+ a. A temporary fall in the growth rates of the capital-labour ratio and labour productivity and in the their levels.
+ a. A permanent fall in the growth rates of the capital-labour ratio and labour productivity.
+ a. No effect on the growth rates or the levels of the capital labour ratio and labour productivity.
+ 
+
+**Question 5**         
+ 
+Use the life-cycle model with fiscal ("FISCAL POLICY" Excel sheet) to answer this question. In this model the parameters are initially set at $\beta=0.3$, $\alpha=0.0$, $A=6$, $\bar{g}=0$, $N=100$, $k=1.5$, $k^G=z_y=z_0=0$. 
+ 
+**What is the effect of funding a rise in government spending on infrastructure by taxing the young generation?**
+
+*Hint*: To generate the prediction of the model, input a positive shock to taxation of old households ($\bar{g}=z_y=k^G=2$) at period 10, and check the effect on the logarithm of $k$ or $y$ or on their growth rates. 
+ 
+ a. A permanent fall in the levels of capital-labour ratio and labour productivity.
+ a. A temporary fall in the growth rates of the capital-labour ratio and labour productivity and in the their levels.
+ a. A permanent fall in the growth rates of the capital-labour ratio and labour productivity.
+ a. No effect on the growth rates or the levels of the capital labour ratio and labour productivity.
+ 
 

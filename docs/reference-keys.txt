@@ -65,3 +65,16 @@ government-investment
 exercises-with-copilot-week-15
 exercise-model-simulations-week-15
 questions-week-16
+CONS
+introduction-3
+multi-period-model
+model-setup-1
+optimal-consumption-and-the-permanent-income-hypothesis-pih
+pih-prediction
+two-period-model-with-credit-constraints
+lifetime-budget-constraint-1
+optimal-consumption
+effect-of-tax-cuts
+exercises-with-copilot-week-19
+questions-1
+exercises-week-19

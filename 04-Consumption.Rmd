@@ -5,8 +5,8 @@
 By the end of this chapter, you should be able to:
 
 - Describe how households make consumption decisions using the multi-period consumption model.
-- Explain how households make consumption decision unde the Permanent Income Hypothesis (PIH)
-- Describe how credit market imperfections affect household consumtpion decisions in the two-period life-cycle model.
+- Explain how households make consumption decision under the Permanent Income Hypothesis (PIH)
+- Describe how credit market imperfections affect household consumption decisions in the two-period life-cycle model.
 - Analyse the effects of fiscal policy measures such as tax cuts and transfers on aggregate  consumption.
 
 
@@ -54,12 +54,12 @@ $y_t - t_t$: disposable income (income minus tax)
 
 $Assets$: liquid (saving account) and illiquid assets (house)
 
-Consumption and disposable income are discounted by the interest rate $r$ (the price of one unit of income one period form now), which is assumed to be constant over time. 
+Consumption and disposable income are discounted by the interest rate $r$ (the price of one unit of income one period from now), which is assumed to be constant over time. 
 
 
 ### Optimal consumption and the Permanent Income Hypothesis (PIH)
 
-As before the household problem is to choose how much to consume in each period such that lifetime utility is maximised subject to the lefetime budget constraint. 
+As before the household problem is to choose how much to consume in each period such that lifetime utility is maximised subject to the lifetime budget constraint. 
 
 **Household consumption problem**:
 $$ \max_{c_{t},c_{t+1}} u_t = ln(c_{t}) + \beta ln(c_{t+1}) + \beta^2 ln(c_{t+2}) + ...  $$
@@ -110,15 +110,15 @@ How does consumption responds when income changes? If households behave optimall
 $$ c_t^* =  \frac{r}{1+r}\left(Assets_t+ y_t - t_t + \frac{y_{t+1}-t_{t+1}}{1+r} + \frac{y_{t+2}-t_{t+2}}{(1+r)^2} + ...\right) $$
 Using the intuition from this expression, we can derive the following predictions:
 
-- **Temporary and unanticipated shocks** to disposable income do not have a large impact on current consumption. For example, assume that disposable increases in period $t$ only $y_t - t_t\uparrow$ and $r=0.05$, then : 
+- **Temporary and unanticipated shocks** to disposable income do not have a large impact on current consumption. For example, assume that disposable income increases in period $t$ only $y_t - t_t\uparrow$ and $r=0.05$, then: 
 $$MPC =\frac{\partial c^*_t}{\partial y_t - t_t}= \frac{0.05}{1+0.05}\approx 0.048$$
-The marginal propensity to consume out of a temporary shock to income is close to zero (households save most of the increase in income to spread its benefits over time).
+The marginal propensity to consume out of a temporary shock to income is small (households save most of the increase in income to spread its benefits over time).
 - **Permanent and unanticipated shocks** to disposable income:
-$$\Delta (y_t - t_t)= \Delta (y_{t+1}-t_{t+1})= \Delta (y_{t+2}-t_{t+2}) = ...=\Delta y^P$$ have a large impact on current consumption because permanent income increase by the same amount .
+$$\Delta (y_t - t_t)= \Delta (y_{t+1}-t_{t+1})= \Delta (y_{t+2}-t_{t+2}) = ...=\Delta y^P$$ have a large impact on current consumption because permanent income increase by the same amount.
 $$MPC =\frac{\partial c^*_t}{\partial y^P}= 1$$
 - **Anticipated  (temporary or permanent) shocks** to future disposable income affect current consumption at the time the news arrives but not at the time the shock is actually realised. For example, a temporary increase in income in period $t+1$ ($y_{t+1}-t_{t+1}\uparrow$) anticipated in period $t$ should lead to the following responses (assuming $r=0.05$):
 $$MPC =\frac{\partial c^*_t}{\partial y_{t+1}-t_{t+1}} \approx 0.048$$
-Consumption at time $t$ increases. However, in $t+1$ households would be expected to consume the same amount as in period $t$: $\Delta C_{t+1}= C_{t+1} - C_t = 0$. IN other words, we should not observe a change in consumption patterns between period $t$ and period $t+1$.
+Consumption at time $t$ increases. However, in $t+1$ households would be expected to consume the same amount as in period $t$: $\Delta C_{t+1}= C_{t+1} - C_t = 0$. In other words, we should not observe a change in consumption patterns between period $t$ and period $t+1$.
 
 ## Two-period model with credit constraints
 
@@ -128,11 +128,11 @@ We have seen that under the PIH, it may be optimal for households to borrow in o
 
 In practice, at any period of time some borrowers are not able to repay their debt and / or lie about their ability to repay their debt whereas others will repay their debt. The issue is that lenders (financial intermediaries) may not be able to observe perfectly the credit worthiness of borrowers (**Assymmetric information problem**). 
 
-In order to recoup their losses, they will charge a higher rate to all borrowers, giving rise to a spread (or gap) between the rate at which borrowers can borrow funds to finance their current consumption needs and the saving rate they would be able to earn if they were saving some of their current income instead. 
+In order to recoup their losses, they will charge a higher rate to all borrowers, giving rise to a spread (or gap) between the rate at which borrowers can borrow funds to finance their current consumption needs and the interest rate they would be able to earn if they were saving some of their current income instead. 
 
-Assymmetric information problems are likely to be more important during recessions when unemployment rise and income falls leading to more households defaulting on their debt. 
+Asymmetric information problems are likely to be more important during recessions when unemployment rises and income falls leading to more households defaulting on their debt. 
 
-This will give rise to a knink in the lifetime budget constraint as represented on the diagram below. 
+This will give rise to a kink in the lifetime budget constraint as represented on the diagram below. 
 
 ```{r BC_CC, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
 
@@ -140,11 +140,11 @@ knitr::include_graphics(rep("images/BC_CC.png"))
 
 ```
 
-- At the consumption bundle $E$ (endowment point), households consume exactly their current income (and assets) in both period, in other words in each period they are neither saving or dissaving. 
+- At the consumption bundle $E$ (endowment point), households consume exactly their current income (and assets) in both periods, in other words in each period they are neither saving or dissaving. 
 - To the left of $E$, households are savers in period $t$ and earn interest rate $r_1$ on their saving.
 - To the right of $E$, households are borrowers in period $t$ and are charged an interest rate $r_2>r_1$ on their debt.
 
-Since the slope of the lifetime bus=dget constraint (the rate at which consumption in period $t$ can be exchanged for consumption in period $t+1$) is $-(1+r)$, the lifetime budget constraint is steeper for borrower than for savers. 
+Since the slope of the lifetime budget constraint (the rate at which consumption in period $t$ can be exchanged for consumption in period $t+1$) is $-(1+r)$, the lifetime budget constraint is steeper for borrower than for savers. 
 
 
 ### Optimal consumption 
@@ -176,7 +176,7 @@ knitr::include_graphics(rep("images/mod1e.png"))
 As shown in the diagram above, this measure expands households' consumption possibilities in the current period and the endowment point shifts to $E_2$. How does it change households' optimal consumption plan?
 
 In the special case where the tax cut allows households to get closer to their optimal consumption bundle $D$ but still does not allow them to achieve it, as represented on the diagram, their optimal consumption plan moves to $E_2$ where once again they consume their current resource in both periods. This means that they will increase current consumption by the full amount of the tax cut. In other words, the marginal propensity to consume out of a tax cut is very large for credit constrained households. In the special case represented on the diagram it is equal to 1:
-$$MPC = \frac{\partial c^{credit-constrained}_t}{\partial t} = -1$$
+$$MPC = \frac{\partial c^{credit-constrained}_t}{\partial t_t} = -1$$
 
 Assuming a large fraction of households are credit-constrained, a tax cut will be effective at increasing current consumption. 
 
@@ -260,8 +260,6 @@ a. When a shock is unanticipated, households usually have no consumption respons
 a. When a shock is fully anticipated, the immediate consumption response at the time the shock arrives is smaller than if the shock were a complete surprise.
 a. An unanticipated shock typically leads to smaller consumption response because households have not time to plan.
 a. An anticipated shock always leads to a larger MPC becasue hosueholds can plan to consume the entire shock immediately.
-
-
 
 ## Exercises (Week 19)
 

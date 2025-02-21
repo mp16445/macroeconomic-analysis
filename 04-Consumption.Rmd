@@ -218,14 +218,15 @@ The notion of **present value** is an important concept discussed in this chapte
 
 **Question 1**
 
-"A central implication of the life-cycle/permanent income hypothesis (LC/PIH) is that consumers should not respond to predictable changes in their income." (Hsieh, 2003)
+"A central implication of the life-cycle/permanent income hypothesis (LC/PIH) is that consumers should not respond to predictable changes in their income." (Hsieh, 2003). Which of these statements provides the most accurate explanation of this claim:
  
  a. Because consumers smooth consumption over time.
  a. Because income changes affect consumers' decisions at the time the news of the change arrives, not at the time the shock is actually realised. 
  a. Because consumers are credit constrained.
- a. Because as uncertainty falls, consumers are less likely to reduce their consumption following on income shock.
+ a. Because as uncertainty falls, consumers are less likely to reduce their consumption following an income shock.
  
 **Question 2**   
+
 Which statement about the lifetime budget constraint in present value terms is most accurate?
 
 a. The household’s present value of consumption must equal the present value of income (plus any initial wealth).

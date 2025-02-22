@@ -290,7 +290,7 @@ knitr::include_graphics(rep("images/Consumption_Diagram1.png"))
 $c_{t+1}=(w_t-c_t)(1+r)$
 
 **The optimality condition (consumption Euler equation)**:
-c_{t+1}/(\beta c_t )=-(1+r)
+$$c_{t+1}/(\beta c_t )=-(1+r)$$
 Assuming $\beta=1/(1+r)$:
 $$c_t^*=c_{t+1}^*$$
 The optimal consumption plan is to consume the same amount in both periods.
@@ -308,7 +308,7 @@ $$\Delta ln(C_i^{Q4})=\alpha_1 PFDSHARE_i + Controls_i+u_i  $$
 - $PFDSHARE_i$ is the ratio of PFD payments to household average income, ie it represents the size of PFD payments in the fourth quarter of the year relative to regular income.  
 - $\alpha_1$ represents the parameter of interest: household income elasticity of consumption in the last quarter of the year, capturing how responsive consumption is to reception of the payments. 
 
-a. Assume the amount of the payment fund dividend is announced in period $t$(3rd quarter Q3) and is effectively received in period $t+1$ (4th quarter Q4) by households. 
+a. Assume the amount of the payment fund dividend is announced in period $t$(3rd quarter Q3) and is effectively received in period $t+1$ (4th quarter Q4) by households. The diagram represents the optimal consumption plan in the absence of the permanent funds payment.
 
 ```{r Consumption_Diagram2, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
 
@@ -320,7 +320,7 @@ knitr::include_graphics(rep("images/Consumption_Diagram2.png"))
 
 b. The table below shows the estimates of $\alpha_1$ (and standard errors in bracket) using the change in durable and non-durable consumption as the dependent variable (Hsieh, 2003).
 
-```{r Hsieh1, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+```{r Hsieh1, echo=FALSE, out.width="65%", out.height="65%", fig.align='center'}
 
 knitr::include_graphics(rep("images/Hsieh1.png"))
 
@@ -338,7 +338,7 @@ knitr::include_graphics(rep("images/Consumption_Diagram3.png"))
 
 ```
 
-The diagram represents the optimal consumption plan of a household who faces a borrowing rate higher than the lending rate and is forced to consume his disposable income in each period (E).
+The diagram represents the optimal consumption plan of a household who faces a borrowing rate higher than the lending rate and is forced to consume his disposable income in each period (E). The diagram represents the optimal consumption plan in the absence of the permanent funds payment.
 
 **Represent on the diagram how consumption changes in both quarters due to the permanent fund payment for such a household. What does the model predict should happen to the change of consumption between Q3 and Q4?**
 	

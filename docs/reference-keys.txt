@@ -78,3 +78,6 @@ effect-of-tax-cuts
 exercises-with-copilot-week-19
 questions-1
 exercises-week-19
+CW2
+a-guide-to-getting-started-with-coursework-2
+copilot-prompts-optional

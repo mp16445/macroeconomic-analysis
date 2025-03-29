@@ -5,7 +5,7 @@
 The aim of this chapter is to:
 
 - Explain in more detail the tasks you are expected to perform in Coursework 2 (**due 28th April 2025**).
-- (Optional) Propose some prompts that can be used to to help large language models (eg Copilot) *assist* you in preparing and writing Coursework 2. 
+- (OPTIONAL) Propose some prompts that can be used to help large language models (eg Copilot) *assist* you in preparing and writing Coursework 2. If you have any doubt regarding the output of a chatbot, you should ask your class tutor.
 
 To make the best of the information in this chapter, make sure that:
 
@@ -99,7 +99,7 @@ Search for academic references discussing the selected event:
 - Avoid making general statements and be precise. 
 
 
-## Copilot prompts 
+## Copilot prompts (OPTIONAL)
 
 - **You may use large language models (Microsoft Copilot, ChatGPT, …) to assist you through the completion of the coursework**. 
 - Large language models are only useful to the extent that 1) you have achieved sufficient prior knowledge and understanding of the content covered in the course and any reading you may use and that 2) you understand what you are expected to do.
@@ -169,4 +169,15 @@ Search for academic references discussing the selected event:
 
 *Avoid asking a large language model to illustrate the effect of a shock in the Carlin and Soskice 3-equation model discussed in the course. It usually comes up with very incorrect answers. You will have to figure that out on your own! However, large language model can explain the broad intuition provided by the model in imprecise terms.*
 
-### Feedback {-}
+### General feedback {-}
+
+*You may ask large language models for feedback. As always, this should not always be taken at face value. However, it may highlight obvious mistakes much as the feedback provided by one of your peers.*
+
+**Prompt**:
+
+> I am going to give you a paragraph explaining how the burst in the asset price bubble in Japan in 1990 led to a fall in investment. I want you to give me feedback as if you were a university lecturer in Economics focusing on 1) any possible mistake in the explanations, 2) any missing argument / information, 3) any incoherence in the economic reasoning and 4) any possible criticism of the arguments (not because they are incorrect but because other theories would yield different predictions). [Insert paragraph]
+
+
+
+
+

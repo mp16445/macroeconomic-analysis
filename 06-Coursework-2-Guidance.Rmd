@@ -5,7 +5,7 @@
 The aim of this chapter is to:
 
 - Explain in more detail the tasks you are expected to perform in Coursework 2 (**due 28th April 2025**).
-- (OPTIONAL) Propose some prompts that can be used to help large language models (eg Copilot) *assist* you in preparing and writing Coursework 2. If you have any doubt regarding the output of a chatbot, you should ask your class tutor.
+- (OPTIONAL) Propose some prompts that can be used to help large language models (eg Copilot) *assist* you in preparing and writing Coursework 2. *If you have any doubt regarding the output of a chatbot, you should ask your class tutor or post a question on the discussion board*.
 
 To make the best of the information in this chapter, make sure that:
 
@@ -37,6 +37,8 @@ Do not choose randomly a business cycle event. **Select an event**:
 
 
 ### Step 2: Literature research {-}
+
+Before researching the literature, make sure that you can easily access data for this country. 
 
 Search for academic references discussing the selected event:
 	
@@ -78,14 +80,14 @@ Search for academic references discussing the selected event:
 
 **1. Identify (exogenous) shocks**:
 
-- The shock cannot be to an endogenous variable in the 3-equation model (output, consumption, investment, interest rate, inflation, wage, unemployment). For example, a change in consumption (C) cannot be explained by a shock to income (y). Although a change in income may lead to a change in consumption, a change in consumption may also lead to a change in income in the model. You need to identify the initial (external) source of the shock that causes the changes in both variables. 
+- The shock cannot be to an endogenous variable in the 3-equation model (output, consumption, investment, interest rate, inflation, wage, unemployment). For example, a change in consumption (C) cannot be explained by a shock to income (y). Although a change in income may lead to a change in consumption, a change in consumption may also lead to a change in income in the model. You need to identify the initial (external) source of the shock that caused changes in both variables. 
 - The more precisely the shock is identified the better. It is not enough to write that “there is a negative shock to the banking system”; to be more precise, you may explain that the shock was caused by a fall in asset prices, a rise in the number of non-performing loans, a rise in interest rates, a change in regulation, …. 
-- You may use figures (eg data plot) or actual numbers to illustrate the identification the shocks.
+- You may use figures (eg data plot) or key numbers to illustrate the identification the shocks.
 
 **2. Explanation: explain what happens to endogenous variables following the exogenous shocks**
 
 - **Identify which relationship in the 3-equation model (as well as consumption and investment theory, models of credit constraints, QE, …) is affected by the shock**. For example, a shock to stock prices may affect autonomous investment (a parameter of the IS curve), leading to a shift of the IS curve. 
-- **Higher level explanations: how do we derive the intuition from economic models?** Economic models usually explain changes in outcomes (output, inflation, interest rate, …) as the result of the interactions between agents (households, firms, banks, policymakers, …) who are attempting to maximize an objective subject to some constraints (resources, beliefs, lags, regulations, credit market imperfections, …). The solution to each agent’s problem gives rise to some trade-offs (eg marginal benefit versus marginal cost for households and firms, inflation versus unemployment for policymakers, arbitrage between different assets for investors). These provide the intuition to explain changes in their behaviour following shocks. A good explanation will usually explain or hint at the relevant trade-offs (using the relevant optimality conditions and / or diagrams) and discuss what happens to it following a shock. For example, you may use investment theories to explain in more detail why autonomous investment changes following a shock to stock prices. For example, if the shock affects expected future profits, then the optimality condition MPK = user cost can help explain the change in autonomous investment. If the shock affects credit market constraints, then a balance sheet model (eg Stiglitz and Weiss) can help explain the change in autonomous investment.
+- **Higher level explanations: how do we derive the intuition from economic models?** Economic models usually explain changes in outcomes (output, inflation, interest rate, …) as the result of the interactions between agents (households, firms, banks, policymakers, …) who are attempting to maximize an objective subject to some constraints (resources, beliefs, lags, regulations, credit market imperfections, …). The solution to each agent’s problem gives rise to some trade-offs (eg marginal benefit versus marginal cost for households and firms, inflation versus unemployment for policymakers, arbitrage between different assets for investors). These provide the intuition to explain changes in their behaviour following shocks. A good explanation will usually explain or hint at the relevant trade-offs (using the relevant optimality conditions and / or diagrams) and discuss what happens to it following a shock. For example, you may use investment theories to explain in more detail why autonomous investment changes following a shock to stock prices. If the shock affects expected future profits, then the optimality condition MPK = user cost can help explain the change in autonomous investment. If the shock affects credit market constraints, then a balance sheet model (eg Stiglitz and Weiss) can help explain the change in autonomous investment.
 
 **3. Evaluation**: 
 

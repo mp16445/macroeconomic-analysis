@@ -78,6 +78,15 @@ effect-of-tax-cuts
 exercises-with-copilot-week-19
 questions-1
 exercises-week-19
+BCF
+introduction-4
+describing-the-business-cycle
+collecting-macroeconomic-data
+fred
+oecd
+imf
+other-useful-sources-of-data
+exercises-week-20
 CW2
 a-guide-to-getting-started-with-coursework-2
 copilot-prompts-optional

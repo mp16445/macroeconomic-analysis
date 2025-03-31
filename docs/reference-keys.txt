@@ -88,5 +88,3 @@ imf
 other-useful-sources-of-data
 exercises-week-20
 CW2
-a-guide-to-getting-started-with-coursework-2
-copilot-prompts-optional

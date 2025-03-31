@@ -186,7 +186,7 @@ knitr::include_graphics(rep("images/IMF_4.png"))
 
 - The **World Bank** website may provide additional information to complement the  (at the annual frequency only): [<span style="color: blue;"> **World Bank Open Data Website** </span>](https://data.worldbank.org/)
 
-To collect dat for a specific country, click on "Country":
+To collect data for a specific country, click on "Country":
 
 ```{r WORLDBANK_1, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
 

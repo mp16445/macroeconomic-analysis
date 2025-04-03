@@ -147,9 +147,8 @@ Ueda, K. (2012), “Deleveraging and monetary policy: Japan since the 1990s and 
 
 > I want to explain the fall in investment in Japan in the early 1990s using the simple optimality condition that firms invest up to the point where the marginal benefit of investing in an additional unit of capital is equal to its user cost. Explain to me what insight the theory provides that a naive discussion would have missed.
 
-**_Copilot Prompt_: Explanation: Carlin and Soskice 3-equation model**
 
-*Avoid asking a large language model to illustrate the effect of a shock in the Carlin and Soskice 3-equation model discussed in the course. It usually comes up with very incorrect answers. You will have to figure that out on your own! However, large language model can explain the broad intuition provided by the model in imprecise terms.*
+*Avoid asking a large language model to produce a diagram of the effect of a shock in the Carlin and Soskice 3-equation model. It usually comes up with very incorrect answers. You will have to figure that out on your own! However, large language model can explain the broad intuition provided by the model, although in imprecise terms.*
 
 **_Copilot Prompt_: General feedback**
 

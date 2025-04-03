@@ -86,5 +86,7 @@ fred
 oecd
 imf
 other-useful-sources-of-data
+data-manipulations
+frequency-and-data-smoothing
 exercises-week-20
 CW2

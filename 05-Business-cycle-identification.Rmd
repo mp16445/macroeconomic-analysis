@@ -205,14 +205,56 @@ knitr::include_graphics(rep("images/WORLDBANK_2.png"))
 - **National statistical agencies**, such as the ONS in the United Kingdom, may provide valuable sources of information.
 - **Government institutions** (Central Bank, Parliament, ...), such as the Bank of England in the United Kingdom or the Ministry of Finance in Japan, may also make freely available historical data on their website. 
 
+## Data manipulations
+
+Data plots are used by economists to describe and compare the behaviour of different macroeconomic variables over the business cycle. In this section, we discuss some basic data manipulations that help convey meaningful information in data plots.
+
+
+### Frequency and data smoothing
+
+**Frequency**
+
+When describing business cycle fluctuations, we are interested in monthly fluctuations in macroeconomic variables rather than their annual fluctuations. Most economic data used to describe business cycle fluctuations is collected at the **quarterly** (GDP and its components) or **monthly** (CPI, industrial production, unemployment rate, interest rates, ...) frequency. Some data is also collected at **weekly** (eg unemployment claims) or **daily** frequencies (some financial variables). We will focus on monthly and quarterly data in this chapter because these our the most pertinent frequencies for the purpose of our exercise. Note that a *quarter* corresponds to a period of *three* months.
+
+**Smoothing data**
+
+We have already discussed in Section 5.3 how it is preferable to collect *seasonally adjusted data* if we are interested in business cycle fluctuations. This data is constructed by employing a *smoothing* technique; removing the seasonal pattern which is associated with sharp changes in macroeconomic variables from one month to the next leads to a smoother data series. However, even after removing the seasonal component of a series, it may still be difficult to observe the trend in macroeconomic variables over the business cycle. 
+
+To make comparisons more effective, it is usual to represent economic data in annual terms. Even if we use data (eg CPI inflation rate, GDP growth rate) at the monthly or quarterly frequency, we might want to express it in *annualised* terms (the rate at which a monthly or quarterly variable would have grown had it continued to grow at the same rate for a year). For example, using the monthly values of the CPI index, we calculate the monthly annualised inflation rate, ie the annual rate of inflation if the CPI were to grow at the same rate as in the current month for 12 months. See [here](https://www.dallasfed.org/research/basics/annualizing) for a more detailed discussion on annualising data. 
+
+The plot below represents the monthly *annualised* CPI inflation rate in the United States:
+$$\pi_{CPI}^{annualised} = \left[\left( \frac{CPI_t}{CPI_{t-1}}\right)^{12} -1\right]\times 100  $$
+
+```{r CPI_m, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+
+knitr::include_graphics(rep("images/CPI_m.png"))
+
+```
+
+The monthly inflation rate tends to be volatile, making it hard for the main trend to emerge at the monthly frequency. To obtain a clearer picture of the changes in the aggregate price level, we can calculate the *annual* inflation rate at the monthly frequency (ie the percentage change in the CPI between the current month and the same month the year before). 
+$$\pi_{CPI}^{annual} = \left[\left( \frac{CPI_t}{CPI_{t-12}}\right) -1\right]\times 100  $$
+The monthly annual inflation rate is represented in the plot below. The plot of the *annual* inflation rate is smoother, making it easier to observe the trends in inflation on a monthly basis. 
+
+```{r CPI_a, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+
+knitr::include_graphics(rep("images/CPI_a.png"))
+
+```
+
+Similarly, it will be more effective to create a "smooth" plot of the growth rate of GDP, usually observed at a quarterly frequency, by representing the quarterly annual growth rate of GDP constructed as:
+$$ g_{GDP}^{annual} = \left[\left( \frac{GDP_t}{GDP_{t-4}}\right) -1\right]\times 100   $$
+
+*In practice, other advanced methods are used by economists to smooth data series (such as using moving averages).*
+
+
 
 ```{r Draft_BC, echo=FALSE, eval=FALSE, include=FALSE}
 
 ## Useful transformations
 
-### Smoothing variables
-
 ### Indices
+
+
 
 - Interpretation
 - Construction
@@ -236,6 +278,7 @@ Here is how it defines recessions and expansions:
 This definition goes beyond the common definition widely used in the financial press of two consecutive quarters of negative quarterly growth, which nevertheless provides a good starting point to start thinking about the identification of recessions.  
 
 ### Comparing recessions
+
 
 
 

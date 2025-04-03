@@ -23,7 +23,7 @@
 <meta name="author" content="Marion Prat" />
 
 
-<meta name="date" content="2025-03-31" />
+<meta name="date" content="2025-04-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -243,7 +243,11 @@ div.csl-indent {
 <li class="chapter" data-level="5.3.3" data-path="BCF.html"><a href="BCF.html#imf"><i class="fa fa-check"></i><b>5.3.3</b> IMF</a></li>
 <li class="chapter" data-level="5.3.4" data-path="BCF.html"><a href="BCF.html#other-useful-sources-of-data"><i class="fa fa-check"></i><b>5.3.4</b> Other useful sources of data</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="BCF.html"><a href="BCF.html#exercises-week-20"><i class="fa fa-check"></i><b>5.4</b> Exercises (Week 20)</a>
+<li class="chapter" data-level="5.4" data-path="BCF.html"><a href="BCF.html#data-manipulations"><i class="fa fa-check"></i><b>5.4</b> Data manipulations</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="BCF.html"><a href="BCF.html#frequency-and-data-smoothing"><i class="fa fa-check"></i><b>5.4.1</b> Frequency and data smoothing</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="BCF.html"><a href="BCF.html#exercises-week-20"><i class="fa fa-check"></i><b>5.5</b> Exercises (Week 20)</a>
 <ul>
 <li class="chapter" data-level="" data-path="BCF.html"><a href="BCF.html#exercise-1-indexing-construction-and-interpretation"><i class="fa fa-check"></i>Exercise 1: Indexing: construction and interpretation</a></li>
 <li class="chapter" data-level="" data-path="BCF.html"><a href="BCF.html#exercise-2-identifying-and-describing-recessions"><i class="fa fa-check"></i>Exercise 2: Identifying and describing recessions</a></li>
@@ -390,8 +394,30 @@ div.csl-indent {
 </ul>
 </div>
 </div>
-<div id="exercises-week-20" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Exercises (Week 20)<a href="BCF.html#exercises-week-20" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-manipulations" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Data manipulations<a href="BCF.html#data-manipulations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Data plots are used by economists to describe and compare the behaviour of different macroeconomic variables over the business cycle. In this section, we discuss some basic data manipulations that help convey meaningful information in data plots.</p>
+<div id="frequency-and-data-smoothing" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Frequency and data smoothing<a href="BCF.html#frequency-and-data-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Frequency</strong></p>
+<p>When describing business cycle fluctuations, we are interested in monthly fluctuations in macroeconomic variables rather than their annual fluctuations. Most economic data used to describe business cycle fluctuations is collected at the <strong>quarterly</strong> (GDP and its components) or <strong>monthly</strong> (CPI, industrial production, unemployment rate, interest rates, …) frequency. Some data is also collected at <strong>weekly</strong> (eg unemployment claims) or <strong>daily</strong> frequencies (some financial variables). We will focus on monthly and quarterly data in this chapter because these our the most pertinent frequencies for the purpose of our exercise. Note that a <em>quarter</em> corresponds to a period of <em>three</em> months.</p>
+<p><strong>Smoothing data</strong></p>
+<p>We have already discussed in Section 5.3 how it is preferable to collect <em>seasonally adjusted data</em> if we are interested in business cycle fluctuations. This data is constructed by employing a <em>smoothing</em> technique; removing the seasonal pattern which is associated with sharp changes in macroeconomic variables from one month to the next leads to a smoother data series. However, even after removing the seasonal component of a series, it may still be difficult to observe the trend in macroeconomic variables over the business cycle.</p>
+<p>To make comparisons more effective, it is usual to represent economic data in annual terms. Even if we use data (eg CPI inflation rate, GDP growth rate) at the monthly or quarterly frequency, we might want to express it in <em>annualised</em> terms (the rate at which a monthly or quarterly variable would have grown had it continued to grow at the same rate for a year). For example, using the monthly values of the CPI index, we calculate the monthly annualised inflation rate, ie the annual rate of inflation if the CPI were to grow at the same rate as in the current month for 12 months. See <a href="https://www.dallasfed.org/research/basics/annualizing">here</a> for a more detailed discussion on annualising data.</p>
+<p>The plot below represents the monthly <em>annualised</em> CPI inflation rate in the United States:
+<span class="math display">\[\pi_{CPI}^{annualised} = \left[\left( \frac{CPI_t}{CPI_{t-1}}\right)^{12} -1\right]\times 100  \]</span></p>
+<p><img src="images/CPI_m.png" width="75%" height="75%" style="display: block; margin: auto;" /></p>
+<p>The monthly inflation rate tends to be volatile, making it hard for the main trend to emerge at the monthly frequency. To obtain a clearer picture of the changes in the aggregate price level, we can calculate the <em>annual</em> inflation rate at the monthly frequency (ie the percentage change in the CPI between the current month and the same month the year before).
+<span class="math display">\[\pi_{CPI}^{annual} = \left[\left( \frac{CPI_t}{CPI_{t-12}}\right) -1\right]\times 100  \]</span>
+The monthly annual inflation rate is represented in the plot below. The plot of the <em>annual</em> inflation rate is smoother, making it easier to observe the trends in inflation on a monthly basis.</p>
+<p><img src="images/CPI_a.png" width="75%" height="75%" style="display: block; margin: auto;" /></p>
+<p>Similarly, it will be more effective to create a “smooth” plot of the growth rate of GDP, usually observed at a quarterly frequency, by representing the quarterly annual growth rate of GDP constructed as:
+<span class="math display">\[ g_{GDP}^{annual} = \left[\left( \frac{GDP_t}{GDP_{t-4}}\right) -1\right]\times 100   \]</span></p>
+<p><em>In practice, other advanced methods are used by economists to smooth data series (such as using moving averages).</em></p>
+</div>
+</div>
+<div id="exercises-week-20" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Exercises (Week 20)<a href="BCF.html#exercises-week-20" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this class, we will discuss several tools to identify business cycle events. We will use the “US_DATA” Excel spreadsheet which contains data collected from the FRED (Federal Reserve Economic Data) database. The dataset contains time series of macroeconomic variables related to volumes and prices in the three markets used to describe macroeconomic fluctuations:</p>
 <ul>
 <li>Market for goods: GDP and its components (consumption, investment and government spending) and prices (CPI, GDP deflator)</li>

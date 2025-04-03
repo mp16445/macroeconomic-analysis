@@ -18,25 +18,25 @@ Economic events of significance at the macroeconomic level generally involve dev
 
 1. **Goods market**: the quantities are the consumption and investment goods and services that form GDP (on the expenditure side) and the associated price is the **aggregate price level** (which determines the inflation rate). 
 1. **Labour market**: the quantity is the amount of labour employed (and the amount of labour that is not employed or the unemployment rate) and the associated price is the **wage** that is offered as a compensation for labour effort. 
-1. **Financial market**: the quantity is the quantity of credit (and saving or lending) and its price is the cost of borrowing or the **interest rate**. 
+1. **Financial market**: the quantity is the quantity of credit (and saving or lending) and its price is the cost of borrowing or the **interest rate**.  
 
 Macroeconomic models of short-term business cycle fluctuations such as the 3-equation model developed in Carlin and Soskice (2015) attempt to explain the simultaneous change in each of these (endogenous) variables following (exogenous) shocks.
 
 ## Describing the business cycle
 
+### Definitions
+
 The diagram below represents the hypothetical path taken by GDP around its long-run trend at the business cycle frequency. 
 
-```{r BC_DIAGRAM, echo=FALSE, out.width="65%", out.height="65%", fig.align='center'}
+```{r DIAGRAM, echo=FALSE, out.width="65%", out.height="65%", fig.align='center', fig.cap= "Business cycle diagram"}
 
 knitr::include_graphics(rep("images/BC_DIAGRAM.png"))
 
 ```
 
-**Some useful definitions**: 
-
 - **Potential output**: long-run trend in output, which may also characterise the medium-run equilibrium output, consistent with equilibrium in the labour market.
 - **Output gap**: deviation of actual from potential output (sometimes expressed as a \%).
-- **Recessions and expansions**: period of decline or rise in economic activity.
+- **Recessions and expansions**: periods of decline or rise in economic activity.
 - **Peak**: positive deviations from trends or expansions culminate in peaks, the turning point just before a recession.
 - **Trough**: negative deviations from trends or recessions culminate in troughs, the turning point just before an expansion.
 - **Depth** or **amplitude** of fluctuations: maximum deviation from trend (either negative or positive) during recessions and expansions.
@@ -44,7 +44,7 @@ knitr::include_graphics(rep("images/BC_DIAGRAM.png"))
 
 The plot below represents both the level of real GDP (black line, left axis) and its annual growth rate (green line, right axis) in the United States between 1945 and 2025. The shaded grey areas represent recessions (NBER).
 
-```{r RGDPA, echo=FALSE, out.width="100%", out.height="100%", fig.align='center'}
+```{r RGDPA, echo=FALSE, out.width="100%", out.height="100%", fig.align='center', fig.cap= "US Real GDP: level and annual growth rate (quarterly data)"}
 
 knitr::include_graphics(rep("images/RGDPA.png"))
 
@@ -54,11 +54,63 @@ Several observations regarding the shape of the US business cycles emerge from t
 
 1. The level of real GDP exhibits a steady increase over the 80 years. However the long-run trend is **irregular**, with periods of acceleration (late 1990s, mid-2000s, ..) and periods of stagnation (early 2000s, early 2010s, ...).
 1. Recessions represent short-lived deviations around the long-run trend. These deviations span several months or quarters. In other words, they are **persistent**, making short-term predictions relatively easier (low growth in one quarter tends to be associated with low growth in the next quarter). 
-1. Recessions and expansions are associated with **sharp swings in real GDP growth**, especially before the mid-1980s. The sharp swings that characterise turning points (peaks and troughs) suggest tehy are relatively unpredictable.
+1. Recessions and expansions are associated with **sharp swings in real GDP growth**, especially before the mid-1980s. The sharp swings that characterise turning points (peaks and troughs) suggest they are relatively unpredictable.
 1. The **amplitude of business cycle fluctuations** varies over time: GDP fell by up to 4% per year during the 2007-2009 recessions, up to 8% during the Covid pandemic, but did not fall during the 2001 recession.
 1. The **frequency of fluctuations** appears also to be irregular. The length of time between peaks and troughs of the business cycle (and therefore between recessions) varies over time and increased over the last 30 years. 
 
 Although there are some regularities, each period of recession and expansion has therefore its specificity. Understanding these similarities and differences can provide useful insights into the causes of business cycle fluctuations as well as the role and effectiveness of macroeconomic policies. Any study of business cycle events starts with a description grounded in observations of macroeconomic data.
+
+### Identifying recessions
+
+There is not one method of identifying recessions. In this section, we discuss various approaches to identify recessions.
+
+One commonly used definition in the financial press is that of **two consecutive quarters of negative growth**. This definition provides a useful starting point to identify recessions as it is easily implementable, requiring only data on quarterly real GDP: 
+
+1. Collect quarterly real GDP data.
+2. Calculate the quarterly growth rate of real GDP using the formula defined in Section 1.2.1:
+$$g_{GDP}= \frac{GDP_t}{GDP_{t-1}}-1$$
+3. Identify quarters where GDP growth is negative *for two consecutive quarters* (6 months). Conclude that the economy was in a recession during these quarters only.
+
+In practice, there will be marginal cases where this method identifies *false positives*, ie periods of relative stagnation for two quarters when GDP falls but by a relatively small amount and without a widespread fall in activity across all sectors of the economy. Conversely, this method may fail to identify recessions when a quarter of negative growth occurs in between two quarters of negative growth, even though the event is associated with a large fall in economic activity and / or has a persistent effect on the labour market. 
+
+```{r US_2001, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+
+knitr::include_graphics(rep("images/US_2001.png"))
+
+```
+
+For example, using this method, we would fail to identify a recession in 2001 in the United States as GDP growth was negative in the first and third quarters of 2001 but not in the second quarter. 
+
+However, according to a committee of experts assembled into the <a href="https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions" target="_blank">*NBER's Business Cycle Dating Committee*</a>, the US economy was in recession between the first and the thrid quarter of 2001. Here is how the *National Bureau of Economic Research (NBER)* defines recessions and expansions:
+
+> **Q: What is a recession? What is an expansion?**
+
+> **A**: The NBER's traditional definition of a **recession** is that it is a significant decline in economic activity that is spread across the economy and that lasts more than a few months. The committee's view is that while each of the three criteria — **depth**, **diffusion**, and **duration** — needs to be met individually to some degree, extreme conditions revealed by one criterion may partially offset weaker indications from another. For example, in the case of the February 2020 **peak** in economic activity, we concluded that the drop in activity had been so great and so widely diffused throughout the economy that the downturn should be classified as a recession even if it proved to be quite brief. The committee subsequently determined that the **trough** occurred two months after the peak, in April 2020. An expansion is a period when the economy is not in a recession. **Expansion** is the normal state of the economy; most recessions are brief. However, the time that it takes for the economy to return to its previous peak level of activity may be quite extended.
+
+> **Q: What indicators does the committee use to determine peak and trough dates?**
+
+> **A**: The determination of the months of peaks and troughs is based on a range of monthly measures of aggregate real economic activity published by the federal statistical agencies. These include **real personal income less transfers (PILT), nonfarm payroll employment, real personal consumption expenditures, manfacturing and trade sales adjusted for price changes, employment as measured by the household survey, and industrial production**. There is no fixed rule about what measures contribute information to the process or how they are weighted in our decisions.
+
+*Source: <a href="https://www.nber.org/research/business-cycle-dating/business-cycle-dating-procedure-frequently-asked-questions" target="_blank">*NBER Frequently Asked Questions*</a>*.
+
+*Note*: key terms in bold have been highlighted by us. 
+
+Thus the committee, in addition to real GDP, looks at a wider range of measures of economic activity spanning both the goods market and the labour market. To investigate further the fluctuations in economic activity that occurred in the US economy in 2001, we look at changes in the unemployment rates and in real earnin in the two figures below. 
+
+```{r US_UR, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+
+knitr::include_graphics(rep("images/US_UR.png"))
+
+```
+
+```{r US_Earnings, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+
+knitr::include_graphics(rep("images/US_Earnings.png"))
+
+```
+
+Although more subdued than for the other two recessions over this sample period, we do observe a significant rise in the unemployment rate and a significant fall in the growth rate of earnings in 2001 in the United States, suggesting the slowdown in economic activity was relatively widespread and affected the labour market disproportionately more. These developments in the labour market can be used to motivate the classification of the event as a recession.  
+
 
 ## Collecting macroeconomic data
 
@@ -225,7 +277,7 @@ To make comparisons more effective, it is usual to represent economic data in an
 The plot below represents the monthly *annualised* CPI inflation rate in the United States:
 $$\pi_{CPI}^{annualised} = \left[\left( \frac{CPI_t}{CPI_{t-1}}\right)^{12} -1\right]\times 100  $$
 
-```{r CPI_m, echo=FALSE, out.width="75%", out.height="75%", fig.align='center'}
+```{r CPI_m, echo=FALSE, out.width="75%", out.height="75%", fig.align='center', fig.cap= ""}
 
 knitr::include_graphics(rep("images/CPI_m.png"))
 
@@ -258,7 +310,7 @@ knitr::include_graphics(rep("images/CPI_Index.png"))
 
 ```
 
-The plot above represents one measure of the CPI in the United States, a measure of the cost of living as experienced by the average household, based on a fixed basket of consumption goods and services. The value of the CPI in January 2025 is equal to 324.739. It means that between 1983 (base period) and January 2025 the cost of living for the average household in the United States has increased by 324.7%. However as we saw in the previous section, the Consumer Price Index can be used to construct the rate of change in prices between any two time periods.
+The plot above represents one measure of the CPI in the United States, a measure of the cost of living as experienced by the average household, based on a fixed basket of consumption goods and services. The value of the CPI in January 2025 is equal to 324.739. It means that between 1983 (base period) and January 2025 the cost of living for the average household in the United States has increased by 324.7%. As we saw in the previous section, the Consumer Price Index can also be used to construct the rate of change in prices between any two time periods.
 
 **Indexing macroeconomic variables to a common starting point**
 
@@ -275,7 +327,7 @@ The relevant base period to select depends on the questions that need to be addr
 
 *See [here](https://www.dallasfed.org/research/basics/indexing) for a more detailed discussion on indexing variables.*
 
-**Example 1**
+**Example 1: GDP, consumption and investment during the 2001 US recession**
 
 The plot below represents the change in real GDP, real consumption and real investment in the United States around the 2001 recession. All three variables have been indexed to the fourth quarter of 2000, which is the quarter just before the start of the recession (2001Q1-2001Q3), ie the peak of the previous expansion. 
 
@@ -289,7 +341,7 @@ Because we have indexed the variables to the quarter just before the recession, 
 
 **Real GDP** stagnated for 4 quarters between the fourth quarter of 2000 and the fourth quarter of 2001. Although it then started rising again, it took two more years for GDP to start rising at its pre-recession rate. **Real consumption** stagnated for 3 quarters between the fourth quarter of 2000 and the third quarter of 2001. Consumption grew at a faster rate than GDP starting in the fourth quarter of 2001. **Real investment** declined by slightly more than 10% between 2000Q4 and 2001Q4. It took six more quarters for investment to start rising again at the pre-recession rate and two more years for investment to rise back to its pre-recession level. 
 
-**Example 2**
+**Example 2: comparing changes in GDP during the last three US recessions**
 
 Instead of comparing the relative changes of different variables over the same period of time, we could compare the behaviour of GDP during different recessions that occurred in different periods or countries. The plot below represents the change in real GDP in the US during the last three recessions relative to the quarter just before the start of the recessions (period 0). 
 
@@ -303,30 +355,12 @@ The **2020 recession** saw the largest and fastest deep in real GDP. The trough 
 
 
 
+
 ```{r Draft_BC, echo=FALSE, eval=FALSE, include=FALSE}
 
 ## Useful transformations
 
 
-## Identifying recessions
-
-### Definitions
-
-In the first quarter of 2001, according to a committee of experts assembled into the <a href="https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions" target="_blank">*NBER's Business Cycle Dating Committee*</a>, the US economy entered a recession. In addition to hosting the Business Cycle Dating Committee, the National Bureau of Economic Research (NBER) is a network of academic economists organised in research programs, publishing a working paper series, organising conferences, ... 
-
-Here is how it defines recessions and expansions:
-
-> **Q: What is a recession? What is an expansion?**
-
-> A: The NBER's traditional definition of a **recession** is that it is a significant decline in economic activity that is spread across the economy and that lasts more than a few months. The committee's view is that while each of the three criteria — **depth**, **diffusion**, and **duration** — needs to be met individually to some degree, extreme conditions revealed by one criterion may partially offset weaker indications from another. For example, in the case of the February 2020 **peak** in economic activity, we concluded that the drop in activity had been so great and so widely diffused throughout the economy that the downturn should be classified as a recession even if it proved to be quite brief. The committee subsequently determined that the **trough** occurred two months after the peak, in April 2020. An expansion is a period when the economy is not in a recession. **Expansion** is the normal state of the economy; most recessions are brief. However, the time that it takes for the economy to return to its previous peak level of activity may be quite extended.
-
-*Source: <a href="https://www.nber.org/research/business-cycle-dating/business-cycle-dating-procedure-frequently-asked-questions" target="_blank">*NBER Frequently Asked Questions*</a>*.
-
-*Note*: key terms in bold have been highlighted by us. 
-
-This definition goes beyond the common definition widely used in the financial press of two consecutive quarters of negative quarterly growth, which nevertheless provides a good starting point to start thinking about the identification of recessions.  
-
-### Comparing recessions
 
 
 

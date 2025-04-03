@@ -11,6 +11,8 @@ fig:mpdplot5
 fig:mpdplot2
 fig:mpdplot6
 tab:mpd2023Tab
+fig:DIAGRAM
+fig:RGDPA
 LRG
 introduction
 growth-rates
@@ -81,6 +83,8 @@ exercises-week-19
 BCF
 introduction-4
 describing-the-business-cycle
+definitions
+identifying-recessions
 collecting-macroeconomic-data
 fred
 oecd

@@ -88,5 +88,6 @@ imf
 other-useful-sources-of-data
 data-manipulations
 frequency-and-data-smoothing
+indices-and-indexed-variables
 exercises-week-20
 CW2

@@ -368,6 +368,7 @@ The **2020 recession** saw the largest and fastest deep in real GDP. The trough 
 ```
 
 
+```{r BC draft questions, eval=FALSE, echo=FALSE}
 
 ## Exercises (Week 20)
 
@@ -448,3 +449,6 @@ a. Using the remaining information in the dataset, describe what happened during
 - Capacity utilization and unemployment duration
 
 a. Describe the main characteristics of the 2001 recession in the United States using the information uncovered in all three exercises. What were the main trends and how is it different from the other recessions?
+  
+```
+

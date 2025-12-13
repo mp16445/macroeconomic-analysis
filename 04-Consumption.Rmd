@@ -262,6 +262,9 @@ a. When a shock is fully anticipated, the immediate consumption response at the 
 a. An unanticipated shock typically leads to smaller consumption response because households have not time to plan.
 a. An anticipated shock always leads to a larger MPC becasue hosueholds can plan to consume the entire shock immediately.
 
+```{r Cons draft questions, eval=FALSE, echo=FALSE}
+
+
 ## Exercises (Week 19)
 
 
@@ -279,12 +282,16 @@ $$U=ln(c_t )+\beta ln(c_{t+1})$$
 where $0<\beta<1$ is subjective discount factor, or how households value future consumption relative to current consumption.
 
 **Diagram**
+  
+```
 
-```{r Consumption_Diagram1, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+```{r Consumption_Diagram1, eval=FALSE, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
 
 knitr::include_graphics(rep("images/Consumption_Diagram1.png"))
 
 ```
+
+```{r Cons2 draft questions, eval=FALSE, echo=FALSE}
 
 **Equation for the budget constraint**:
 $c_{t+1}=(w_t-c_t)(1+r)$
@@ -309,34 +316,47 @@ $$\Delta ln(C_i^{Q4})=\alpha_1 PFDSHARE_i + Controls_i+u_i  $$
 - $\alpha_1$ represents the parameter of interest: household income elasticity of consumption in the last quarter of the year, capturing how responsive consumption is to reception of the payments. 
 
 a. Assume the amount of the payment fund dividend is announced in period $t$(3rd quarter Q3) and is effectively received in period $t+1$ (4th quarter Q4) by households. The diagram represents the optimal consumption plan in the absence of the permanent funds payment.
+```
 
-```{r Consumption_Diagram2, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+```{r Consumption_Diagram2, eval=FALSE, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
 
 knitr::include_graphics(rep("images/Consumption_Diagram2.png"))
 
 ```
 
+```{r Cons3 draft questions, eval=FALSE, echo=FALSE}
+
+
 **Represent on the diagram how consumption changes in both quarters due to the permanent fund payment. What does the model predict should happen to the change of consumption between Q3 and Q4?**
 
 b. The table below shows the estimates of $\alpha_1$ (and standard errors in bracket) using the change in durable and non-durable consumption as the dependent variable (Hsieh, 2003).
 
-```{r Hsieh1, echo=FALSE, out.width="65%", out.height="65%", fig.align='center'}
+```
+
+```{r Hsieh1, eval=FALSE, echo=FALSE, out.width="65%", out.height="65%", fig.align='center'}
 
 knitr::include_graphics(rep("images/Hsieh1.png"))
 
 ```
+
+```{r Cons4 draft questions, eval=FALSE, echo=FALSE}
+
  *Source: Hsieh (2003)*
  
 **Focusing on the results highlighted in the table (red boxes) discuss whether they are consistent with the PIH predictions.**
 	
 	
-c. Next the author investigates whether households who are more likely to be liquidity constrained (because they have a lower income) react differently to the permanent fund payments. 
+c. Next the author investigates whether households who are more likely to be liquidity constrained (because they have a lower income) react differently to the permanent fund payments.
+```
 
-```{r Consumption_Diagram3, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+```{r Consumption_Diagram3, eval=FALSE, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
 
 knitr::include_graphics(rep("images/Consumption_Diagram3.png"))
 
 ```
+
+```{r Cons5 draft questions, eval=FALSE, echo=FALSE}
+
 
 The diagram represents the optimal consumption plan of a household who faces a borrowing rate higher than the lending rate and is forced to consume his disposable income in each period (E). The diagram represents the optimal consumption plan in the absence of the permanent funds payment.
 
@@ -344,22 +364,32 @@ The diagram represents the optimal consumption plan of a household who faces a b
 	
 d. The table below represents the results of the same regression using observations on the subset of households with a below average income. 
 
-```{r Hsieh2, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+```
+
+```{r Hsieh2, eval=FALSE, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
 
 knitr::include_graphics(rep("images/Hsieh2.png"))
 
 ```
+
+```{r Cons 6 draft questions, eval=FALSE, echo=FALSE}
+
 *Source: Hsieh (2003)*
 
 **Do lower income households react differently to the permanent fund payments? Do these results provide evidence that these households are credit constrained?**
 
 e. Finally, the author investigates whether these results critically depend on the nature of the permanent funds payments (such as its large size or its predictability). To do so he compares households’ consumption response to permanent funds payments to the same households’ response to income tax refunds occurring in the second quarter of the year. Table 6 below presents the results. Income tax refunds tend to be smaller, irregular and less predictable (they are not publicly announced).
 
-```{r Hsieh3, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+```
+
+```{r Hsieh3, eval=FALSE, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
 
 knitr::include_graphics(rep("images/Hsieh3.png"))
 
 ```
+
+```{r Cons7 draft questions, eval=FALSE, echo=FALSE}
+
 *Source: Hsieh (2003)*
 
 **Are these results consistent with the PIH hypothesis? How could you explain the differences between the two responses? Based on this analysis, what characteristics should a fiscal policy (such as income tax cut) have in order to be effective at affecting consumption?**
@@ -370,12 +400,15 @@ knitr::include_graphics(rep("images/Hsieh3.png"))
 Hsieh, C.-T. (2003). “Do consumers react to anticipated income changes? Evidence from the Alaska permanent fund”, American Economic Review, Vol. 93 (1), pp. 397-405.
 
 ### Exercise 2: The effect of a consumption tax on consumption {-}
+```
 
-```{r vat_uk, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
+```{r vat_uk, eval=FALSE, echo=FALSE, out.width="55%", out.height="55%", fig.align='center'}
 
 knitr::include_graphics(rep("images/vat_UK.png"))
 
 ```
+
+```{r Cons8 draft questions, eval=FALSE, echo=FALSE}
 
 In this exercise we now assume the government is taxing consumption in both periods at rate $t_c$ so that the household lifetime budget constraint becomes:
 $$(1+t_{c,0})c_t + (1+t_{c,1}) \frac{c_{t+1}}{1+r} = A_t + y_t-t_t + \frac{y_{t+1}-t_{t+1}} {1+r}$$
@@ -386,3 +419,6 @@ a. **Represent households’ lifetime budget constraint, indifference curve and 
 b. **The VAT tax rose in the UK since the 1990s. What is the effect of a rise in the VAT tax $t_c\uparrow$ on consumption in all periods? Represent the answer on the diagram.** 
 
 c. **A VAT tax cut has been used in the UK to stabilize the economy during the 2008-2009 recession. What is the predicted effect of a temporary fall in the vat tax in the current period ($t_{c,0} \downarrow$) as in 2009 in the United Kingdom? Represent the answer on the diagram.**
+
+```
+

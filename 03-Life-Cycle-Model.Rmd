@@ -476,6 +476,7 @@ Ultimately, government investment needs to be financed, leading to two possible 
 - If $k^G_{t+1}$ is financed by taxing the young or by borrowing ($z_{y,t} +b_{t+1}\uparrow$) then the net effect on capital accumulation is null: government investment replaces private investment.
 - If $k^G_{t+1}$ is financed by taxing the old then the net effect on capital accumulation is positive.
 
+```{r LC draft questions, eval=FALSE, echo=FALSE}
 ## Exercises with Copilot (Week 15)
 
 *Although any large language model (LLM) can be used to do this exercise, we recommend using Microsoft Copilot for Edge browser, which is free of charge to all students through the University Microsoft license, to do these exercises.*
@@ -492,8 +493,7 @@ The notions of **equilibrium** and **steady state** are important concepts discu
 **Prompt 1: Explaining and comparing the concepts **
 
 *"Provide a clear, multiple paragraph explanation addressed to a second-year university student of the two concepts of equilibrium and the steady state in macroeconomic models such as the life-cycle growth model. First, explain each concept separately. Then explain the key differences between them."*
-
-```{r Copilot-draft, eval=FALSE, include=FALSE}
+  
 It corresponds to a situation where the variables move along a balanced growth path where they grow at a constant rate (which may be zero).
 
 **Prompt 2: Explaining the concepts taking stock of previous learning**
@@ -504,7 +504,6 @@ It corresponds to a situation where the variables move along a balanced growth p
 
 *"When confronted with new and complex concepts, using analogies taken from situations faced by me, a second-year university student in Economics, in my everyday life helps me understand these concepts faster. Give me five analogies I can use to understand the two concepts of equilibrium and steady state in macroeconomic models such as the life-cycle growth model in different ways."*
 
-```
 
 **Prompt 2: Exploring the relevance of a concept beyond Economics**
 
@@ -637,4 +636,4 @@ Use the life-cycle model with fiscal ("FISCAL POLICY" Excel sheet) to answer thi
  a. A permanent fall in the growth rates of the capital-labour ratio and labour productivity.
  a. No effect on the growth rates or the levels of the capital labour ratio and labour productivity.
  
-
+```

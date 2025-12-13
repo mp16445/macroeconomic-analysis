@@ -111,6 +111,9 @@ The growth of capital per hour contributed 1.4% towards the growth of labour pro
 
 These results suggest that the key to understanding the growth experience of South Korea is to look into the drivers of TFP growth. In particular, it might be interesting to disentangle the role of human capital accumulation (education, on-the-job-training, ...) from other factors of total factor productivity growth. This would allow us to determine how much weight was given in the growth strategy to the accumulation of factors of production as opposed to increases in efficiency. This could provide some clue as to the recent slowdown in TFP growth. 
 
+```{r GA draft questions, eval=FALSE, echo=FALSE}
+
+
 ## Exercise (Week 14)
 
 This exercise guides  you through the growth accounting decomposition of UK labour productivity as seen in the lecture slides in week 13, then ask you to do the same for US labour productivity and to finally compare the results for the two countries.
@@ -228,6 +231,8 @@ To address this question, you may use these two resources:
 1. The **university library** contains the most extensive database of academic papers at your disposal and more resources. Click on this [link](https://bristol.libguides.com/economics) to start exploring.
 1. You may use **Copilot** as a starting point. An example of a prompt you might use (applied to the example of the US and UK in the previous exercise): "Can you provide 5 differences between the United Kingdom and the United States which may be related to the wider economic context, policies or the behaviour of households and firms which may explain the reduce role of capital accumulation in the US relative to the UK between 1950 and 1973? Can you provide detailed academic sources in support of each argument you make in this answer?" 
 1. Make a list of the most promising arguments, check that they can all be linked to some academic sources!
+  
+```
 
 ```{r appendix, eval=FALSE, include=FALSE}
 

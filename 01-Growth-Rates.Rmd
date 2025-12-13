@@ -751,7 +751,7 @@ b. Compare household wealth in the two countries at the end of each period. What
 
 ```
 
-
+```{r prompt-draft, eval=FALSE, include=FALSE}
 ## Exercises with Copilot
 
 *Although any large language model (LLM) can be used to do this exercise, we recommend using Microsoft Copilot for Edge browser, which is free of charge to all students through the University Microsoft license, to do these exercises.*
@@ -777,17 +777,17 @@ Submit the following prompts to Microsoft Copilot before the class in week 14 an
 *"Provide a clear one paragraph explanation of compounding effects applied to GDP growth addressed to a university student. Provide three varied numerical examples, including the description of a precise scenario and an explanation of how compounding effects arise in each context. Then provide three accurate real world examples, using real data (provide the source of the data) and explain the economic significance of compounding effects in each case."*
 
 
+
 **Prompt 3: Exploring the relevance of a concept beyond what has been explicitly taught**
 
 *"When confronted with new and complex concepts, adding many and varied examples helps me better understand those concepts. Can you provide four varied examples of compounding effects in economics beyond those related to economic growth including the description of a precise scenario, an explanation of how it gives rise to compounding effects and a detailed numerical example of how compounding effects work in each context."*
 
-```{r prompt-draft, eval=FALSE, include=FALSE}
+
 
 Alternatively, to explore how a concept applies to a specific topic of interest (eg environment, inequality, macroeconomic policy, ...)
 
 *"Can you provide four different examples of compounding effects specifically related to the long-run dynamics of environmental phenomena / inequality. Include the description of a precise scenario, an explanation of how it gives rise to compounding effects and a detailed numerical example of how compounding effects work in each context."*
 
-```
 
 **Prompt 4: Create a quiz to test your understanding or the understanding of your peers**
 
@@ -798,6 +798,7 @@ Alternatively, to explore how a concept applies to a specific topic of interest 
 - Select the best three MCQs and propose them to one of your peers.
 - Once you are confident you can answer all questions, ask for more difficult questions in a follow-up prompt (eg by adopting the persona of an researcher in academia).
 
+```
 
 ```{r Practice-draft, eval=FALSE, include=FALSE}
 

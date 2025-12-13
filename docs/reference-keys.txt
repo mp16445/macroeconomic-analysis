@@ -29,15 +29,12 @@ logarithmic-ratio-scales
 rule-of-70
 growth-in-the-united-kingdom-and-the-united-states
 questions
-exercises-with-copilot
 GA
 introduction-1
 growth-accounting-equation
 derivation
 estimation
 case-study-south-korea-1953-2019
-exercise-week-14
-exercise-formative-assessment-week-15
 LCM
 introduction-2
 model-setup
@@ -64,9 +61,6 @@ fiscal-policy
 equilibrium-1
 transition-diagram-steady-state-and-fiscal-policy-shocks
 government-investment
-exercises-with-copilot-week-15
-exercise-model-simulations-week-15
-questions-week-16
 CONS
 introduction-3
 multi-period-model
@@ -79,7 +73,6 @@ optimal-consumption
 effect-of-tax-cuts
 exercises-with-copilot-week-19
 questions-1
-exercises-week-19
 BCF
 introduction-4
 describing-the-business-cycle
@@ -93,4 +86,3 @@ other-useful-sources-of-data
 data-manipulations
 frequency-and-data-smoothing
 indices-and-indexed-variables
-exercises-week-20

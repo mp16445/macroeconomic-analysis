@@ -95,8 +95,9 @@ knitr::include_graphics(rep("images/mpl.png"))
 Firms demand capital up to the point where the marginal product of labour is just equal to the market wage. Assuming the wgae is equal to $\bar{w}_2$, the optimal demand for labour is given by $L_2$. Following the same reasoning as for capital, it is possible to show that any other amount of labour would not be optimal.
 
 
+## The life-cycle model
 
-## Households' supply for capital and labour
+The life-cycle model provides the micro-foundations to **households' supply of capital and labour**. Households' saving-consumption and leisure-labour supply decisions are modeled as the outcome of households's maximising their utlity of their lifetime. 
 
 ### Setup
 
@@ -198,7 +199,7 @@ where investment ($I_t$) is equal to the change in the capital stock between the
 At any point in time, national investment is equal to national saving. Given that output must be equal to the sum of consumption and investment ($Y_t=C_t+I_t$), this is equivalent to saying that the good market is in equilibrium. 
 
 
-## Equilibrium
+## Output and price dynamics in equilibrium
 
 Having discussed the supply and demand sides of the economy, we are now in a position to solve for the equilibrium values of the key variables of our model, labour productivity, the capital-labour ratio, the wage, the interest and consumption when young and when old. 
 
@@ -298,7 +299,7 @@ knitr::include_graphics(rep("images/saving_shock.png"))
 
 The model therefore predicts that a rise in $\alpha$ would lead to a fall in the labour productivity **growth** rate in the short-run, but not in the long-run as the capital ratio stabilises at a new steady state level eventually. However, the shock would have a permanent negative effect on the **level** of the capital-labour ratio and therefore on the level of productivity growth since $y_t\downarrow = A(k_t\downarrow)^\beta$. 
 
-## The life-cycle model with population growth
+## The life-cycle growth model with population growth
 
 So far we have assumed no population growth. To capture the fact that the population may be growing over time and analyse the effects of changes in the population growth rate on the equilibrium values of the variables in the model, we now assume that population is growing as follows:
 $$ N_{y,t+1} = (1+n)N_{y,t}= (1+n)N_{o,t+1} $$
@@ -348,7 +349,7 @@ First, labour productivity $y$, the wage $w$, the interest rate $r$ and all the 
 
 Second, output $Y$, the capital stock $K$ and consumption grow at the constant population growth rate $n$. Using the definition of the capital-labour ratio, we know that $\bar{k}=\frac{K_t}{N_{y,t}}$ in the steady state. Since $\bar{k}$ is constant and $N_{y,t}$ grows at the rate $n$, it must be that $\bar{K}_t$ is also growing at the rate $n$ in the steady state. The same reasoning follows output. This model predicts that in an economy with no labour productivity growth, output would be growing at a constant rate in the long-run, equal to the population growth rate. 
 
-## The life-cycle model with fiscal policy
+## The life-cycle growth model with fiscal policy
 
 ### The government intertemporal budget constraint
 

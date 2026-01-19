@@ -84,7 +84,7 @@ Finally, total factor productivity growth is not directly observed but can be es
 
 $$ g_{A,t}= g_{y,t} - \beta g_{k,t}  $$
 
-## Case study: South Korea (1953-2019)
+## Example: South Korea (1953-2019)
 
 The *table* and *chart* below present the same growth accounting results for South Korea over the period 1953-2019 in two different ways. 
 
@@ -111,23 +111,21 @@ The growth of capital per hour contributed 1.4% towards the growth of labour pro
 
 These results suggest that the key to understanding the growth experience of South Korea is to look into the drivers of TFP growth. In particular, it might be interesting to disentangle the role of human capital accumulation (education, on-the-job-training, ...) from other factors of total factor productivity growth. This would allow us to determine how much weight was given in the growth strategy to the accumulation of factors of production as opposed to increases in efficiency. This could provide some clue as to the recent slowdown in TFP growth. 
 
-```{r GA draft questions, eval=FALSE, echo=FALSE}
 
+## Exercise lecture (Week 13)
 
-## Exercise (Week 14)
+This exercise guides  you through the growth accounting decomposition of UK labour productivity as seen in the lecture slides this week, then ask you to do the same for US labour productivity and to finally compare the results for the two countries.
 
-This exercise guides  you through the growth accounting decomposition of UK labour productivity as seen in the lecture slides in week 13, then ask you to do the same for US labour productivity and to finally compare the results for the two countries.
+In order to perform these practice questions, you need to work on a laptop (if possible using a mouse), **not** a tablet. You also need to have installed Excel on your device (you may not be able to perform all the operations using the web version).
 
-In order to perform these practice questions, you need to work on a laptop or a desktop computer (if possible using a mouse), **not** a tablet. You also need to have installed Excel on your device (you may not be able to perform all the operations using the web version).
+### Before the exercise lecture{-}
 
-### Part 1: Preliminaries{-}
-
-1. Download and learn more about the *Penn World Table* database by checking the information on this website: [PWT](https://www.rug.nl/ggdc/productivity/pwt). [*You may also look up this prompt in Copilot: "Explain what the Penn World Table data is, what is its significance, who is responsible for it and what are its objectives".*]
+1. Download and learn more about the *Penn World Table* database by checking the information on this website: [<span style="color: blue;">**Penn World Tables**</span>](https://www.rug.nl/ggdc/productivity/pwt). [*You may also look up this prompt in Copilot: "Explain what the Penn World Table data is, what is its significance, who is responsible for it and what are its objectives".*]
 
 1. If you have not done so already, go through the [<span style="color: blue;">**Penn World Table in Excel**</span>](https://mp16445.github.io/EXCEL_PWT/) tutorial (click on  blue link to access it) which shows how to perform basic operations and growth accounting using the *Penn World Table* dataset in Excel and make sure you are able to replicate the results.
 
 
-### Part 2: Describing long-run trends in productivity {-}
+### Part 1: Describing long-run trends in productivity {-}
 
 
 1. Create a new Excel sheet with the following variables for the **United Kingdom**: "rgdpna", "rnna", "pop", "emp", "avh" and "labsh". Check the variable definitions in the "Legend" sheet.
@@ -141,7 +139,7 @@ In order to perform these practice questions, you need to work on a laptop or a 
  
 *Note*: Table 1 (p 3154) *in* Feenstra et al. (<a href="https://www.rug.nl/ggdc/docs/the_next_generation_of_the_penn_world_table.pdf" target="_blank"><span style="color: blue;">link</span></a>) explains why "rgdpna" is the appropriate real GDP variable to study the growth of GDP over time in a single country.
 
-### Part 3: Growth accounting decompositions {-}
+### Part 2: Growth accounting decompositions {-}
 
 In this part, you will perform the growth accounting decomposition of labour productivity growth in the UK and the US. We will use the following growth accounting equation:
 $$ g_y = g_A + \beta g_k  $$
@@ -160,7 +158,7 @@ where $g_y$ is the growth rate of labour productivity, $g_k$ is the growth rate 
 
 **Growth accounting decompositions over intervals of time**:
 
-In Excel, construct a table as in the Excel tutorial - Section 7.4 containing the full sample period and each subperiod identified in Part 2 in each row.
+In Excel, construct a table as in the [<span style="color: blue;">**Excel tutorial - Section 7.4**</span>](https://mp16445.github.io/EXCEL_PWT/growth-accounting.html#results-average-decompositions)  containing the full sample period and each subperiod identified in Part 1 in each row.
 
 *Hint*: use the compound growth rate formula, $g_{x,t-s} = \left(\frac{x_s}{x_t}\right)^{\frac{1}{s-t}}-1$, to calculate average growth rates between any two periods $t$ and $s$ in this exercise.
 
@@ -173,11 +171,16 @@ In Excel, construct a table as in the Excel tutorial - Section 7.4 containing th
 
 1. Column 4: calculate the contribution of TFP growth to UK labour productivity ($g_A$) over the full sample period and over each subperiod as the residual of the growth accounting equation: $g_A = g_y - \beta g_k$. 
 
-1. Construct a table (as below) and a column chart to summarize the results of the UK labour productivity growth accounting over the full sample period and each subperiod (see the video in PWT Excel tutorial - Section 7.4 for how to construct the column chart).
+1. Construct a table (as below) and a column chart to summarize the results of the UK labour productivity growth accounting over the full sample period and each subperiod.
 
 1. Repeat 1 to 5 for the US using the same subperiods. Compare the growth accounting results in the two countries.
 
-1. (optional) Repeat 1 to 6 using the the average of the "labsh" variable to obtain an estimate of the elasticity of capital $\beta$. Under what assumption is this a valid method of estimation for $\beta$? How do the results change when using this alternative measure of $\beta$?
+1. Repeat 1 to 6 using the average of the "labsh" variable to obtain an estimate of the elasticity of capital $\beta$. Under what assumption is this a valid method of estimation for $\beta$? How do the results change when using this alternative measure of $\beta$?
+
+1. (Optional) Repeat 1 to 6 using by using the logarithmic compound growth rate formula $g_{x,t-s}=\frac{1}{s-t} (\ln{x_s}-\ln{x_t})$. How do the results change when using this alternative growth rate formula?
+
+1. (Optional) Repeat 1 to 6 using "rkna" variable to measure capital. How does this measure differ from “rnna”? How would you expect the results to change using this measure of capital? How do the results change when using this alternative measure of the growth of capital?
+
 
 |                 | gy   |  bgk | gA   | 
 |:---------------:|:----:|:----:|:----:|
@@ -187,9 +190,12 @@ In Excel, construct a table as in the Excel tutorial - Section 7.4 containing th
 |Third subperiod  |      |      |      |
 
 
-### Part 4: Sources of changes in labour productivity {-}
+```{r EL - DELETED PART, eval=FALSE, include=FALSE}
 
-*This will be covered in the class if time permits.*
+
+### Part 3: Sources of changes in labour productivity {-}
+
+*This will be covered in the lecture if time permits.*
 
 Based on your results in the previous part, investigate the possible underlying causes explaining the differences in **capital accumulation** and **TFP growth** between the two countries over the full sample period or in some subperiod. 
 
@@ -201,6 +207,8 @@ To address this question, you may use these two resources:
 
 1. The **university library** contains the most extensive database of academic papers at your disposal and more resources. Click on this [link](https://bristol.libguides.com/economics) to start exploring.
 1. You may use **Copilot** as a starting point. A useful prompt: "Can you provide 5 differences between the United Kingdom and the United States which may be related to the wider economic context, policies or the behaviour of households and firms which may explain the lower capital accumulation of capital stock per worker in the US relative to the UK between 1950 and 1973? Can you provide detailed academic sources in support of each argument you make in this answer?" Retain only the most promising arguments and check the sources!
+
+```{r Formative exercise, eval=FALSE, include=FALSE}
 
 ## Exercise: Formative assessment (Week 15)
 
@@ -231,7 +239,6 @@ To address this question, you may use these two resources:
 1. The **university library** contains the most extensive database of academic papers at your disposal and more resources. Click on this [link](https://bristol.libguides.com/economics) to start exploring.
 1. You may use **Copilot** as a starting point. An example of a prompt you might use (applied to the example of the US and UK in the previous exercise): "Can you provide 5 differences between the United Kingdom and the United States which may be related to the wider economic context, policies or the behaviour of households and firms which may explain the reduce role of capital accumulation in the US relative to the UK between 1950 and 1973? Can you provide detailed academic sources in support of each argument you make in this answer?" 
 1. Make a list of the most promising arguments, check that they can all be linked to some academic sources!
-  
 ```
 
 ```{r appendix, eval=FALSE, include=FALSE}

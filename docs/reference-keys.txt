@@ -34,7 +34,8 @@ introduction-1
 growth-accounting-equation
 derivation
 estimation
-case-study-south-korea-1953-2019
+example-south-korea-1953-2019
+exercise-lecture-week-13
 LCM
 introduction-2
 model-setup

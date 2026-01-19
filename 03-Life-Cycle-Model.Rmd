@@ -365,7 +365,7 @@ The GIBC states that the sum of the current debt and the present value of future
 
 In this section, we assume no population growth, so there are the same number of households in each generation ($N$).
 
-Assume the government wants to finance government spending $\bar{G}$ at time $t$ and all following periods. Furthermore, this additional government consumtpion is fully consume during the period, ie it has no impact on the economy's capital stock or productivity in the subsequent periods. 
+Assume the government wants to finance government spending $\bar{G}$ at time $t$ and all following periods. Furthermore, this additional government consumption is fully consumed during the period, ie it has no impact on the economy's capital stock or productivity in the subsequent periods. 
 
 Because the GIBC must hold at all times, such an expenditure can be financed at time $t$ either by taxation or by running a budget deficit (borrowing) which must be repaid by higher taxes in the future. 
 
@@ -443,7 +443,7 @@ The transition diagram conserves the same concave shape as in the model without 
 
 With fiscal policy ($z_{y,t}+b_{t+1}>0$), savings are reduced by the amount that needs to be paid in tax ($z_{y,t}$) and are used in part to purchase government debt $b_{t+1}$. A the initial steady state level of the capital-labour ratio, the same wage leads to lower investment in capital assets and therefore a lower capital stock in the next period. This means that a higher wage in the previous period would be required to maintain the same level of the capital-labour ratio, which has become unsustainable. As a result, the economy converges to a lower steady state level of the capital-labour ratio and labour productivity. 
 
-A fiscal policy shock affects capital accumulation and growth when the sum of taxation of the young and the debt ($z_{y,t}+b_{t+1}$) changes. A rise in either of these policies, holding everything else constant will lead the capital-labour ratio and labour productivity (and their growth) to fall for some time before stabilising permanently at a lower level. 
+A fiscal policy shock affects capital accumulation and growth when the sum of taxation of the young and debt ($z_{y,t}+b_{t+1}$) changes. A rise in either of these policies, holding everything else constant will lead the capital-labour ratio and labour productivity (and their growth) to fall for some time before stabilising permanently at a lower level. 
 
 ### Government investment
 

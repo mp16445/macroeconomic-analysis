@@ -60,3 +60,14 @@ fiscal-policy
 equilibrium
 transition-diagram-steady-state-and-fiscal-policy-shocks
 government-investment
+SM
+introduction-3
+the-model
+the-productive-sector
+knowledge-spillovers-and-constant-returns
+the-production-function-of-technological-progress
+imperfect-competition-in-the-intermediate-goods-sector
+the-research-arbitrage-condition
+steady-state-allocation-of-resources-and-growth-rate
+discussion-and-implications-for-policy
+extension-competition-and-technological-progress
